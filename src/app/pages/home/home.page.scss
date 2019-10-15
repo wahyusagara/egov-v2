@@ -1,0 +1,90 @@
+ion-content{
+
+    & ion-grid{
+
+        &.slider{
+
+            & ion-slides{
+                max-height: 30vmax;
+
+                & .swiper-wrapper{
+
+                    & .swiper-pagination-bullets{
+                       
+                        & .swiper-pagination-bullet{
+                            
+                            background: var(--CR001);
+                            opacity: 1;
+                        }
+                   }
+                }
+
+                & ion-row{
+
+                    & ion-col{
+
+                        & .box{
+
+                            & img{
+                                
+                                object-fit: cover !important;
+                                height: 25vmax !important;
+                                margin: auto;
+                                width: 100%;
+                                border: 1px solid var(--CR005);
+                                border-radius: 2px;
+                            }
+
+                            & .content-text{
+                                transform: translateY(-1vmax) !important;
+                                border-radius: 8px;
+                                border: 1px solid black;
+                                display: block;
+                                color: #044e79;
+                                // z-index: 1000;
+                                text-align: center;
+                                margin: 0px 10px;
+                                opacity: 0.85;
+                                background: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.search{
+
+            & ion-searchbar{
+                width: 90%;
+                margin-top: 1vmax;
+                margin-bottom: 1vmax;
+                border: 5px;
+                border-color:blue;
+            }
+        }
+    }
+}
+
+.col-pag{
+    padding: 0px !important;
+}
+.dashboard-logo {
+    padding-right:10%;
+}
+.backgroundku{
+    --background-color: silver;
+    --bullet-background: silver;
+}
+.eventTime {
+    background: green;
+}
+.event-today {
+    background: coral;
+}
+.eventText {
+    text-overflow: ellipsis;
+}
+.border-bottom {
+    border-bottom: solid 1px black;
+}
