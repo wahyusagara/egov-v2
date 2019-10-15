@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides } from '@ionic/angular';
+import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,19 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  dateMulti = [
+    "2019-10-15",
+    "2019-10-17",
+    "2019-10-19"
+  ];
+  dateku = "2019-10-17";
+  type: 'string';
+  optionsMulti: CalendarComponentOptions = {
+    pickMode: 'multi',
+    from: new Date(new Date().toISOString()).setDate(1),
+    weekStart: 1,
+    color: "danger"
+  }
   public slideOpts = {
     slidesPerView: 1,
     initialSlide: 0,
@@ -82,6 +96,9 @@ export class HomePage implements OnInit {
   }
   ionSlidesDidLoad(){
     this.slides.startAutoplay();
+  }
+  dateSelect(event) {
+    console.log(event);
   }
 
 }
