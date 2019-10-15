@@ -7,7 +7,7 @@
     </ion-grid>
   
     <ion-grid class="content" no-padding no-margin>
-        <form class="list-form" #loginForm="ngForm" (ngSubmit)="submit()" autocomplete="off">
+        <form class="list-form" #loginForm="ngForm"  autocomplete="off">
           <ion-row>
               <ion-col size="1" no-padding no-margin class="img"><img src="assets/img/avatar.png"></ion-col>
               <ion-col size="11" no-padding no-margin class="input-group"><ion-input type="text" text-lowercase class="FLB01" clearInput placeholder="Username"></ion-input></ion-col>
@@ -24,7 +24,7 @@
               </ion-text>
             </ion-col>
             <ion-col text-end no-padding no-margin class="forgot">
-              <ion-text class="FR06 CP012" (click)="moveReset()">
+              <ion-text class="FR06 CP012" >
                 Forgot Your Password?
               </ion-text>
             </ion-col>
