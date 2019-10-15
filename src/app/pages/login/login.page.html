@@ -10,11 +10,11 @@
         <form class="list-form" #loginForm="ngForm" (ngSubmit)="submit()" autocomplete="off">
           <ion-row>
               <ion-col size="1" no-padding no-margin class="img"><img src="assets/img/avatar.png"></ion-col>
-              <ion-col size="11" no-padding no-margin class="input-group"><ion-input type="text" name="username" text-lowercase class="FLB01" [(ngModel)]="username" clearInput placeholder="Username"></ion-input></ion-col>
+              <ion-col size="11" no-padding no-margin class="input-group"><ion-input type="text" text-lowercase class="FLB01" clearInput placeholder="Username"></ion-input></ion-col>
           </ion-row>
           <ion-row>
               <ion-col size="1" no-padding no-margin class="img"><img src="assets/img/avatar.png"></ion-col>
-              <ion-col size="11" no-padding no-margin class="input-group"><ion-input type="password" name="password" class="FLB01" [(ngModel)]="password" clearInput placeholder="Password" ></ion-input></ion-col>
+              <ion-col size="11" no-padding no-margin class="input-group"><ion-input type="password" class="FLB01" clearInput placeholder="Password" ></ion-input></ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding no-margin class="rememberme">
@@ -31,7 +31,7 @@
           </ion-row>
           <ion-row>
             <ion-col no-padding no-margin >
-              <ion-button class="BTN001 login" tappable type="submit"  expand="block" [disabled]="username === '' || password === ''">
+              <ion-button class="BTN001 login" tappable type="submit"  expand="block">
                 Login
               </ion-button>
             </ion-col>
