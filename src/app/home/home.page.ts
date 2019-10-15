@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
+import { NavController, AlertController, Platform } from '@ionic/angular'; 
  
 @Component({
   selector: 'app-home',
@@ -12,14 +12,16 @@ export class HomePage {
  
   }
  
-  showPlatform() {
+  async showPlatform() {
     let text = 'I run on: ' + this.platform.platforms();
-    let alert = this.alertCtrl.create({
-      title: 'My Home',
-      subTitle: text,
-      buttons: ['Ok']
+    const alert = await this.alertCtrl.create({
+      header: 'Alert',
+      subHeader: 'Subtitle',
+      message: text,
+      buttons: ['OK']
     });
-    alert.present();
+
+    await alert.present();
   }
  
 }
