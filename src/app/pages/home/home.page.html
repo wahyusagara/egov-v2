@@ -88,5 +88,15 @@
         </ion-row>
       </ion-col>
     </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-calendar
+          [(ngModel)]="dateMulti"
+          [options]="optionsMulti"
+          [type]="type"
+          [format]="'YYYY-MM-DD'">
+        </ion-calendar>
+      </ion-col>
+    </ion-row>
   </ion-grid>
 </ion-content>
