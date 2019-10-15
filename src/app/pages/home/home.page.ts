@@ -7,6 +7,15 @@ import { IonSlides } from '@ionic/angular';
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  public slideOpts = {
+    slidesPerView: 1,
+    initialSlide: 0,
+    speed: 400,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  };
   contentList = [
     {
       file: "assets/img/geospatialrun.jpg",
