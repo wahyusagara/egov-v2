@@ -74,4 +74,341 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** head **/
+  --ion-color-head: #2091FF;
+  --ion-color-head-rgb: 255,211,42;
+  --ion-color-head-contrast: #ffff;
+  --ion-color-head-contrast-rgb: 0,0,0;
+  --ion-color-head-shade: #e0ba25;
+  --ion-color-head-tint: #ffd73f;
+
+  /** body **/
+  --ion-color-body: #004AC4;
+  --ion-color-body-rgb: 255,221,89;
+  --ion-color-body-contrast: #000000;
+  --ion-color-body-contrast-rgb: 0,0,0;
+  --ion-color-body-shade: #004AC4;
+  --ion-color-body-tint: #004AC4;
+
+  /** content **/
+  --ion-color-content: rgba(236, 240, 241, 0.2);
+  --ion-color-content-rgb: 152, 154, 162;
+  --ion-color-content-contrast: #ffffff;
+  --ion-color-content-contrast-rgb: 255, 255, 255;
+  --ion-color-content-shade: #86888f;
+  --ion-color-content-tint: #a2a4ab;
+
+  --CR001:#ffffff;
+  --CR002:#cccccc;
+  --CR003:#6e6e6e;
+  --CR004:#044e79;
+  --CR005:#2091FF;
+  --CR006:#00a8be;
+  --CR007:#0000FF;
+  --CR008:#000033;
+}
+
+.ion-color-head {
+  --ion-color-base: var(--ion-color-head);
+  --ion-color-base-rgb: var(--ion-color-head-rgb);
+  --ion-color-contrast: var(--ion-color-head-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-head-contrast-rgb);
+  --ion-color-shade: var(--ion-color-head-shade);
+  --ion-color-tint: var(--ion-color-head-tint);
+}
+
+.ion-color-body {
+  --ion-color-base: var(--ion-color-body);
+  --ion-color-base-rgb: var(--ion-color-body-rgb);
+  --ion-color-contrast: var(--ion-color-body-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-body-contrast-rgb);
+  --ion-color-shade: var(--ion-color-body-shade);
+  --ion-color-tint: var(--ion-color-body-tint);
+}
+
+.ion-color-content {
+  --ion-color-base: var(--ion-color-content);
+  --ion-color-base-rgb: var(--ion-color-content-rgb);
+  --ion-color-contrast: var(--ion-color-content-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-content-contrast-rgb);
+  --ion-color-shade: var(--ion-color-content-shade);
+  --ion-color-tint: var(--ion-color-content-tint);
+}
+
+@mixin font-size($sizeValue) {
+
+  @media  only screen and (min-width: 360px){
+    font-size: calc(#{$sizeValue+px} - 0.20vw) !important;
+  }
+
+  @media  only screen and (min-width: 375px){
+    font-size: calc(#{$sizeValue+px}) !important;
+  }
+
+  @media  only screen and (min-width: 414px){
+    font-size: calc(#{$sizeValue+px} + 0.20vw) !important;
+  }
+  @media  only screen and (min-width: 504px){
+    font-size: calc(#{$sizeValue+px} + 0.30vw) !important;
+  }
+}
+@mixin multiLineEllipsis($lineHeight, $lineCount, $bgColor){
+  overflow: hidden;
+  position: relative;
+  line-height: $lineHeight;
+  max-height: $lineHeight * $lineCount; 
+  text-align: justify;
+  
+  display: block;
+  display: -webkit-box;
+  max-width: 100%;
+  margin: 0 auto;
+  font-size: 14px;
+  -webkit-line-clamp: $lineCount;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColor;
+  }
+}
+
+.block-with-text {
+  @include multiLineEllipsis($lineHeight: 1.2em, $lineCount: 3, $bgColor: white);  
+}
+
+/*Font Style*/
+@font-face {
+  font-family: 'Futura - Regular';
+  src: url('/assets/font/futura/futura.ttf') format('truetype') ;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura - Bold';
+  src: url('/assets/font/futura/futura-bold.ttf') format('truetype') ;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura - Italic';
+  src: url('/assets/font/futura/futura.ttf') format('truetype') ;
+  font-style: italic;
+}
+
+
+@font-face {
+  font-family: 'Garamond - Regular';
+  src: url('/assets/font/garamond/garamond.ttf') format('truetype') ;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Garamond - Bold';
+  src: url('/assets/font/garamond/garamond.ttf') format('truetype') ;
+  font-style: bold;
+}
+
+@font-face {
+  font-family: 'Garamond - Italic';
+  src: url('/assets/font/garamond/garamond.ttf') format('truetype') ;
+  font-style: italic;
+}
+
+.FFR01{
+  @include font-size(8);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR02{
+  @include font-size(10);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR03{
+  @include font-size(12);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR04{
+  @include font-size(14);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR05{
+  @include font-size(16);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR06{
+  @include font-size(18);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR07{
+  @include font-size(20);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR08{
+  @include font-size(22);
+  font-family: 'Futura - Regular' !important;
+}
+.FFR09{
+  @include font-size(24);
+  font-family: 'Futura - Regular' !important;
+}
+
+.FGR01{
+  @include font-size(12);
+  font-family: 'Garamond - Regular' !important;
+}
+.FGR02{
+  @include font-size(14);
+  font-family: 'Garamond - Regular' !important;
+}
+.FGR03{
+  @include font-size(16);
+  font-family: 'Garamond - Regular' !important;
+}
+
+.FGR04{
+  @include font-size(18);
+  font-family: 'Garamond - Regular' !important;
+}
+
+.FGB01{
+  @include font-size(12);
+  font-family: 'Garamond - Bold' !important;
+  font-weight: bold;
+}
+.FGB02{
+  @include font-size(14);
+  font-family: 'Garamond - Bold' !important;
+  font-weight: bold;
+}
+.FGB03{
+  @include font-size(16);
+  font-family: 'Garamond - Bold' !important;
+  font-weight: bold;
+}
+
+.FGB04{
+  @include font-size(18);
+  font-family: 'Garamond - Bold' !important;
+  font-weight: bold;
+}
+
+.FGB05{
+  @include font-size(20);
+  font-family: 'Garamond - Bold' !important;
+  font-weight: bold;
+}
+
+.FFB01{
+  @include font-size(12);
+  font-family: 'Futura - Bold' !important;
+}
+.FFB02{
+  @include font-size(14);
+  font-family: 'Futura - Bold' !important;
+}
+.FFB03{
+  @include font-size(16);
+  font-family: 'Futura - Bold' !important;
+}
+.FFB04{
+  @include font-size(18);
+  font-family: 'Futura - Bold' !important;
+}
+.FFB05{
+  @include font-size(20);
+  font-family: 'Futura - Bold' !important;
+}
+.FFB06{
+  @include font-size(24);
+  font-family: 'Futura - Bold' !important;
+}
+
+.FI01{
+  @include font-size(12);
+  font-family: 'Futura - Italic' !important;
+}
+.FI02{
+  @include font-size(14);
+  font-family: 'Futura - Italic' !important;
+}
+.FI03{
+  @include font-size(16);
+  font-family: 'Futura - Italic' !important;
+}
+
+
+.CR001{
+  --color:var(--CR001) !important;
+  color:var(--CR001) !important;
+}
+.CR002{
+ --color:var(--CR002) !important;
+ color:var(--CR002) !important;
+}
+.CR003{
+  --color:var(--CR003) !important;
+  color:var(--CR003) !important;
+}
+.CR004{
+  --color:var(--CR004) !important;
+  color:var(--CR004) !important;
+}
+.CR005{
+  --color:var(--CR005) !important;
+  color:var(--CR005) !important;
+}
+.CR006{
+  --color:var(--CR006) !important;
+  color:var(--CR006) !important;
+}
+.CR007{
+  --color:var(--CR007) !important;
+  color:var(--CR007) !important;
+}
+.CR008{
+  --color:var(--CR008) !important;
+  color:var(--CR008) !important;
+}
+
+/*BTN*/
+
+@mixin BTN($width, $height,$bgColor,$color,$bgColorActive){
+ 
+  height:  $height;
+  display: block;
+  width: $width; 
+  background: $bgColor;
+  color:$color;
+
+  &:before {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+  &:after {
+    position: absolute;
+    right: 0;
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    background: $bgColorActive;
+  }
+  &:hover,:active{
+    background: $bgColorActive;
+  }
+}
+.BTN001{
+  @include BTN(10em,3em,'',var(--CR001),red);
 }
