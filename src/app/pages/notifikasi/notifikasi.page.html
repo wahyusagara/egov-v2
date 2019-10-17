@@ -1,0 +1,20 @@
+<ion-header class="backgroundTitle">
+  <ion-toolbar class="backgroundTitle">
+    <ion-buttons slot="start">
+      <ion-icon name="arrow-dropleft" (click)="back()" class="icon"></ion-icon>
+    </ion-buttons>
+    <ion-row justify-content-center>
+      <ion-col text-center>
+        <ion-title>Notifikasi</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="listBackground">
+  <ion-list class="listBackground">
+    <ion-item *ngFor="let list of listMenu" class="listBackground">
+      <ion-label class="listBackground strong">{{list}}</ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

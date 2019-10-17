@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, MenuController } from '@ionic/angular';
+import { IonSlides, MenuController, NavController } from '@ionic/angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
@@ -91,7 +91,8 @@ export class HomePage implements OnInit {
   ]
 
   constructor(
-    private menu: MenuController
+    private menu: MenuController,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -103,7 +104,8 @@ export class HomePage implements OnInit {
     console.log(event);
   }
   showMenu() {
-    this.menu.open()
+    // this.menu.open()
+    this.navCtrl.navigateForward('notifikasi');
   }
 
 }
