@@ -1,5 +1,7 @@
 {
-  "name": "New Ionic App",
-  "integrations": {},
+  "name": "egov-big",
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
