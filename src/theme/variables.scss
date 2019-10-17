@@ -99,8 +99,18 @@
   --ion-color-content-shade: #86888f;
   --ion-color-content-tint: #a2a4ab;
 
-  --CR001:#ffffff;
-  --CR002:#cccccc;
+  
+  /** primary **/
+  --ion-color-crteal: #3820699480ff;
+  --ion-color-crteal-rgb: 32,105,148;
+  --ion-color-crteal-contrast:  #e8f0f4;
+  --ion-color-crteal-contrast-rgb: 	232, 240,	244;
+  --ion-color-crteal-shade: #195476;
+  --ion-color-crteal-tint:#4c87a9;
+
+  --CR000:#ffffff;
+  --CR001:#206994;
+  --CR002:#c47f00;
   --CR003:#6e6e6e;
   --CR004:#044e79;
   --CR005:#2091FF;
@@ -349,6 +359,10 @@
 }
 
 
+.CR000{
+  --color:var(--CR000) !important;
+  color:var(--CR000) !important;
+}
 .CR001{
   --color:var(--CR001) !important;
   color:var(--CR001) !important;
@@ -389,8 +403,9 @@
   height:  $height;
   display: block;
   width: $width; 
+  --background: $bgColor;
   background: $bgColor;
-  color:$color;
+  --color:$color;
 
   &:before {
     position: absolute;
@@ -410,5 +425,5 @@
   }
 }
 .BTN001{
-  @include BTN(10em,3em,'',var(--CR001),red);
+  @include BTN(10em,3em,#c47f00,#ffffff,'');
 }
