@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, MenuController } from '@ionic/angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 
 @Component({
@@ -90,7 +90,9 @@ export class HomePage implements OnInit {
     }
   ]
 
-  constructor() { }
+  constructor(
+    private menu: MenuController
+  ) { }
 
   ngOnInit() {
   }
@@ -99,6 +101,9 @@ export class HomePage implements OnInit {
   }
   dateSelect(event) {
     console.log(event);
+  }
+  showMenu() {
+    this.menu.open()
   }
 
 }
