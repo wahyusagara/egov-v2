@@ -8,16 +8,20 @@
   
     <ion-grid class="content" no-padding no-margin>
         <div class="version CR000" text-center>eGov V2</div>
-        <form class="list-form" #loginForm="ngForm"  autocomplete="off">
+        <form class="list-form" #loginForm="ngForm"  autocomplete="off" (ngSubmit)="submit()">
           <ion-row>
-              <ion-col size="12" no-padding no-margin class="input-group"><ion-input type="text" text-lowercase class="FLB01 CR008" clearInput placeholder="Username"></ion-input></ion-col>
+              <ion-col size="12" no-padding no-margin class="input-group">
+                <ion-input type="text" text-lowercase class="FLB01 CR008" clearInput placeholder="Username"></ion-input>
+              </ion-col>
           </ion-row>
           <ion-row>
-              <ion-col size="12" no-padding no-margin class="input-group"><ion-input type="password" class="FLB01 CR008" clearInput placeholder="Password" ></ion-input></ion-col>
+              <ion-col size="12" no-padding no-margin class="input-group">
+                <ion-input type="password" class="FLB01 CR008" clearInput placeholder="Password" ></ion-input>
+              </ion-col>
           </ion-row>
           <ion-row>
             <ion-col no-padding no-margin >
-              <ion-button class="BTN001 CR000" tappable type="submit"  expand="block">
+              <ion-button class="BTN001 CR000" tappable type="submit" expand="block">
                 Login
               </ion-button>
             </ion-col>

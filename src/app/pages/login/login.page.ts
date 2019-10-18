@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
+import { GlobalFuncService } from "../../services/global-func.service";
 
 @Component({
   selector: 'app-login',
@@ -9,13 +10,22 @@ import { MenuController } from '@ionic/angular';
 export class LoginPage implements OnInit {
 
   constructor(
-    private menu: MenuController
+    private menu: MenuController,
+    private navCtrl: NavController,
+    private global: GlobalFuncService
   ) { }
 
   ngOnInit() {
   }
   ionViewWillEnter() {
     this.menu.enable(false);
+  }
+  async submit() {
+    await this.global.showToast('Proses login', 'primary');
+    setTimeout(() => {
+      this.global.showToast('Login successfully', 'success');
+      this.navCtrl.navigateRoot('home');
+    }, 2000)
   }
 
 }
