@@ -5,7 +5,6 @@ ion-content.login{
     -ms-overflow-style: none;  // IE 10+
     scrollbar-width: none;  // Firefox
     scroll-behavior: smooth;
-  
     &::-webkit-scrollbar {
       display: none; // Safari and Chrome
     }
@@ -14,13 +13,14 @@ ion-content.login{
     }
     & ion-grid{
         &.logo{
+            margin-top: 20vh;
             margin-bottom: 20px;
     
            & .img{    
                 & img{
-                    width: 37vw;
-                    min-width: 160px;
-                    max-width: 25vmax;
+                    width: 18vh;
+                    min-width: 138px;
+                    max-width: 25vh;
                     margin: auto;
                     display: block;
                 }
@@ -28,14 +28,20 @@ ion-content.login{
         }
     
         &.content{
-            width: 74.156vw;
+            width: 74.156vh;
             margin: auto;
   
             & ion-row{
-                margin-bottom: 10px;
+                margin-bottom: 3vh;
+                height: 6vh;
+            }
+
+            & .version{
+                margin-bottom:1em;
             }
     
             & .img {
+                height: 6vh;
                 display: block;
                 border: 1px solid #ddd;
                 text-align: center;
@@ -46,23 +52,24 @@ ion-content.login{
                 & img {
                     margin: auto;
                     display: unset;
-                    transform: translateY(50%);
+                    max-height: 100%;
                 }
             }
             
             & .input-group{
+                
   
                 & ion-input {
                     display: inline-flex;
                     width: 100%;
                     margin: 0px;
-                    background:#f2f2f2; 
+                    background:var(--CR000); 
                     border:1px solid #ddd;
                     border-left:none;
-                    border-top-right-radius: 8px;
-                    border-bottom-right-radius: 8px;
+                    border-radius: 8px;
                     padding-left: 10px !important;
-                    
+                    height: 6vh;
+
                     & input {
                         background-color: transparent !important;
                         padding-left: 10px;
@@ -113,8 +120,7 @@ ion-content.login{
         }
     
         & ion-button{
-            background: none;
-            width: 98%;
+            width: 100%;
         }
     }
   }
