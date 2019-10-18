@@ -1,10 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
-      eGOV BIG
+    <ion-title no-margin>
+      <span float-left>eGOV BIG</span> 
+      <span float-right>
+        <ion-icon name="mail"></ion-icon>
+        <ion-icon name="notifications-outline" (click)="showMenu()"></ion-icon>
+      </span>
     </ion-title>
-    <ion-icon name="mail"></ion-icon>
-    <ion-icon name="notifications-outline" (click)="showMenu()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -31,47 +33,32 @@
       </ion-slide>
     </ion-slides>
   </ion-grid>
-  <ion-grid fixed>
-    <ion-row>
-      <ion-col size="1"></ion-col>
-      <ion-col size="3" class="eventTime">
-        <ion-row class="border-bottom">
+  <ion-grid fixed no-padding> 
+    <ion-row class="schedules FFR02">
+      <div class="event-time">
+        <span class="CR000">
           SENIN, 17 APR 2019
-        </ion-row>
-        <ion-row>
+        </span>
+        <span class="sparator black"></span>
+        <span class="CR008">
           07.25 - (N/A)
-        </ion-row>
-      </ion-col>
-      <ion-col size="7" class="event-today">
-        <ion-row>
+        </span>
+      </div>
+      <div class="event-desc">
+        <span class="CR000">
           JADWAL HARI INI
-        </ion-row>
-        <ion-row class="eventText">
+        </span>
+        <span class="sparator black"></span>
+        <span class="CR008">
           Rapat Pengembangan Aplikasi Kependudukan
-        </ion-row>
-      </ion-col>
-      <ion-col size="1"></ion-col>
+        </span>
+      </div>
     </ion-row>
-    <ion-row>
+
+    <ion-row class="menu-icon"> 
       <ion-col size="12">
         <ion-row>
           <ion-col size="3" *ngFor="let items of item1">
-            <ion-row justify-content-center>
-              <ion-col size="12">
-                <ion-row justify-content-center>
-                  <ion-avatar>
-                    <img [src]="items?.img">
-                  </ion-avatar>    
-                </ion-row>
-                <ion-row justify-content-center>
-                  <ion-label>{{items?.label}}</ion-label>
-                </ion-row>
-              </ion-col>
-            </ion-row>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col size="3" *ngFor="let items of item2">
             <ion-row justify-content-center>
               <ion-col size="12">
                 <ion-row justify-content-center>
@@ -100,16 +87,23 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
 <ion-tabs color="head" class="footer-nav hide-desktop">
   <ion-tab-bar slot="bottom"  color="head" class="footer-nav--container hide-desktop">
       <ion-tab-button tab="list" class="hide-desktop">
-            <img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop">
+            <img src="assets/img/group-interface-symbol.png" alt="Ionic logo" class="hide-desktop">
       </ion-tab-button>
       <ion-tab-button tab="dashboard" class="hide-desktop">
+          <img src="assets/img/timetable.png" alt="Ionic logo" class="hide-desktop">
+      </ion-tab-button>
+      <ion-tab-button tab="home" class="hide-desktop home">
           <img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop">
       </ion-tab-button>
+      <ion-tab-button tab="dashboard" class="hide-desktop">
+          <img src="assets/img/startup.png" alt="Ionic logo" class="hide-desktop">
+      </ion-tab-button>
       <ion-tab-button tab="home" class="hide-desktop">
-          <img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop">
+          <img src="assets/img/user.png" alt="Ionic logo" class="hide-desktop">
       </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>
