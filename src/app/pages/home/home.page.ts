@@ -69,9 +69,7 @@ export class HomePage implements OnInit {
     {
       img: "assets/img/avatar.png",
       label: "Kendaraan"
-    }
-  ]
-  item2 = [
+    },
     {
       img: "assets/img/avatar.png",
       label: "Ruang Rapat",
@@ -114,9 +112,6 @@ export class HomePage implements OnInit {
   navPage(url) {
     console.log(url);
     this.navCtrl.navigateForward(url);
-  }
-  woy() {
-    alert('woy');
   }
 
 }
