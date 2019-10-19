@@ -66,21 +66,23 @@ export class HomePage implements OnInit {
     },
     {
       img: "assets/img/avatar.png",
-      label: "Kinerja"
+      label: "Kinerja",
+      route: "home"
     },
     {
       img: "assets/img/avatar.png",
-      label: "Kendaraan"
+      label: "Kendaraan",
+      route: "home"
     },
     {
       img: "assets/img/avatar.png",
       label: "Ruang Rapat",
-      route: ""
+      route: "home"
     },
     {
       img: "assets/img/avatar.png",
       label: "Persuratan",
-      route: ""
+      route: "home"
     },
     {
       img: "assets/img/avatar.png",
