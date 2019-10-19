@@ -74,19 +74,23 @@ export class HomePage implements OnInit {
   item2 = [
     {
       img: "assets/img/avatar.png",
-      label: "Ruang Rapat"
+      label: "Ruang Rapat",
+      route: ""
     },
     {
       img: "assets/img/avatar.png",
-      label: "Persuratan"
+      label: "Persuratan",
+      route: ""
     },
     {
       img: "assets/img/avatar.png",
-      label: "Helpdesk Kepegawaian"
+      label: "Helpdesk Kepegawaian",
+      route: ""
     },
     {
       img: "assets/img/menu.png",
-      label: "Menu Lain"
+      label: "Menu Lain",
+      route: "/menu-lain"
     }
   ]
 
@@ -106,6 +110,13 @@ export class HomePage implements OnInit {
   showMenu() {
     // this.menu.open()
     this.navCtrl.navigateForward('notifikasi');
+  }
+  navPage(url) {
+    console.log(url);
+    this.navCtrl.navigateForward(url);
+  }
+  woy() {
+    alert('woy');
   }
 
 }
