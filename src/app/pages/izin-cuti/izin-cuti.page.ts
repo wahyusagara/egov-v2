@@ -25,7 +25,7 @@ export class IzinCutiPage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private global: GlobalFuncService
+    public global: GlobalFuncService
   ) { }
 
   ngOnInit() {

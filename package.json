@@ -42,6 +42,7 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "ion2-calendar": "^3.0.0-rc.0",
+    "ionic-selectable": "^4.4.1",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",

@@ -5,7 +5,7 @@ import { ToastController, LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class GlobalFuncService {
-  listCuti = [
+  public listCuti = [
     {
       approved: true,
       date: "2019-10-19T01:24:21.604Z",

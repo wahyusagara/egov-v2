@@ -61,7 +61,8 @@ export class HomePage implements OnInit {
     },
     {
       img: "assets/img/avatar.png",
-      label: "Perjanalan Dinas"
+      label: "Perjanalan Dinas",
+      route: "perjalanan-dinas"
     },
     {
       img: "assets/img/avatar.png",

@@ -3,12 +3,12 @@ import { NavController } from '@ionic/angular';
 import { GlobalFuncService } from 'src/app/services/global-func.service';
 
 @Component({
-  selector: 'app-izin-cuti-create',
-  templateUrl: './izin-cuti-create.page.html',
-  styleUrls: ['./izin-cuti-create.page.scss'],
+  selector: 'app-perjalanan-dinas-create',
+  templateUrl: './perjalanan-dinas-create.page.html',
+  styleUrls: ['./perjalanan-dinas-create.page.scss'],
 })
-export class IzinCutiCreatePage implements OnInit {
-  type:string;
+export class PerjalananDinasCreatePage implements OnInit {
+  location:string;
   reason:string;
   files = [];
   date = "";
@@ -16,26 +16,13 @@ export class IzinCutiCreatePage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private global: GlobalFuncService
+    public global: GlobalFuncService
   ) { }
 
   ngOnInit() {
   }
-  changeType(){
-    console.log(this.type);
-  }
   submit() {
-    // this.global.listCuti.push(
-    //   {
-    //     approved: false,
-    //     date: this.date,
-    //     duration: this.duration,
-    //     title: this.reason
-    //   }
-    // );
-    const type = this.type === "1" ? "Cuti" : "Izin";
-    this.global.showToast('Insert ' + type + ' Berhasil', 'success');
-    this.navCtrl.navigateRoot('izin-cuti');
+    this.navCtrl.back();
   }
   async changeFile(e) {
     const files = e.target.files;
@@ -76,5 +63,4 @@ export class IzinCutiCreatePage implements OnInit {
   deleteImg(e) {
     this.files = this.files.filter(file => file.id !== parseInt(e, 10));
   }
-
 }
