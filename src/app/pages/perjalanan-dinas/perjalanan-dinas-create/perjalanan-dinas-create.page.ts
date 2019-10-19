@@ -13,6 +13,7 @@ export class PerjalananDinasCreatePage implements OnInit {
   files = [];
   date = "";
   duration: number;
+  title:string;
 
   constructor(
     private navCtrl: NavController,
