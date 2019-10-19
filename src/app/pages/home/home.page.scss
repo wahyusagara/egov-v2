@@ -1,4 +1,25 @@
 
+ion-title{
+    & div{
+        vertical-align: middle;
+        display: inline-block;
+
+        &.title{
+            text-align: left;
+            width: 50%;
+        }
+        &.icon{
+            text-align: right;
+            width: 50%;
+            & ion-icon{
+                width: 24px;
+                height: 24px;
+                margin: 0px 5px;
+                float: right;   
+            }
+        }
+    }
+}
 ion-content{
 
     & ion-grid{
@@ -22,7 +43,7 @@ ion-content{
                                 background: var(--CR001);
                                 opacity: 1;
                             }
-                       }
+                        }
                     }
                     
                 }
@@ -116,6 +137,22 @@ ion-content{
             border-bottom: 1px solid var(--CR004);
             margin: 1em 0px;
             padding: 0px;
+            text-align: center;
+
+            & span{
+                
+                & ion-avatar{
+                    margin: auto;
+                    background-color: var(--CR005);
+                }
+
+                &.desc{
+                    margin: 5px 0px;
+                    display: block;
+                }
+            }
+
+
         }
     }
 }
