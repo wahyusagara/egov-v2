@@ -56,7 +56,8 @@ export class HomePage implements OnInit {
   item1 = [
     {
       img: "assets/img/avatar.png",
-      label: "Izin / Cuti"
+      label: "Izin / Cuti",
+      route: "izin-cuti"
     },
     {
       img: "assets/img/avatar.png",

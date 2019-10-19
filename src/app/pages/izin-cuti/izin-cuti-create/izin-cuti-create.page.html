@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Form Izin Cuti</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label>Type</ion-label>
+      <ion-select multiple="false" placeholder="Type cuti / izin" [(ngModel)]="type" name="type" (ionChange)="changeType()">
+        <ion-select-option value="1">Cuti</ion-select-option>
+        <ion-select-option value="2">Izin</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Alasan {{type === "1" ? "Cuti" : "Izin"}} <ion-text color="danger">*</ion-text></ion-label>
+      <ion-input required  type="text" name="reason" [(ngModel)]="reason"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Tanggal</ion-label>
+      <ion-input type="date" name="date" [(ngModel)]="date"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Durasi</ion-label>
+      <ion-input type="number" name="duration" [(ngModel)]="duration"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Surat Izin</ion-label>
+      <ion-input type="file" (change)="changeFile($event)" accept="image/*" multiple="multiple"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="files.length > 0">
+      <ion-avatar *ngFor="let file of files">
+        <img [src]="file?.file_base"/>
+      </ion-avatar>
+    </ion-item>
+    <ion-button block color="primary" type="submit" [disabled]="!type || !reason || !date || !duration">
+      Submit
+    </ion-button>
+  </form>
+</ion-content>

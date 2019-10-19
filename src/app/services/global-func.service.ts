@@ -5,6 +5,20 @@ import { ToastController, LoadingController } from '@ionic/angular';
   providedIn: 'root'
 })
 export class GlobalFuncService {
+  listCuti = [
+    {
+      approved: true,
+      date: "2019-10-19T01:24:21.604Z",
+      duration: 1,
+      title: "Izin ke Kantor Samsat"
+    },
+    {
+      approved: false,
+      date: "2019-10-25T01:24:21.604Z",
+      duration: 4,
+      title: "Cuti acara keluarga"
+    }
+  ]
 
   constructor(
     public toastCtrl: ToastController,
