@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
@@ -7,6 +7,22 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['./form-dummy.component.scss'],
 })
 export class FormDummyComponent implements OnInit {
+  @Input() dataId:number;
+  @Output() data = new EventEmitter();
+  listAtasan = [
+    {
+      id: 1,
+      name: "Atasan 1"
+    },
+    {
+      id: 2,
+      name: "Atasan 2"
+    },
+    {
+      id: 3,
+      name: "Atasan 3"
+    }
+  ]
 
   constructor(
     private navCtrl: NavController
@@ -18,6 +34,18 @@ export class FormDummyComponent implements OnInit {
     this.navCtrl.back({
       animated: true
     });
+  }
+
+  onChange(event) {
+    console.log(event);
+    const dataReturn = {
+      id: this.dataId,
+      ...this.data
+    }
+    this.data.emit(dataReturn);
+  }
+  onSearchChange(event) {
+    console.log(event);
   }
 
 }

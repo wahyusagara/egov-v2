@@ -1,13 +1,9 @@
-<!-- <form (ngSubmit)="submit()">
-  <ion-item>
-    <ion-label position="floating">Form 1 <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input required type="text"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Form 2 <ion-text color="danger">*</ion-text></ion-label>
-    <ion-input required formControlName="password" type="text"></ion-input>
-  </ion-item>
-  <ion-button block color="primary" type="submit" [disabled]="loginForm.invalid">
-    Login
-  </ion-button>
-</form> -->
+<!-- <ionic-selectable
+  [(ngModel)]="atasanSelected"
+  [items]="listAtasan"
+  itemValueField="id"
+  itemTextField="name"
+  [canSearch]="true"
+  (onChange)="onChange($event)">
+</ionic-selectable> -->
+<ion-searchbar placeholder="Atasan Name" type="text" (ionChange)="onSearchChange($event)" [debounce]="250"></ion-searchbar>

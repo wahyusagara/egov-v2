@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Log Book</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row>
+      <ion-col size="6">
+       <!-- {{hari[date.getDay()]}},{{date | dd MMM yyyy}} -->
+       {{hari[date.getDay()]}},{{date | date: "dd MMM yyyy"}}
+      </ion-col>
+      <ion-col size="6">
+        <ion-row class="ion-justify-content-end">
+          <ion-button (click)="createLogBook()">
+            Tambah
+          </ion-button>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-card #skp>
+      <ion-row>
+        <ion-col size="6">
+          SKP
+        </ion-col>
+        <ion-col size="6">
+          <ion-row class="ion-justify-content-end">
+            <ion-icon name="time"></ion-icon> 5 Jam
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-align-self-center" text-center>
+          Survei Pemetaan wilayah Barat
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row>
+        <ion-col size="6">
+          Produktifitas
+        </ion-col>
+        <ion-col size="6">
+          <ion-row class="ion-justify-content-end">
+            <ion-icon name="time"></ion-icon> 5 Jam
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-align-self-center" text-center>
+          Menyusun Jurnal Publikasi Peru
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row>
+        <ion-col size="6">
+          Tugas Tambahan
+        </ion-col>
+        <ion-col size="6">
+          <ion-row class="ion-justify-content-end">
+            <ion-icon name="time"></ion-icon> 5 Jam
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-align-self-center" text-center>
+          Menyelesaikan Tugas BlaBlaBla...
+        </ion-col>
+      </ion-row>
+    </ion-card>
+    <ion-card>
+      <ion-row>
+        <ion-col size="6">
+          Kreatifitas
+        </ion-col>
+        <ion-col size="6">
+          <ion-row class="ion-justify-content-end">
+            <ion-icon name="time"></ion-icon> 5 Jam
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="ion-align-self-center" text-center>
+          Membuat sebuah kreatifitas
+        </ion-col>
+      </ion-row>
+    </ion-card>
+  </ion-grid>
+</ion-content>

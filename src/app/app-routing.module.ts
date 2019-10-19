@@ -17,7 +17,9 @@ const routes: Routes = [
   { path: 'izin-cuti', loadChildren: './pages/izin-cuti/izin-cuti.module#IzinCutiPageModule' },
   { path: 'izin-cuti-create', loadChildren: './pages/izin-cuti/izin-cuti-create/izin-cuti-create.module#IzinCutiCreatePageModule' },
   { path: 'perjalanan-dinas', loadChildren: './pages/perjalanan-dinas/perjalanan-dinas.module#PerjalananDinasPageModule' },
-  { path: 'perjalanan-dinas-create', loadChildren: './pages/perjalanan-dinas/perjalanan-dinas-create/perjalanan-dinas-create.module#PerjalananDinasCreatePageModule' }
+  { path: 'perjalanan-dinas-create', loadChildren: './pages/perjalanan-dinas/perjalanan-dinas-create/perjalanan-dinas-create.module#PerjalananDinasCreatePageModule' },
+  { path: 'helpdesk-kepegawaian', loadChildren: './pages/helpdesk-kepegawaian/helpdesk-kepegawaian.module#HelpdeskKepegawaianPageModule' },
+  { path: 'form-dummy', loadChildren: './pages/form-dummy/form-dummy.module#FormDummyPageModule' }
 
 ];
 

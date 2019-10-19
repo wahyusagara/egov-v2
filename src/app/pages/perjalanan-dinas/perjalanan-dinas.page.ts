@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, PopoverController } from '@ionic/angular';
+import { FormDummyComponent } from "../../component/form-dummy/form-dummy.component";
 
 @Component({
   selector: 'app-perjalanan-dinas',
@@ -41,7 +42,8 @@ export class PerjalananDinasPage implements OnInit {
   ]
 
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private popOver: PopoverController
   ) { }
 
   ngOnInit() {
@@ -56,6 +58,21 @@ export class PerjalananDinasPage implements OnInit {
   }
   showSelect() {
     this.showSelectable = true;
+  }
+  async showPopOver(event) {
+    console.log(event);
+    const p = await this.popOver.create({
+      animated: true,
+      backdropDismiss: true,
+      component: FormDummyComponent,
+      componentProps: {
+        
+      },
+      keyboardClose: true,
+      showBackdrop: true,
+      translucent: true
+    });
+    return await p.present();
   }
 
 }

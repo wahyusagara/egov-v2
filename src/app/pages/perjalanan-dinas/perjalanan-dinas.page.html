@@ -19,7 +19,7 @@
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-card *ngFor="let list of listDinas" class="bgCard" (click)="showSelect()">
+    <ion-card *ngFor="let list of listDinas" class="bgCard">
       <ion-row>
         <ion-col size="6">
           <ion-label [class]="list.approved === 1 ? 'bg-approved' : list.approved === 2 ? 'bg-not-approved' : list.approved === 3 ? 'bg-waiting' : ''" 
