@@ -135,3 +135,9 @@ app-home.ion-page{
     }
 }
 
+ion-footer{
+    background-color: red;
+    & img{
+        width: 50px;
+    }
+}
