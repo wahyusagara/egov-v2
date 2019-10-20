@@ -87,37 +87,6 @@ ion-title{
 app-login.ion-page {
     background-color: var(--CR001);
 }
-app-home.ion-page{
-
-    & .login-logo{
-
-        & img {
-            width: 50px;
-            margin: 0px 2vmax;
-        }      
-    }
-
-    & .active {
-        --ion-text-color: var(--CR004);  
-        --color: var(--CR004) !important;
-
-    
-        ion-icon {
-            --ion-text-color-rgb:  var(--CR004);
-        }
-
-        & ion-label{
-            
-            --ion-text-color: var(--CR004);  
-            --color: var(--CR004) !important;
-        }
-    }
-    .parent-active {
-        font-weight: 500;
-    }
-    
-
-}
 
 .sparator{
 
@@ -128,6 +97,11 @@ app-home.ion-page{
     &.black{
 
         background: var(--CR008);
+
+        &.half{
+            margin: auto;
+            width: 50% !important;
+        }
     }
 
     &.blue{
@@ -135,3 +109,45 @@ app-home.ion-page{
     }
 }
 
+ion-footer{
+
+    & div {
+        background: var(--CR001);
+        display: grid;
+        position: inherit;
+        float: left;
+        width: 20%;
+        text-align: center;
+        margin: auto;
+
+        & img {
+            margin: auto;
+            width: 42px;
+            padding: 8px;
+        }
+    }
+}
+
+ion-content {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;  // IE 10+
+    scrollbar-width: none;  // Firefox
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      display: none; // Safari and Chrome
+    }
+    & .inner-scroll.scroll-y.overscroll {
+      display: none !important;
+      --overflow: hidden;
+    }
+}
+
+.bg-approved{
+    background: var(--CR009);
+    padding: 5px 10px;
+}
+.bg-not-approved {
+    background: var(--CR010);
+    padding: 5px 10px;
+}

@@ -11,15 +11,17 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        Sisa Cuti : {{10 - listCuti.length}} Hari
+        <span class="FFR03">
+            Sisa Cuti : {{10 - listCuti.length}} Hari
+        </span> 
       </ion-col>
       <ion-col size="6">
-        <ion-button (click)="createCuti()" color="warning">
+        <span class="BTN002" float-right (click)="createCuti()">
           Tambah
-        </ion-button>
+        </span>
       </ion-col>
     </ion-row>
-    <ion-card *ngFor="let list of listCuti" class="bgCard">
+    <ion-card *ngFor="let list of listCuti" class="bgCard FFR03 CR008">
       <ion-row>
         <ion-col size="6">
           <ion-label [class]="list.approved ? 'bg-approved' : 'bg-not-approved'" color="light">{{list.approved ? "Telah Disetujui" : "Belum Disetujui"}}</ion-label>
@@ -30,16 +32,22 @@
           </ion-row>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <ion-row class="ion-justify-content-center">
-            {{list.title}}
-          </ion-row>
-          <ion-row class="ion-justify-content-center">
-            {{list.duration + " Hari"}}
-          </ion-row>
-        </ion-col>
+      <ion-row class="FFR05 CR008">
+        <span class="ion-justify-content-center">
+          {{list.title}}
+        </span>
+        <span class="sparator black half"></span>
+        <span class="ion-justify-content-center">
+          {{list.duration + " Hari"}}
+        </span>
       </ion-row>
     </ion-card>
   </ion-grid>
 </ion-content>
+<ion-footer  class="footer-nav--container hide-desktop" no-padding no-margin>
+    <div><img src="assets/img/group-interface-symbol.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/timetable.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div tab="home"><img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/startup.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/user.png" alt="Ionic logo" class="hide-desktop"></div>
+</ion-footer>

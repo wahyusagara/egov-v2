@@ -117,6 +117,10 @@
   --CR006:#e2dc7a;
   --CR007:#0000FF;
   --CR008:#000033;
+  --CR009:#01ab62;
+  --CR010:#fe0002;
+  --CR011:#e8e8e8;
+  --CR012:#faa85e;
 }
 
 .ion-color-head {
@@ -395,6 +399,18 @@
   --color:var(--CR008) !important;
   color:var(--CR008) !important;
 }
+.CR009{
+  --color:var(--CR009) !important;
+  color:var(--CR009) !important;
+}
+.CR010{
+  --color:var(--CR010) !important;
+  color:var(--CR010) !important;
+}
+.CR011{
+  --color:var(--CR011) !important;
+  color:var(--CR011) !important;
+}
 
 /*BTN*/
 
@@ -426,4 +442,12 @@
 }
 .BTN001{
   @include BTN(10em,3em,#c47f00,#ffffff,'');
+}
+.BTN002{
+  @include BTN('','',#faa85e,#ffffff,'');
+  padding: 2em;
+  --color: $color;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: white;
 }

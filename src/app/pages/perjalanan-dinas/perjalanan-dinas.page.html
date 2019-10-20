@@ -7,19 +7,19 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [scrollEvents]="true">
   <ion-grid>
     <ion-row>
       <ion-col size="6">
         Sisa Cuti : {{10 - listDinas.length}} Hari
       </ion-col>
       <ion-col size="6">
-        <ion-button (click)="createDinas()" color="warning">
-          Tambah
-        </ion-button>
+        <span class="BTN002" float-right (click)="createDinas()">
+            Tambah
+          </span>
       </ion-col>
     </ion-row>
-    <ion-card *ngFor="let list of listDinas" class="bgCard">
+    <ion-card *ngFor="let list of listDinas" class="bgCard FFR03 CR008">
       <ion-row>
         <ion-col size="6">
           <ion-label [class]="list.approved === 1 ? 'bg-approved' : list.approved === 2 ? 'bg-not-approved' : list.approved === 3 ? 'bg-waiting' : ''" 
@@ -31,16 +31,23 @@
           </ion-row>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col size="12">
-          <ion-row class="ion-justify-content-center">
-            {{list.title}}
-          </ion-row>
-          <ion-row class="ion-justify-content-center">
+      <ion-row class="FFR06 CR008">
+        <span class="ion-justify-content-center">
+          {{list.title}}
+        </span>
+        <span class="sparator black half"></span>
+        <span class="ion-justify-content-center">
             {{list.location}}
-          </ion-row>
-        </ion-col>
+        </span>
       </ion-row>
     </ion-card>
   </ion-grid>
 </ion-content>  
+
+<ion-footer  class="footer-nav--container hide-desktop" no-padding no-margin>
+    <div><img src="assets/img/group-interface-symbol.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/timetable.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div tab="home"><img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/startup.png" alt="Ionic logo" class="hide-desktop"></div>
+    <div><img src="assets/img/user.png" alt="Ionic logo" class="hide-desktop"></div>
+</ion-footer>
