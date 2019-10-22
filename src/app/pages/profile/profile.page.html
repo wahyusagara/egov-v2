@@ -9,7 +9,7 @@
 
 <ion-content class="listBackground">
   <ion-list class="listBackground">
-    <ion-item *ngFor="let list of listMenu" (click)="openPage(list.url)">
+    <ion-item *ngFor="let list of listMenu">
       <ion-label class="listBackground strong">{{list.name}}</ion-label>
     </ion-item>
   </ion-list>
