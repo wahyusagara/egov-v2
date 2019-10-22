@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
-import { FormDummyComponent } from "../../component/form-dummy/form-dummy.component";
+import { AtasanPage } from "../../popover/atasan/atasan.page";
 
 @Component({
   selector: 'app-perjalanan-dinas',
@@ -59,20 +59,30 @@ export class PerjalananDinasPage implements OnInit {
   showSelect() {
     this.showSelectable = true;
   }
-  async showPopOver(event) {
-    console.log(event);
+  async showPopOver(data) {
     const p = await this.popOver.create({
       animated: true,
       backdropDismiss: true,
-      component: FormDummyComponent,
-      componentProps: {
+      component: AtasanPage,
+      // componentProps: {
         
-      },
+      // },
       keyboardClose: true,
       showBackdrop: true,
       translucent: true
     });
-    return await p.present();
+    p.onDidDismiss().then((res) => {
+      if (res.data !== undefined) {
+        console.log('dapat res data');
+        this.listDinas[this.listDinas.indexOf(data)].approved = data.approved === 2 ? 3 : data.approved;
+      }
+      // console.log(this.listDinas[1]);
+      
+      // this.listDinas.find(x => x.id === id)
+      console.log(res); 
+    })
+    
+    return data.approved !== 2 ? {} : await p.present();
   }
 
 }

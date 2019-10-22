@@ -151,3 +151,8 @@ ion-content {
     background: var(--CR010);
     padding: 5px 10px;
 }
+.bg-waiting {
+    background: var(--CR006);
+    padding: 5px 10px;
+    visibility: visible !important;
+}
