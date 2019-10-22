@@ -1,0 +1,61 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Daftar Pegawai</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col size="12">
+        <ion-searchbar 
+        animated
+        showCancelButton="focus"
+        placeholder="Cari nama pegawai"
+        cancelButtonText="Batal"
+        debounce="500"
+        [(ngModel)]="search"
+        (ionChange)="searchData()">
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid fixed>
+    <ion-list *ngFor="let data of pegawai">
+      <ion-item>
+        <ion-row>
+          <ion-col size="4">
+            <ion-img [src]="imgNotFound"></ion-img>
+          </ion-col>
+          <ion-col size="8">
+            <ion-row>
+              {{data.full_name}}
+            </ion-row>
+            <ion-row>
+              {{data.nip}}
+            </ion-row>
+            <ion-row>
+              {{data.bagian}}
+            </ion-row>
+            <ion-row>
+              {{data.departement}}
+            </ion-row>
+            <ion-row>
+              <ion-text color="primary">
+                {{data.email}}
+              </ion-text>
+            </ion-row>
+            <ion-row class="ion-justify-content-end">
+              <ion-text [class]="'background-'+ data.in_office" color="light">
+                {{data.in_office ? "Di kantor" : "Tidak di kantor"}}
+              </ion-text>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
+</ion-content>

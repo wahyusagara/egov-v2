@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'perjalanan-dinas', loadChildren: './pages/perjalanan-dinas/perjalanan-dinas.module#PerjalananDinasPageModule' },
   { path: 'perjalanan-dinas-create', loadChildren: './pages/perjalanan-dinas/perjalanan-dinas-create/perjalanan-dinas-create.module#PerjalananDinasCreatePageModule' },
   { path: 'helpdesk-kepegawaian', loadChildren: './pages/helpdesk-kepegawaian/helpdesk-kepegawaian.module#HelpdeskKepegawaianPageModule' },
-  { path: 'form-dummy', loadChildren: './pages/form-dummy/form-dummy.module#FormDummyPageModule' }
+  { path: 'form-dummy', loadChildren: './pages/form-dummy/form-dummy.module#FormDummyPageModule' },
+  { path: 'daftar-pegawai', loadChildren: './pages/daftar-pegawai/daftar-pegawai.module#DaftarPegawaiPageModule' }
 
 ];
 
