@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AtasanPageModule } from './popover/atasan/atasan.module';
 
+import { FCM } from "@ionic-native/fcm/ngx";
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -22,6 +24,7 @@ import { AtasanPageModule } from './popover/atasan/atasan.module';
   providers: [
     StatusBar,
     SplashScreen,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

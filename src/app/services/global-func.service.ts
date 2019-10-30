@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastController, LoadingController } from '@ionic/angular';
+import { FCM } from "@ionic-native/fcm/ngx";
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +23,8 @@ export class GlobalFuncService {
 
   constructor(
     public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public fcm: FCM
   ) { }
 
   public async showToast(msg, color) {
@@ -48,5 +50,11 @@ export class GlobalFuncService {
       translucent: false
     });
     l.present();
+  }
+
+  getToken() {
+    this.fcm.getToken().then((token) => {
+      console.log(token);
+    })
   }
 }

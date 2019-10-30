@@ -55,37 +55,37 @@ export class HomePage implements OnInit {
   @ViewChild("mySlider", {read: IonSlides, static: false}) slides: IonSlides;
   item1 = [
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/notepad.png",
       label: "Izin / Cuti",
       route: "izin-cuti"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/business-trip.png",
       label: "Perjanalan Dinas",
       route: "perjalanan-dinas"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/performance.png",
       label: "Kinerja",
       route: "home"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/flight.png",
       label: "Kendaraan",
       route: "home"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/partners.png",
       label: "Ruang Rapat",
-      route: "home"
+      route: "/ruang-rapat"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/email.png",
       label: "Persuratan",
       route: "home"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/performances.png",
       label: "Helpdesk Kepegawaian",
       route: "/helpdesk-kepegawaian"
     },
