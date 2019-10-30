@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, MenuController, NavController } from '@ionic/angular';
+import { IonSlides, MenuController, NavController, PopoverController } from '@ionic/angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
+import {AgendaPage} from '../../popover/agenda/agenda.page';
 
 @Component({
   selector: 'app-home',
@@ -98,7 +99,8 @@ export class HomePage implements OnInit {
 
   constructor(
     private menu: MenuController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private popOver: PopoverController
   ) { }
 
   ngOnInit() {
@@ -116,6 +118,17 @@ export class HomePage implements OnInit {
   navPage(url) {
     console.log(url);
     this.navCtrl.navigateForward(url);
+  }
+  async todayAgenda() {
+    const p = await this.popOver.create({
+      animated: true,
+      component: AgendaPage,
+      backdropDismiss: true,
+      keyboardClose: true,
+      showBackdrop: true,
+      translucent: true
+    });
+    return await p.present();
   }
 
 }
