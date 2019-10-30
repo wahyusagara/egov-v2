@@ -72,7 +72,7 @@ export class HomePage implements OnInit {
     {
       img: "assets/img/flight.png",
       label: "Kendaraan",
-      route: "home"
+      route: "/kendaraan"
     },
     {
       img: "assets/img/partners.png",
