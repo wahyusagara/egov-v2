@@ -7,6 +7,10 @@ ion-title{
         &.title{
             text-align: left;
             width: 50%;
+
+            & img{
+                max-height: 35px;
+            }
         }
         &.icon{
             text-align: right;
@@ -133,25 +137,41 @@ ion-content{
         }
 
         & .menu-icon{
+            
             border-top: 1px solid var(--CR004);
             border-bottom: 1px solid var(--CR004);
             margin: 1em 0px;
             padding: 0px;
             text-align: center;
 
-            & span{
-                
-                & ion-avatar{
-                    margin: auto;
-                    background-color: var(--CR005);
+            & ion-col{
+                margin-bottom: 0px !important;
+                padding-bottom: 0px !important;
+
+                & span{
+                    &.avatar{
+                        width: 80%!important;
+                        display: block;
+                        margin: auto;
+
+                        & ion-avatar{
+                            width: 3em;
+                            height: 3em;
+                            padding: 3px;
+                            margin: auto;
+                            background-color: var(--CR005);
+                        }
+                    }
+                    
+
+                    &.desc{
+                        margin: 5px 0px;
+                        display: block;
+                    }
                 }
 
-                &.desc{
-                    margin: 5px 0px;
-                    display: block;
-                }
             }
-
+           
 
         }
     }

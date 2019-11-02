@@ -2,17 +2,20 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/cor
 import { CommonModule } from '@angular/common';
 import { FormDummyComponent } from "./form-dummy/form-dummy.component";
 import { IonicSelectableModule } from "ionic-selectable";
+import {TabmenusComponent} from './tabmenus/tabmenus.component';
 
 @NgModule({
   declarations: [
-    FormDummyComponent
+    FormDummyComponent,
+    TabmenusComponent
   ],
   imports: [
     CommonModule,
     IonicSelectableModule
   ],
   exports: [
-    FormDummyComponent
+    FormDummyComponent,
+    TabmenusComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

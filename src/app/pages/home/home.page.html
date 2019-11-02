@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title no-margin>
-      <div class="title">eGOV BIG</div> 
+      <div class="title"><img src="assets/img/logo-menu.png" alt=""></div> 
       <div class="icon">
         <ion-icon name="notifications-outline" (click)="showMenu()"></ion-icon>
         <ion-icon name="mail"></ion-icon>
@@ -83,10 +83,5 @@
     </ion-row>
   </ion-grid>
 </ion-content>
-<ion-footer  class="footer-nav--container hide-desktop" no-padding no-margin>
-    <div><img [routerDirection]="'forward'" [routerLink]="'/daftar-pegawai'" src="assets/img/group-interface-symbol.png" alt="Ionic logo" class="hide-desktop"></div>
-    <div><img src="assets/img/timetable.png" alt="Ionic logo" class="hide-desktop"></div>
-    <div tab="home"><img src="assets/img/avatar.png" alt="Ionic logo" class="hide-desktop"></div>
-    <div><img src="assets/img/startup.png" alt="Ionic logo" class="hide-desktop"></div>
-    <div><img [routerDirection]="'forward'" [routerLink]="'/profile'" src="assets/img/user.png" alt="Ionic logo" class="hide-desktop"></div>
-</ion-footer>
+
+<app-tabmenus></app-tabmenus>

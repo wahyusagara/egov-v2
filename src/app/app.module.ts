@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -11,6 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AtasanPageModule } from './popover/atasan/atasan.module';
 import { AgendaPageModule } from "./popover/agenda/agenda.module";
 
+import {ComponentModule} from './component/component.module';
 import { FCM } from "@ionic-native/fcm/ngx";
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FCM } from "@ionic-native/fcm/ngx";
     IonicModule.forRoot(),
     AppRoutingModule,
     AtasanPageModule,
-    AgendaPageModule
+    AgendaPageModule,
+    ComponentModule,
   ],
   providers: [
     StatusBar,
@@ -29,6 +31,7 @@ import { FCM } from "@ionic-native/fcm/ngx";
     FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AppModule {}
