@@ -6,17 +6,23 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+import {ComponentModule} from '../component/component.module';
+import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    ComponentModule,
     RouterModule.forChild([
       {
         path: '',
         component: HomePage
       }
     ])
+  ],
+  exports: [
+    TabmenusComponent
   ],
   declarations: [HomePage]
 })

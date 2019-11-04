@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, Platform } from '@ionic/angular'; 
+
+import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
  
 @Component({
   selector: 'app-home',
