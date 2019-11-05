@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -12,7 +12,6 @@ import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
     ComponentModule,
     RouterModule.forChild([
       {
@@ -21,9 +20,11 @@ import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
       }
     ])
   ],
+  entryComponents: [TabmenusComponent],
   exports: [
     TabmenusComponent
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,TabmenusComponent],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class HomePageModule {}

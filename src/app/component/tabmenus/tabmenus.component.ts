@@ -7,8 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabmenusComponent implements OnInit {
 
-  constructor() { }
+  constructor() { 
+    
+    console.log('init');
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('init');
+  }
 
 }

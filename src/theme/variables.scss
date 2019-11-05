@@ -121,6 +121,10 @@
   --CR010:#fe0002;
   --CR011:#e8e8e8;
   --CR012:#faa85e;
+  --CR013:#8293c9;
+  --CR014:#87c351;
+  --CR015:#f56d3d;
+  
 }
 
 .ion-color-head {
@@ -410,6 +414,26 @@
 .CR011{
   --color:var(--CR011) !important;
   color:var(--CR011) !important;
+}
+.CR012{
+  --color:var(--CR012) !important;
+  color:var(--CR012) !important;
+}
+.CR013{
+  --color:var(--CR013) !important;
+  color:var(--CR013) !important;
+}
+.CR014{
+  --color:var(--CR014) !important;
+  color:var(--CR014) !important;
+}
+.CR015{
+  --color:var(--CR015) !important;
+  color:var(--CR015) !important;
+}
+.CR016{
+  --color:var(--CR016) !important;
+  color:var(--CR016) !important;
 }
 
 /*BTN*/

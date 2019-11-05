@@ -17,6 +17,7 @@ import {TabmenusComponent} from './tabmenus/tabmenus.component';
     FormDummyComponent,
     TabmenusComponent
   ],
+  entryComponents: [TabmenusComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA
