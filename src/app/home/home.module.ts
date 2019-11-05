@@ -6,13 +6,10 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
-import {ComponentModule} from '../component/component.module';
-import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    ComponentModule,
     RouterModule.forChild([
       {
         path: '',
@@ -20,11 +17,11 @@ import {TabmenusComponent} from '../component/tabmenus/tabmenus.component';
       }
     ])
   ],
-  entryComponents: [TabmenusComponent],
+  entryComponents: [],
   exports: [
-    TabmenusComponent
+    
   ],
-  declarations: [HomePage,TabmenusComponent],
+  declarations: [HomePage],
   schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class HomePageModule {}
