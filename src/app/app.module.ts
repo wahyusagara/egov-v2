@@ -26,9 +26,9 @@ import {TabmenusComponent} from './component/tabmenus/tabmenus.component';
     AgendaPageModule,
     ComponentModule
   ],
-  exports: [
-    TabmenusComponent
-  ],
+  // exports: [
+  //   TabmenusComponent
+  // ],
   providers: [
     StatusBar,
     SplashScreen,

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormDummyComponent } from "./form-dummy/form-dummy.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import {TabmenusComponent} from './tabmenus/tabmenus.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -11,13 +12,14 @@ import {TabmenusComponent} from './tabmenus/tabmenus.component';
   ],
   imports: [
     CommonModule,
+    IonicModule,
     IonicSelectableModule
   ],
   exports: [
     FormDummyComponent,
     TabmenusComponent
   ],
-  entryComponents: [TabmenusComponent],
+  // entryComponents: [TabmenusComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
     NO_ERRORS_SCHEMA

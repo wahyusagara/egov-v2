@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { HomePage } from './home.page';
 import { CalendarModule } from 'ion2-calendar';
 
+import { ComponentModule } from "../../component/component.module";
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +23,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    CalendarModule
+    CalendarModule,
+    ComponentModule
   ],
   declarations: [HomePage],
   
