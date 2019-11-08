@@ -1,0 +1,56 @@
+ion-content{
+ & ion-grid{
+
+    &.header{
+        & span{
+            display: block;
+            &.img{
+                background: var(--CR001);
+                display: block;
+                border-radius: 50%;
+                & img{
+                    margin: auto;
+                    max-width: 100%;
+                    display: block;
+                    border-radius: 50%;
+                    object-fit: contain;
+                }
+            }
+        }
+        
+        & .vertical-middle{
+            margin: auto;
+            padding-left: 1em;
+        }
+    }
+    &.table{
+
+        & ion-row{
+
+            & ion-col{
+                margin:0px !important;
+                padding: 0px !important;
+            }
+            &.header{
+                color: var(--CR000);
+                background: var(--CR003);
+                padding: 0.2em 0px;
+
+            }
+            &.content{
+                background: var(--CR004);
+                border-bottom: 1px solid var(--CR003);
+
+                & span{
+                    display: block;
+                    padding: 0.5em 0px;
+                    &.vertical-middle{
+                        transform: translate3d(0em,1em,0);
+                    }
+                }
+            }
+        }
+    }
+
+ }
+}

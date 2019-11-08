@@ -24,7 +24,8 @@ const routes: Routes = [
   { path: 'daftar-pegawai', loadChildren: './pages/daftar-pegawai/daftar-pegawai.module#DaftarPegawaiPageModule' },
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'ruang-rapat', loadChildren: './pages/ruang-rapat/ruang-rapat.module#RuangRapatPageModule' },
-  { path: 'kendaraan', loadChildren: './pages/kendaraan/kendaraan.module#KendaraanPageModule' }
+  { path: 'kendaraan', loadChildren: './pages/kendaraan/kendaraan.module#KendaraanPageModule' },  { path: 'kehadiran', loadChildren: './pages/kehadiran/kehadiran.module#KehadiranPageModule' }
+
 ];
 
 @NgModule({
