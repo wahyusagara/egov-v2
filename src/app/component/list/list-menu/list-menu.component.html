@@ -1,0 +1,16 @@
+<ion-row class="menu-icon"> 
+  <ion-col size="3" *ngFor="let items of item1" (click)="navPage(items.route)">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <span class="ion-justify-content-center avatar">
+          <ion-avatar>
+            <img [src]="items?.img">
+          </ion-avatar>    
+        </span>
+        <span class="ion-justify-content-center FFR03 desc">
+          {{items?.label}}
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>
