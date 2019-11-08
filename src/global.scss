@@ -142,16 +142,103 @@ ion-content {
     }
 }
 
-.bg-approved{
-    background: var(--CR009);
-    padding: 5px 10px;
+app-list-menu{
+    .menu-icon{
+            
+        border-top: 1px solid var(--CR004);
+        border-bottom: 1px solid var(--CR004);
+        margin: 1em 0px;
+        padding: 0px;
+        text-align: center;
+
+        & ion-col{
+            margin-bottom: 0px !important;
+            padding-bottom: 0px !important;
+
+            & span{
+                &.avatar{
+                    width: 80%!important;
+                    display: block;
+                    margin: auto;
+
+                    & ion-avatar{
+                        width: 3em;
+                        height: 3em;
+                        padding: 3px;
+                        margin: auto;
+                        background-color: var(--CR005);
+                    }
+                }
+                
+
+                &.desc{
+                    margin: 5px 0px;
+                    display: block;
+                }
+            }
+
+        }
+    
+
+    }
 }
-.bg-not-approved {
-    background: var(--CR010);
-    padding: 5px 10px;
-}
-.bg-waiting {
-    background: var(--CR006);
-    padding: 5px 10px;
-    visibility: visible !important;
+
+app-slider{
+    & .slider{
+
+        & ion-slides{
+            max-height: 30vmax;
+
+            & .swiper-wrapper{
+
+                & .swiper-pagination{
+                    
+                    
+                    & .swiper-pagination-bullets{
+                    
+                        border-top: 1px solid var(--CR001) !important;
+                        border-bottom: 1px solid var(--CR001);
+                        & .swiper-pagination-bullet{
+                            
+                            background: var(--CR001);
+                            opacity: 1;
+                        }
+                    }
+                }
+                
+            }
+
+            & ion-row{
+
+                & ion-col{
+
+                    & .box{
+
+                        & img{
+                            
+                            object-fit: cover !important;
+                            height: 25vmax !important;
+                            margin: auto;
+                            width: 100%;
+                            border: 1px solid var(--CR005);
+                            border-radius: 2px;
+                        }
+
+                        & .content-text{
+                            transform: translateY(-5vmax) !important;
+                            border-radius: 2px;
+                            border: 1px solid var(--CR002);
+                            display: block;
+                            color: var(--CR008);
+                            // z-index: 1000;
+                            text-align: center;
+                            margin: 0px 10px;
+                            opacity: 0.85;
+                            background: var(--CR004);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
