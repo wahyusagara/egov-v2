@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormDummyComponent } from "./form-dummy/form-dummy.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import { IonicModule } from '@ionic/angular';
+import { CalendarModule } from 'ion2-calendar';
 
 // Component List
 import { SliderComponent } from "./global/slider/slider.component";
@@ -21,7 +22,8 @@ import { ListMenuComponent } from "./list/list-menu/list-menu.component";
   imports: [
     CommonModule,
     IonicModule,
-    IonicSelectableModule
+    IonicSelectableModule,
+    CalendarModule
   ],
   exports: [
     FormDummyComponent,
@@ -33,7 +35,7 @@ import { ListMenuComponent } from "./list/list-menu/list-menu.component";
   // entryComponents: [TabmenusComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    NO_ERRORS_SCHEMA
+    // NO_ERRORS_SCHEMA
   ]
 })
 export class ComponentModule { }
