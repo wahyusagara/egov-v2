@@ -13,18 +13,17 @@ import { AgendaPageModule } from "./popover/agenda/agenda.module";
 import { HTTP } from '@ionic-native/http/ngx';
 import { FCM } from "@ionic-native/fcm/ngx";
 
-import {ComponentModule} from './component/component.module';
-import {TabmenusComponent} from './component/tabmenus/tabmenus.component';
+// import {ComponentModule} from './component/component.module';
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [TabmenusComponent],
+  entryComponents: [],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     AtasanPageModule,
     AgendaPageModule,
-    ComponentModule
+    // ComponentModule
   ],
   // exports: [
   //   TabmenusComponent

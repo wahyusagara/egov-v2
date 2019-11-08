@@ -1,0 +1,22 @@
+<ion-grid class="slider" no-padding no-margin>
+  <ion-slides 
+    [options]="slideOpts" 
+    class="content" 
+    loop="true" 
+    speed="500" 
+    pager="true" 
+    autoplay="5000"
+    #mySlider 
+    (ionSlidesDidLoad)="ionSlidesDidLoad()">
+    <ion-slide *ngFor="let img of contentList" >
+      <ion-row>
+        <ion-col size="12">
+          <div class="box">
+            <img [src]="img?.file" alt="">
+            <p class="content-text backgroundku">{{img.title}}</p>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-slide>
+  </ion-slides>
+</ion-grid>

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, MenuController, NavController, PopoverController } from '@ionic/angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 import {AgendaPage} from '../../popover/agenda/agenda.page';
-import {TabmenusComponent} from '../../component/tabmenus/tabmenus.component';
+// import {TabmenusComponent} from '../../component/tabmenus/tabmenus.component';
 
 @Component({
   selector: 'app-home',
