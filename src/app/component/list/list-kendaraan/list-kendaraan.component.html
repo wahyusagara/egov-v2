@@ -1,0 +1,8 @@
+<ion-list>
+  <ion-item *ngFor="let x of listKendaraan">
+    <ion-checkbox [disabled]="x.disabled"></ion-checkbox>
+    <ion-label>
+      {{x.nopol}}
+    </ion-label>
+  </ion-item>
+</ion-list>

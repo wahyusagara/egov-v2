@@ -12,6 +12,7 @@ import { CalendarComponent } from "./thirdpaty/calendar/calendar.component";
 import { ListMenuComponent } from "./list/list-menu/list-menu.component";
 import { ListIzinCutiComponent } from "./list/list-izin-cuti/list-izin-cuti.component";
 import { ListPerjanalanDinasComponent } from "./list/list-perjanalan-dinas/list-perjanalan-dinas.component";
+import { ListKendaraanComponent } from "./list/list-kendaraan/list-kendaraan.component";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ListPerjanalanDinasComponent } from "./list/list-perjanalan-dinas/list-
     CalendarComponent,
     ListMenuComponent,
     ListIzinCutiComponent,
-    ListPerjanalanDinasComponent
+    ListPerjanalanDinasComponent,
+    ListKendaraanComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +38,8 @@ import { ListPerjanalanDinasComponent } from "./list/list-perjanalan-dinas/list-
     CalendarComponent,
     ListMenuComponent,
     ListIzinCutiComponent,
-    ListPerjanalanDinasComponent
+    ListPerjanalanDinasComponent,
+    ListKendaraanComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [
