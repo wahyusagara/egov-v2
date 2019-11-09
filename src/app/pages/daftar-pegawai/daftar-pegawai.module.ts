@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -6,7 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { DaftarPegawaiPage } from './daftar-pegawai.page';
-
+import { ComponentModule } from "../../component/component.module";
 const routes: Routes = [
   {
     path: '',
@@ -19,8 +19,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentModule
   ],
-  declarations: [DaftarPegawaiPage]
+  declarations: [DaftarPegawaiPage],
+  schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class DaftarPegawaiPageModule {}

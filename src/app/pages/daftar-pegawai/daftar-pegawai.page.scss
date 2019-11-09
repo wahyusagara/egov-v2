@@ -1,6 +1,18 @@
-.background-true{
-    background: green;
-}
-.background-false{
-    background: red;
+ion-content.daftar-pegawai{
+    & ion-grid{
+
+        & ion-row{
+            
+            & ion-col{
+
+                & span{
+                    display: block;
+
+                    &.fullname{
+                        margin-bottom: 0.5em;
+                    }
+                }
+            }
+        }
+    }
 }

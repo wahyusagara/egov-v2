@@ -11,7 +11,7 @@ export class DaftarPegawaiPage implements OnInit {
   list_pegawai = [
     {
       full_name: "Freddy Mercury ,ST ,MT",
-      nip: 101010101010,
+      nip:101010101010,
       bagian: "Surveyor Pemetaan Ahli, (III C)",
       departement: "Pusat Tata Ruang dan Atlas",
       email: "freddy.mercury@big.go.id",
@@ -19,7 +19,7 @@ export class DaftarPegawaiPage implements OnInit {
     },
     {
       full_name: "Morgan Freeman ,ST",
-      nip: 101010101010,
+      nip:101010101010,
       bagian: "Surveyor Pemetaan Ahli, (III A)",
       departement: "Pusat Tata Ruang dan Atlas",
       email: "freeman@big.go.id",
@@ -29,7 +29,7 @@ export class DaftarPegawaiPage implements OnInit {
   pegawai = [
     {
       full_name: "Freddy Mercury ,ST ,MT",
-      nip: 101010101010,
+      nip:101010101010,
       bagian: "Surveyor Pemetaan Ahli, (III C)",
       departement: "Pusat Tata Ruang dan Atlas",
       email: "freddy.mercury@big.go.id",
@@ -37,7 +37,7 @@ export class DaftarPegawaiPage implements OnInit {
     },
     {
       full_name: "Morgan Freeman ,ST",
-      nip: 101010101010,
+      nip:101010101010,
       bagian: "Surveyor Pemetaan Ahli, (III A)",
       departement: "Pusat Tata Ruang dan Atlas",
       email: "freeman@big.go.id",

@@ -79,6 +79,7 @@ app-dashboard.ion-page{
 }
 
 ion-title{
+    font-family: 'Futura - Regular' !important;
     color: var(--CR001);
     padding: 0 0.3em  !important;
     margin: 0px !important;
@@ -105,6 +106,16 @@ app-login.ion-page {
 
     &.blue{
         background: var(--CR001);
+    }
+    
+    &.gray{
+        background: var(--CR011);
+
+        &.quarter{
+            
+            margin: auto;
+            width: 90% !important;
+        }
     }
 }
 
@@ -241,4 +252,41 @@ app-slider{
             }
         }
     }
+}
+app-list-perjanalan-dinas, app-list-izin-cuti{
+
+    & ion-card{
+        padding: 0.5em !important;
+        margin: 1em 0px !important;
+
+        & ion-row{
+           
+            & span{ 
+                &:first-child{
+
+                    margin-top: 1em;
+                    margin-bottom: 5px;
+                }
+                &:last-child{
+
+                    margin-bottom: 1em;
+                    margin-top: 5px;
+                }
+                
+                display: block;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}
+.approved{
+    background: var(--CR005) !important;
+    color: var(--CR000) !important;
+    padding: 0.2em 0.5em;
+}
+.rejected{
+    background: var(--CR010) !important;
+    color: var(--CR000) !important;
+    padding: 0.2em 0.5em;
 }
