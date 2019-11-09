@@ -11,7 +11,8 @@ export class CalendarComponent implements OnInit {
   type: 'string';
   optionsMulti: CalendarComponentOptions = {
     pickMode: 'multi',
-    from: new Date(new Date().toISOString()).setDate(1),
+    // from: new Date(new Date().toISOString()).setDate(1),
+    from: new Date(1),
     weekStart: 1,
     color: "danger"
   };
