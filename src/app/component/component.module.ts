@@ -10,6 +10,7 @@ import { SliderComponent } from "./global/slider/slider.component";
 import { TabmenusComponent } from "./global/tabmenus/tabmenus.component";
 import { CalendarComponent } from "./thirdpaty/calendar/calendar.component";
 import { ListMenuComponent } from "./list/list-menu/list-menu.component";
+import { ListIzinCutiComponent } from "./list/list-izin-cuti/list-izin-cuti.component";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ListMenuComponent } from "./list/list-menu/list-menu.component";
     TabmenusComponent,
     SliderComponent,
     CalendarComponent,
-    ListMenuComponent
+    ListMenuComponent,
+    ListIzinCutiComponent
   ],
   imports: [
     CommonModule,
@@ -30,7 +32,8 @@ import { ListMenuComponent } from "./list/list-menu/list-menu.component";
     TabmenusComponent,
     SliderComponent,
     CalendarComponent,
-    ListMenuComponent
+    ListMenuComponent,
+    ListIzinCutiComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [
