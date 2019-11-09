@@ -1,0 +1,28 @@
+<ion-card *ngFor="let list of listDinas" class="bgCard FFR03 CR008"  (click)="showPopOver(list)">
+  <ion-row>
+    <ion-col size="6">
+      <ion-label
+      [class]="list.approved === 1 ? 'bg-approved' : list.approved === 2 ? 'bg-not-approved' : list.approved === 3 ? 'bg-waiting' : ''"
+      color="dark">
+      {{list.approved === 1 ? "Telah Disetujui" : 
+      list.approved === 2 ? "Belum Minta Persetujuan" : 
+      list.approved === 3 ? "Menunggu Persetujuan" : "tidak ada data"}}
+      <!-- {{list.approved == 3 ? "SSSSSSSSSSSSSS": "AAAAAAAAAAAAAA"}} -->
+    </ion-label>
+    </ion-col>
+    <ion-col size="6">
+      <ion-row class="ion-justify-content-end">
+        <ion-icon name="time"></ion-icon> {{list.date | date: "dd MMM yyyy"}}  
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="FFR06 CR008">
+    <span class="ion-justify-content-center">
+      {{list.title}}
+    </span>
+    <span class="sparator black half"></span>
+    <span class="ion-justify-content-center">
+        {{list.location}}
+    </span>
+  </ion-row>
+</ion-card>

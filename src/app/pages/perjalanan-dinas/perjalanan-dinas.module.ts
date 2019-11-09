@@ -8,6 +8,8 @@ import { IonicModule } from '@ionic/angular';
 import { PerjalananDinasPage } from './perjalanan-dinas.page';
 import { IonicSelectableModule } from "ionic-selectable";
 
+import { ComponentModule } from "../../component/component.module";
+
 const routes: Routes = [
   {
     path: '',
@@ -21,7 +23,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    IonicSelectableModule
+    IonicSelectableModule,
+    ComponentModule
   ],
   declarations: [PerjalananDinasPage]
 })
