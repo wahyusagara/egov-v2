@@ -14,6 +14,7 @@ import { ListIzinCutiComponent } from "./list/list-izin-cuti/list-izin-cuti.comp
 import { ListPerjanalanDinasComponent } from "./list/list-perjanalan-dinas/list-perjanalan-dinas.component";
 import { ListKendaraanComponent } from "./list/list-kendaraan/list-kendaraan.component";
 import { ListRuangRapatComponent } from "./list/list-ruang-rapat/list-ruang-rapat.component";
+import { ListLogBookComponent } from "./list/list-log-book/list-log-book.component";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListRuangRapatComponent } from "./list/list-ruang-rapat/list-ruang-rapa
     ListIzinCutiComponent,
     ListPerjanalanDinasComponent,
     ListKendaraanComponent,
-    ListRuangRapatComponent
+    ListRuangRapatComponent,
+    ListLogBookComponent
   ],
   imports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { ListRuangRapatComponent } from "./list/list-ruang-rapat/list-ruang-rapa
     ListIzinCutiComponent,
     ListPerjanalanDinasComponent,
     ListKendaraanComponent,
-    ListRuangRapatComponent
+    ListRuangRapatComponent,
+    ListLogBookComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [

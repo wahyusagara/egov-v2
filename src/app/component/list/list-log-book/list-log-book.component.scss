@@ -1,0 +1,22 @@
+ion-card{
+    height: 7em;
+    & ion-row:nth-child(2){
+        height: 4em;
+    }
+    &.skp{
+        margin-top: 0px;
+        background: var(--CR013);
+    }
+    &.produktifitas{
+        margin-top: 0px;
+        background: var(--CR014);
+    }
+    &.more-task{
+        margin-top: 0px;
+        background: var(--CR015);
+    }
+    &.kreatifitas{
+        margin-top: 0px;
+        background: var(--CR001);
+    }
+}

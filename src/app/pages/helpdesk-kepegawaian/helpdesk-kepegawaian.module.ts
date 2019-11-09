@@ -7,6 +7,8 @@ import { IonicModule } from '@ionic/angular';
 
 import { HelpdeskKepegawaianPage } from './helpdesk-kepegawaian.page';
 
+import { ComponentModule } from "../../component/component.module";
+
 const routes: Routes = [
   {
     path: '',
@@ -19,7 +21,8 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    ComponentModule
   ],
   declarations: [HelpdeskKepegawaianPage]
 })
