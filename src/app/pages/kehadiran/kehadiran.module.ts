@@ -1,17 +1,17 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule , CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { HelpdeskKepegawaianPage } from './helpdesk-kepegawaian.page';
+import { KehadiranPage } from './kehadiran.page';
 import { ComponentModule } from "../../component/component.module";
 
 const routes: Routes = [
   {
     path: '',
-    component: HelpdeskKepegawaianPage
+    component: KehadiranPage
   }
 ];
 
@@ -23,8 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ComponentModule
   ],
-  declarations: [HelpdeskKepegawaianPage],
-  
+  declarations: [KehadiranPage],
   schemas:[ CUSTOM_ELEMENTS_SCHEMA ]
 })
-export class HelpdeskKepegawaianPageModule {}
+export class KehadiranPageModule {}

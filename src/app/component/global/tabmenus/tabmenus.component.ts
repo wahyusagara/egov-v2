@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tabmenus',
@@ -6,9 +7,41 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabmenus.component.scss'],
 })
 export class TabmenusComponent implements OnInit {
+  item1 = [
+    {
+      img: "assets/img/group-interface-symbol.png",
+      label: "Izin / Cuti",
+      route: "izin-cuti"
+    },
+    {
+      img: "assets/img/timetable.png",
+      label: "Kehadiran",
+      route: "kehadiran"
+    },
+    {
+      img: "assets/img/avatar.png",
+      label: "Kendaraan",
+      route: "home"
+    },
+    {
+      img: "assets/img/startup.png",
+      label: "Ruang Rapat",
+      route: "/ruang-rapat"
+    },
+    {
+      img: "assets/img/user.png",
+      label: "Ruang Rapat",
+      route: "/profile"
+    },
+  ]
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController,
+  ) { }
 
   ngOnInit() {}
-
+  navPage(url) {
+    console.log(url);
+    this.navCtrl.navigateForward(url);
+  }
 }
