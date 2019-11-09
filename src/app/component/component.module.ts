@@ -15,6 +15,7 @@ import { ListPerjanalanDinasComponent } from "./list/list-perjanalan-dinas/list-
 import { ListKendaraanComponent } from "./list/list-kendaraan/list-kendaraan.component";
 import { ListRuangRapatComponent } from "./list/list-ruang-rapat/list-ruang-rapat.component";
 import { ListLogBookComponent } from "./list/list-log-book/list-log-book.component";
+import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.component";
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ListLogBookComponent } from "./list/list-log-book/list-log-book.compone
     ListPerjanalanDinasComponent,
     ListKendaraanComponent,
     ListRuangRapatComponent,
-    ListLogBookComponent
+    ListLogBookComponent,
+    ListMenuLainComponent
   ],
   imports: [
     CommonModule,
@@ -45,7 +47,8 @@ import { ListLogBookComponent } from "./list/list-log-book/list-log-book.compone
     ListPerjanalanDinasComponent,
     ListKendaraanComponent,
     ListRuangRapatComponent,
-    ListLogBookComponent
+    ListLogBookComponent,
+    ListMenuLainComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [

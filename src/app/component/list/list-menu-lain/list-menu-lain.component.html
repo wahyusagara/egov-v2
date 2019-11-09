@@ -1,0 +1,10 @@
+<ion-item *ngFor="let list of listRow">
+  <ion-row *ngFor="let menu of listMenu">
+    <ion-col>
+      <ion-avatar class="radius">
+        <img [src]="menu?.img">
+      </ion-avatar>
+      <ion-label>{{menu?.name}}</ion-label>
+    </ion-col>
+  </ion-row>
+</ion-item>
