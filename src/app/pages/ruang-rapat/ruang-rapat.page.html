@@ -10,7 +10,8 @@
 <ion-content>
   <ion-searchbar placeholder="Search" type="text" (ionChange)="onSearchChange($event)" [debounce]="250"></ion-searchbar>
   <ion-grid fixed>
-    <ion-card *ngFor="let list of listRoom">
+    <app-list-ruang-rapat></app-list-ruang-rapat>
+    <!-- <ion-card *ngFor="let list of listRoom">
       <ion-row>
         <img [src]="list.img" />
       </ion-row>
@@ -24,6 +25,6 @@
           {{list.desc}}
         </ion-col>
       </ion-row>
-    </ion-card>
+    </ion-card> -->
   </ion-grid>
 </ion-content>

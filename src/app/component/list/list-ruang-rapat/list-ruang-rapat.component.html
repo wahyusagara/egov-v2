@@ -1,0 +1,15 @@
+<ion-card *ngFor="let list of listRoom">
+  <ion-row>
+    <img [src]="list.img" />
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      {{list.name}}
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      {{list.desc}}
+    </ion-col>
+  </ion-row>
+</ion-card>
