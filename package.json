@@ -39,6 +39,7 @@
     "@types/node": "~8.9.4",
     "body-parser": "^1.19.0",
     "codelyzer": "^5.0.0",
+    "compression": "^1.7.4",
     "cordova-android": "8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.0.1",

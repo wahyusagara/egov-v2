@@ -3,6 +3,7 @@ var app      = express();
 var morgan = require('morgan');            
 var bodyParser = require('body-parser');    
 var cors = require('cors');
+var compression = require('compression');
  
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
@@ -17,6 +18,7 @@ app.use(function(req, res, next) {
 });
  
 app.use(express.static('www'));
+app.use(compression());
 // app.use(express.static('www'));
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/www/index.html');
