@@ -10,8 +10,8 @@ export class TabmenusComponent implements OnInit {
   item1 = [
     {
       img: "assets/img/group-interface-symbol.png",
-      label: "Izin / Cuti",
-      route: "izin-cuti"
+      label: "Daftar Kepegawaian",
+      route: "daftar-pegawai"
     },
     {
       img: "assets/img/timetable.png",
