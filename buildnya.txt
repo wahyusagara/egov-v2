@@ -1,0 +1,5 @@
+keytool -genkey -v -keystore egov-release.keystore -alias egov-big -keyalg RSA -keysize 2048 -validity 10000
+jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore egov-release.keystore platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk egov-big
+zipalign -v 4 platforms\android\app\build\outputs\apk\release\app-release-unsigned.apk egov.apk
+
+password keystore: bisajadi
