@@ -7,10 +7,47 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="listBackground">
-  <ion-list class="listBackground">
-    <ion-item *ngFor="let list of listMenu">
-      <ion-label class="listBackground strong">{{list.name}}</ion-label>
-    </ion-item>
-  </ion-list>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-avatar>
+          <img [src]="image" />
+        </ion-avatar>
+        <ion-label>App Egov</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <ion-label>appegove@gmail.com</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-list>
+      <ion-item>
+        <ion-label position="floating">Nama</ion-label>
+        <ion-input [(ngModel)]="dataProfile.nama" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">No HP</ion-label>
+        <ion-input [(ngModel)]="dataProfile.hp" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Email</ion-label>
+        <ion-input [(ngModel)]="dataProfile.email" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Alamat</ion-label>
+        <ion-input [(ngModel)]="dataProfile.alamat" disabled></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Tanggal Lahir</ion-label>
+        <ion-input type="date" [(ngModel)]="dataProfile.ttl" disabled></ion-input>
+      </ion-item>
+      <ion-item (click)="logout()">
+        <ion-label color="danger">Keluar</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-grid>
 </ion-content>

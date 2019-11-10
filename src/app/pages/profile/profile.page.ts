@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-profile',
@@ -6,37 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.page.scss'],
 })
 export class ProfilePage implements OnInit {
-  listMenu = [
-    {
-      id: 1,
-      name: "Identitas",
-      url: "#"
-    },
-    {
-      id: 1,
-      name: "Keluarga",
-      url: "#"
-    },
-    {
-      id: 1,
-      name: "Surat Keterangan",
-      url: "#"
-    },
-    {
-      id: 1,
-      name: "Sertifikat",
-      url: "#"
-    },
-    {
-      id: 1,
-      name: "SKP",
-      url: "#"
-    }
-  ];
+  image = 'assets/img/profile.png';
+  dataProfile = {
+    nama: "App Egov",
+    hp: "08987654321",
+    email: "appegov@gmail.com",
+    alamat: "Avenue 2nd Street No. 29",
+    ttl: "1995-11-10"
+  }
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController
+  ) { }
 
   ngOnInit() {
+  }
+  change(event) {
+    console.log(event.target.value);
+  }
+  logout() {
+    this.navCtrl.navigateRoot('login')
   }
 
 }
