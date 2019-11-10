@@ -21,7 +21,7 @@ export class TabmenusComponent implements OnInit {
     {
       img: "assets/img/avatar.png",
       label: "Kendaraan",
-      route: "home"
+      route: "entri-data"
     },
     {
       img: "assets/img/startup.png",
