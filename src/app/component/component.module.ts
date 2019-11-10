@@ -23,6 +23,7 @@ import { ListRuangRapatComponent } from "./list/list-ruang-rapat/list-ruang-rapa
 import { ListLogBookComponent } from "./list/list-log-book/list-log-book.component";
 import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.component";
 import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.component";
+import { ListProfileComponent } from "./list/list-profile/list-profile.component";
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.c
     ListRuangRapatComponent,
     ListLogBookComponent,
     ListMenuLainComponent,
-    ListEntriDataComponent
+    ListEntriDataComponent,
+    ListProfileComponent
   ],
   imports: [
     CommonModule,
@@ -57,7 +59,8 @@ import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.c
     ListRuangRapatComponent,
     ListLogBookComponent,
     ListMenuLainComponent,
-    ListEntriDataComponent
+    ListEntriDataComponent,
+    ListProfileComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [
