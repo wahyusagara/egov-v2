@@ -11,6 +11,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-text color="primary" *ngIf="isMobile">
+    <h1>Awesome text</h1>
+  </ion-text>
   <app-slider></app-slider>
 
   <ion-grid fixed no-padding> 

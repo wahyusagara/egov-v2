@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides, MenuController, NavController, PopoverController } from '@ionic/angular';
+import { IonSlides, MenuController, NavController, PopoverController, Platform } from '@ionic/angular';
 import { CalendarComponentOptions } from 'ion2-calendar';
 import {AgendaPage} from '../../popover/agenda/agenda.page';
 // import {TabmenusComponent} from '../../component/tabmenus/tabmenus.component';
@@ -96,15 +96,21 @@ export class HomePage implements OnInit {
       label: "Menu Lain",
       route: "/menu-lain"
     }
-  ]
+  ];
+  isMobile:boolean = false;
 
   constructor(
     private menu: MenuController,
     private navCtrl: NavController,
-    private popOver: PopoverController
+    private popOver: PopoverController,
+    private plt: Platform
   ) { }
 
   ngOnInit() {
+  }
+  ionViewDidEnter() {
+    this.isMobile = this.plt.platforms().includes('mobile') ? true : false;
+    // console.log(this.plt.platforms().includes('mobile') ? 'mobile' : 'browser');
   }
   ionSlidesDidLoad(){
     this.slides.startAutoplay();
