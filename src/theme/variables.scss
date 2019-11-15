@@ -125,6 +125,7 @@
   --CR014:#87c351;
   --CR015:#f56d3d;
   --CR016:#5c626d;
+  --CR017:#000000;
   
 }
 
@@ -436,6 +437,10 @@
   --color:var(--CR016) !important;
   color:var(--CR016) !important;
 }
+.CR017{
+  --color:var(--CR017) !important;
+  color:var(--CR017) !important;
+}
 
 /*BTN*/
 
@@ -475,4 +480,13 @@
   padding: 5px 10px;
   border-radius: 2px;
   color: white;
+}
+
+.BTN003{
+  @include BTN('','',#2577c0,#ffffff,'');
+  padding: 2em;
+  --color: $color;
+  padding: 5px 10px;
+  border-radius: 2px;
+  color: var(--CR000);
 }

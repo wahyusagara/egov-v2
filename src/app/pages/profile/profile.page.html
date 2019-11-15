@@ -1,54 +1,19 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Profile</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size="12">
-        <ion-avatar>
-          <img [src]="image" />
-        </ion-avatar>
-        <ion-label>App Egov</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="12">
-        <ion-label>appegove@gmail.com</ion-label>
-      </ion-col>
-    </ion-row>
+<ion-content class="profile">
+  <ion-grid class="header">
+    <span class="avatar">
+      <ion-avatar>
+        <img [src]="image" />
+      </ion-avatar>
+    </span>
+    <span>App Egov</span>
+    <span>appegove@gmail.com</span>
   </ion-grid>
-  <ion-grid>
+  <ion-grid class="account-info FFR05">
+      <span>Account Info</span>
+    </ion-grid>
+  <ion-grid class="content">
     <app-list-profile></app-list-profile>
-    <!-- <ion-list>
-      <ion-item>
-        <ion-label position="floating">Nama</ion-label>
-        <ion-input [(ngModel)]="dataProfile.nama" disabled></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">No HP</ion-label>
-        <ion-input [(ngModel)]="dataProfile.hp" disabled></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Email</ion-label>
-        <ion-input [(ngModel)]="dataProfile.email" disabled></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Alamat</ion-label>
-        <ion-input [(ngModel)]="dataProfile.alamat" disabled></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label position="floating">Tanggal Lahir</ion-label>
-        <ion-input type="date" [(ngModel)]="dataProfile.ttl" disabled></ion-input>
-      </ion-item>
-      <ion-item (click)="logout()">
-        <ion-label color="danger">Keluar</ion-label>
-      </ion-item>
-    </ion-list> -->
   </ion-grid>
 </ion-content>
+
+<app-tabmenus></app-tabmenus>

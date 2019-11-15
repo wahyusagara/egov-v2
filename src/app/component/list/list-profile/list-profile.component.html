@@ -1,25 +1,23 @@
-<ion-list>
+<ion-list class="FFR04" no-padding no-margin>
   <ion-item>
-    <ion-label position="floating">Nama</ion-label>
-    <ion-input [value]="dataProfile.nama"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">No HP</ion-label>
-    <ion-input [value]="dataProfile.hp"></ion-input>
+    <ion-label position="floating" class="CR016 FFR04" class="CR016">Nama</ion-label>
+    <ion-input [value]="dataProfile.nama" class="CR017 FFR05" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input [value]="dataProfile.email"></ion-input>
+    <ion-label position="floating" class="CR016 FFR04">No HP</ion-label>
+    <ion-input [value]="dataProfile.hp" class="CR017 FFR05" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Alamat</ion-label>
-    <ion-input [value]="dataProfile.alamat"></ion-input>
+    <ion-label position="floating" class="CR016 FFR04">Email</ion-label>
+    <ion-input [value]="dataProfile.email" class="CR017 FFR05" ></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label position="floating">Tanggal Lahir</ion-label>
-    <ion-input type="date" [value]="dataProfile.ttl"></ion-input>
+    <ion-label position="floating" class="CR016 FFR04">Alamat</ion-label>
+    <ion-input [value]="dataProfile.alamat" class="CR017 FFR05" ></ion-input>
   </ion-item>
-  <ion-item (click)="logout()">
-    <ion-label color="danger">Keluar</ion-label>
+  <ion-item>
+    <ion-label position="floating" class="CR016 FFR04">Tanggal Lahir</ion-label>
+    <ion-input type="date" [value]="dataProfile.ttl" class="CR017 FFR05" ></ion-input>
   </ion-item>
+  <span (click)="logout()" class="BTN003 FFR05 logout"> Logout </span>
 </ion-list>

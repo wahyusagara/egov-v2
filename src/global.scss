@@ -280,6 +280,18 @@ app-list-perjanalan-dinas, app-list-izin-cuti{
         }
     }
 }
+
+app-list-profile{
+    & span.logout {
+        text-align: center;
+        margin: 1em auto;
+        padding: 0.4em 0.5em;
+        border: 1px solid var(--CR016);
+        border-radius: 3em;
+        display: block;
+        width: 9em;
+    }
+}
 .approved{
     background: var(--CR005) !important;
     color: var(--CR000) !important;
