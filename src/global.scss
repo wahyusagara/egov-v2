@@ -200,56 +200,52 @@ app-slider{
         & ion-slides{
             max-height: 30vmax;
 
-            & .swiper-wrapper{
-
-                & .swiper-pagination{
-                    
-                    
-                    & .swiper-pagination-bullets{
-                    
-                        border-top: 1px solid var(--CR001) !important;
-                        border-bottom: 1px solid var(--CR001);
-                        & .swiper-pagination-bullet{
-                            
-                            background: var(--CR001);
-                            opacity: 1;
-                        }
-                    }
-                }
+            & .swiper-wrapper{   
                 
             }
-
-            & ion-row{
-
-                & ion-col{
-
-                    & .box{
-
-                        & img{
-                            
-                            object-fit: cover !important;
-                            height: 25vmax !important;
-                            margin: auto;
-                            width: 100%;
-                            border: 1px solid var(--CR005);
-                            border-radius: 2px;
-                        }
-
-                        & .content-text{
-                            transform: translateY(-5vmax) !important;
-                            border-radius: 2px;
-                            border: 1px solid var(--CR002);
-                            display: block;
-                            color: var(--CR008);
-                            // z-index: 1000;
-                            text-align: center;
-                            margin: 0px 10px;
-                            opacity: 0.85;
-                            background: var(--CR004);
-                        }
+            & .swiper-pagination{
+                    
+                    
+                &.swiper-pagination-bullets{
+                
+                    border-top: 1px solid var(--CR001) !important;
+                    border-bottom: 1px solid var(--CR001);
+                    background: var(--CR001)!important;
+                    
+                    & .swiper-pagination-bullet{
+                        
+                        background: var(--CR000)!important;
                     }
                 }
             }
+
+
+            & .box{
+
+                & img{
+                    
+                    object-fit: cover !important;
+                    height: 25vmax !important;
+                    margin: auto;
+                    width: 100%;
+                    border: 1px solid var(--CR005);
+                    border-radius: 2px;
+                }
+
+                & .content-text{
+                    transform: translateY(-5vmax) !important;
+                    border-radius: 2px;
+                    border: 1px solid var(--CR002);
+                    display: block;
+                    color: var(--CR008);
+                    // z-index: 1000;
+                    text-align: center;
+                    margin: 0px 10px;
+                    opacity: 0.85;
+                    background: var(--CR004);
+                }
+            }
+
         }
     }
 }
