@@ -25,7 +25,8 @@ const routes: Routes = [
   { path: 'profile', loadChildren: './pages/profile/profile.module#ProfilePageModule' },
   { path: 'ruang-rapat', loadChildren: './pages/ruang-rapat/ruang-rapat.module#RuangRapatPageModule' },
   { path: 'kendaraan', loadChildren: './pages/kendaraan/kendaraan.module#KendaraanPageModule' },  { path: 'kehadiran', loadChildren: './pages/kehadiran/kehadiran.module#KehadiranPageModule' },
-  { path: 'entri-data', loadChildren: './pages/entri-data/entri-data.module#EntriDataPageModule' }
+  { path: 'entri-data', loadChildren: './pages/entri-data/entri-data.module#EntriDataPageModule' },
+  { path: 'berita', loadChildren: './pages/berita/berita.module#BeritaPageModule' }
 
 ];
 

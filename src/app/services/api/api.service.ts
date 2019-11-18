@@ -31,7 +31,7 @@ export class ApiService {
     });
   }
 
-  getData(url, data?) {
+  getData(url) {
     return new Promise((resolve, reject) => {
       this.httpClt.get(url, {headers: this.headers}).subscribe(
         res => { resolve(res) },
