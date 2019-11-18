@@ -9,17 +9,17 @@ export class ListIzinCutiComponent implements OnInit {
   listCuti = [
     {
       approved: true,
-      date: "2019-10-19T01:24:21.604Z",
+      date: '2019-10-19T01:24:21.604Z',
       duration: 1,
-      title: "Izin ke Kantor Samsat"
+      title: 'Izin ke Kantor Samsat'
     },
     {
       approved: false,
-      date: "2019-10-25T01:24:21.604Z",
+      date: '2019-10-25T01:24:21.604Z',
       duration: 4,
-      title: "Cuti acara keluarga"
+      title: 'Cuti acara keluarga'
     }
-  ]
+  ];
 
   constructor() { }
 
