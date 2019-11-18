@@ -11,12 +11,12 @@
         <form class="list-form" #loginForm="ngForm"  autocomplete="off" (ngSubmit)="submit()">
           <ion-row>
               <ion-col size="12" no-padding no-margin class="input-group">
-                <ion-input type="text" text-lowercase class="FLB01 CR008" clearInput placeholder="Username"></ion-input>
+                <ion-input type="text" text-lowercase class="FLB01 CR008" clearInput placeholder="Username" [(ngModel)]="username" name="username"></ion-input>
               </ion-col>
           </ion-row>
           <ion-row>
               <ion-col size="12" no-padding no-margin class="input-group">
-                <ion-input type="password" class="FLB01 CR008" clearInput placeholder="Password" ></ion-input>
+                <ion-input type="password" class="FLB01 CR008" clearInput placeholder="Password" [(ngModel)]="password" name="password"></ion-input>
               </ion-col>
           </ion-row>
           <ion-row>

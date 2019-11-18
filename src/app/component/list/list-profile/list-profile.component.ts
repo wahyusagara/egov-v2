@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-list-profile',
@@ -9,20 +10,45 @@ import { NavController } from '@ionic/angular';
 export class ListProfileComponent implements OnInit {
   image = 'assets/img/profile.png';
   dataProfile = {
-    nama: "App Egov",
-    hp: "08987654321",
-    email: "appegov@gmail.com",
-    alamat: "Avenue 2nd Street No. 29",
-    ttl: "1995-11-10"
+    nama: "",
+    hp: "",
+    email: "",
+    alamat: "",
+    ttl: ""
   };
 
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private api: ApiService
   ) { }
 
-  ngOnInit() {}
+  async ngOnInit() {
+    await this.getData();
+  }
   logout() {
     this.navCtrl.navigateRoot('login');
+  }
+  async getData() {
+    return this.api.getData("https://sdm.big.go.id/siap/service/index.php/pegawai?NIPBARU=197601012005021002")
+    .then((result) => {
+      const resp = result[0];
+      const ttl = new Date(resp.TGLLAHIR);
+      const bulan = ((ttl.getMonth() + 1) > 12 ? 1 : (ttl.getMonth() + 1)).toString();
+      const hari = ttl.getDate().toString();
+      const tanggal = ttl.getFullYear().toString() + "-" + 
+      (bulan.length > 1 ? bulan : '0' + bulan) + "-" + 
+      (hari.length > 1 ? hari : '0' + hari);
+
+      this.dataProfile = {
+        nama: resp.NAMA,
+        hp: resp.HP,
+        email: resp.EMAIL,
+        alamat: resp.ALAMAT,
+        ttl: tanggal
+      }
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
 }

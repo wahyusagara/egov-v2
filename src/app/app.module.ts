@@ -12,6 +12,7 @@ import { AtasanPageModule } from './popover/atasan/atasan.module';
 import { AgendaPageModule } from "./popover/agenda/agenda.module";
 import { HTTP } from '@ionic-native/http/ngx';
 import { FCM } from "@ionic-native/fcm/ngx";
+import { HttpClientModule } from "@angular/common/http";
 
 // import {ComponentModule} from './component/component.module';
 @NgModule({
@@ -23,6 +24,7 @@ import { FCM } from "@ionic-native/fcm/ngx";
     AppRoutingModule,
     AtasanPageModule,
     AgendaPageModule,
+    HttpClientModule
     // ComponentModule
   ],
   // exports: [
