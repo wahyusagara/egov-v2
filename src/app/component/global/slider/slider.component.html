@@ -9,14 +9,10 @@
     #mySlider 
     (ionSlidesDidLoad)="ionSlidesDidLoad()">
     <ion-slide *ngFor="let img of contentList" >
-      <ion-row>
-        <ion-col size="12">
-          <div class="box">
-            <img [src]="img?.file" alt="">
-            <p class="content-text backgroundku">{{img.title}}</p>
-          </div>
-        </ion-col>
-      </ion-row>
+      <div class="box">
+        <img [src]="img?.file" alt="">
+        <p class="content-text backgroundku">{{img.title}}</p>
+      </div>
     </ion-slide>
   </ion-slides>
 </ion-grid>

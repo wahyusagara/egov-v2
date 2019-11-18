@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="izin-cuti-create">
   <form (ngSubmit)="submit()">
     <ion-item>
       <ion-label>Type</ion-label>
@@ -33,12 +33,13 @@
       <ion-input type="file" (change)="changeFile($event)" accept="image/*" multiple="multiple"></ion-input>
     </ion-item>
     <ion-item *ngIf="files.length > 0">
-      <ion-avatar *ngFor="let file of files">
-        <img [src]="file?.file_base"/>
-      </ion-avatar>
+      <span *ngFor="let file of files">
+        <img [src]="file?.file_base" width="100px" height="100px"/>
+      </span>
     </ion-item>
-    <ion-button block color="primary" type="submit" [disabled]="!type || !reason || !date || !duration">
+    <ion-button block class="BTN003" type="submit" [disabled]="!type || !reason || !date || !duration">
       Submit
     </ion-button>
   </form>
 </ion-content>
+<app-tabmenus></app-tabmenus>
