@@ -8,6 +8,8 @@ import { GlobalFuncService } from "../../services/global-func.service";
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  username = "";
+  password = "";
 
   constructor(
     private menu: MenuController,
