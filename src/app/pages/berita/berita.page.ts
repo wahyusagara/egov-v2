@@ -29,8 +29,8 @@ export class BeritaPage implements OnInit {
   }
   getParams() {
     this.route.queryParams.subscribe(params => {
-      this.id = params['id'];
-      console.log(this.id);
+      this.id = parseInt(params['id']);
+      // console.log(this.id);
     })
   }
   async getBeritaDetail() {
@@ -38,8 +38,8 @@ export class BeritaPage implements OnInit {
     .then(async (result) => {
       this.resp = await JSON.parse(JSON.stringify(result[0]));
       this.berita = this.dom.bypassSecurityTrustHtml(this.resp.BERITA_ISI);
-      console.log(this.resp);
-      // console.log(result);
+    }).catch((err) => {
+
     });
   }
 

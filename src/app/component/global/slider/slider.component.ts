@@ -45,6 +45,7 @@ export class SliderComponent implements OnInit {
       this.contentList = [];
       var berita;
       berita = result;
+      berita = berita.filter(x => x.BERITA_ISTERBIT === "1");
       berita = await berita.sort((a, b) => {
         return new Date(b.BERITA_TGLTERBIT).getTime() - new Date(a.BERITA_TGLTERBIT).getTime();
       });

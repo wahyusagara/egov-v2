@@ -16,15 +16,18 @@ export class ApiService {
 
   login(user, pass) {
     return new Promise((resolve, reject) => {
-      this.headers = this.headers.append('Content-Type', 'multipart/form-data');
-      this.headers = this.headers.append('enctype', 'multipart/form-data');
-      let body = new FormData();
-      body.set('username', user);
-      body.set('password', pass);
-      const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid";
+      // this.headers = this.headers.set('Content-Type', 'multipart/form-data');
+      // this.headers = this.headers.set('Authorization', 'Basic ZGF0NGFrczNzOmMxYjFuMG5n');
+      // this.headers = this.headers.append('enctype', 'multipart/form-data');
+      // this.headers = this.headers.set('Authorization', 'Basic ZGF0NGFrczNzOmMxYjFuMG5n');
+      // let body = new FormData();
+      // body.set('username', user);
+      // body.set('password', pass);
+      // const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid?namaornip=199111252019031002";
+      const url = "https://solman-timesheet.herokuapp.com/egov/login"
       // const body = "username=" + user + "&password=" + pass;
-      console.log(body);
-      this.httpClt.post(url, body, {headers: this.headers}).subscribe(
+      // console.log(body);
+      this.httpClt.post(url, {headers: new Headers()}).subscribe(
         res => { resolve(res); },
         err => { reject(err); }
       );
