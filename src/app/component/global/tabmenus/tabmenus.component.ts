@@ -21,7 +21,7 @@ export class TabmenusComponent implements OnInit {
       route: "kehadiran"
     },
     {
-      img: "assets/img/avatar.png",
+      img: "assets/img/plus.png",
       label: "",
       class: "enty",
       route: "entri-data"
