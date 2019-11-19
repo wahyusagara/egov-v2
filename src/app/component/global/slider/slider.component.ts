@@ -20,7 +20,7 @@ export class SliderComponent implements OnInit {
   };
   contentList = [
     {
-      file: "assets/img/geospatialrun.jpg",
+      file: "assets/img/notfound.png",
       title: "",
       id: ""
     }
@@ -51,7 +51,7 @@ export class SliderComponent implements OnInit {
       });
       for (let index = 0; index < 5; index++) {
         this.contentList.push({
-          file: "assets/img/geospatialrun.jpg",
+          file: berita[index].BERITA_FOTO ? ("https://sdm.big.go.id/siap/client/big/uploads/pelayanan/foto/" + berita[index].BERITA_FOTO) : "assets/img/notfound.png",
           title: berita[index].BERITA_JUDUL,
           id: berita[index].BERITA_ID
         });
