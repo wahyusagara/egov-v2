@@ -1,7 +1,7 @@
 
 <ion-footer  class="footer-nav--container hide-desktop" no-padding no-margin>
-  <div *ngFor="let items of item1" (click)="navPage(items.route)" >
-     
-     <img src="{{items?.img}}" alt="Ionic logo" class="hide-desktop">
+  <div *ngFor="let items of item1" (click)="navPage(items.route)" class="FFR02 CR000 {{items?.class}}" >
+      <img src="{{items?.img}}" alt="Ionic logo" class="hide-desktop">
+      {{items?.label}}    
   </div>
 </ion-footer>

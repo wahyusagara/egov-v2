@@ -122,21 +122,36 @@ app-login.ion-page {
     }
 }
 
-ion-footer{
+app-tabmenus {
+    background: var(--CR001);
+    
+    & ion-footer{
 
-    & div {
-        background: var(--CR001);
-        display: grid;
-        position: inherit;
-        float: left;
-        width: 20%;
-        text-align: center;
-        margin: auto;
-
-        & img {
+        & div {
+            background: var(--CR001);
+            display: grid;
+            position: inherit;
+            float: left;
+            width: 20%;
+            text-align: center;
             margin: auto;
-            width: 42px;
-            padding: 8px;
+
+            & img {
+                margin: auto;
+                width: 42px;
+                padding: 8px 8px 0px 8px;
+            }
+
+            &.enty {
+                display: unset;
+            }
+            
+            &.enty img {
+                padding: 0px;
+                margin: auto;
+                display: block;
+                transform: translateY(0.4em);
+            }
         }
     }
 }

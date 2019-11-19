@@ -10,27 +10,32 @@ export class TabmenusComponent implements OnInit {
   item1 = [
     {
       img: "assets/img/group-interface-symbol.png",
-      label: "Daftar Kepegawaian",
+      label: "Daftar Pegawai",
+      class: "",
       route: "daftar-pegawai"
     },
     {
       img: "assets/img/timetable.png",
       label: "Kehadiran",
+      class: "",
       route: "kehadiran"
     },
     {
       img: "assets/img/avatar.png",
-      label: "Kendaraan",
+      label: "",
+      class: "enty",
       route: "entri-data"
     },
     {
       img: "assets/img/startup.png",
-      label: "Ruang Rapat",
+      label: "Statistic",
+      class: "",
       route: "/ruang-rapat"
     },
     {
       img: "assets/img/user.png",
-      label: "Ruang Rapat",
+      label: "Profile",
+      class: "",
       route: "/profile"
     },
   ]
