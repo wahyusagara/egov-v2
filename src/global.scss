@@ -8,311 +8,220 @@
  * For more information on global stylesheets, visit the documentation:
  * https://ionicframework.com/docs/layout/global-stylesheets
  */
-
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
-
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
-
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
-
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
 @import "~@ionic/angular/css/float-elements.css";
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-
-@mixin font-size($sizeValue) {
-
-    @media  only screen and (min-width: 360px){
-        font-size: calc(#{$sizeValue+px} - 0.20vw) !important;
-    }
-
-    @media  only screen and (min-width: 375px){
-        font-size: calc(#{$sizeValue+px}) !important;
-    }
-
-    @media  only screen and (min-width: 414px){
-        font-size: calc(#{$sizeValue+px} + 0.20vw) !important;
-    }
-    @media  only screen and (min-width: 504px){
-        font-size: calc(#{$sizeValue+px} + 0.30vw) !important;
-    }
+ion-app {
+  color: var(--CR005);
 }
-
-// .hide-mobile {
-//     // background: silver;
-// }
-ion-app{
-    color:var(--CR005);
-    & ion-tabs{
-        contain: unset !important;
-        & ion-tab-bar.footer-nav--container {
-            height: 50px;
-    
-            & img{
-                height: 30px;
-            }
-        }
-    }
-   
+ion-app ion-tabs {
+  contain: unset !important;
+}
+ion-app ion-tabs ion-tab-bar.footer-nav--container {
+  height: 50px;
+}
+ion-app ion-tabs ion-tab-bar.footer-nav--container img {
+  height: 30px;
 }
 
 @media (max-width: 600px) {
-    .hide-mobile {
-        display: none;
-    }
+  .hide-mobile {
+    display: none;
+  }
 }
 @media (min-width: 601px) {
-    .hide-desktop {
-        display: none;
-    }
+  .hide-desktop {
+    display: none;
+  }
+}
+app-dashboard.ion-page {
+  padding: 0px;
+  margin: 0px;
 }
 
-app-dashboard.ion-page{
-    padding:0px;
-    margin:0px;
-
+ion-title {
+  font-family: "Futura - Regular" !important;
+  color: var(--CR001);
+  padding: 0 0.3em !important;
+  margin: 0px !important;
 }
 
-ion-title{
-    font-family: 'Futura - Regular' !important;
-    color: var(--CR001);
-    padding: 0 0.3em  !important;
-    margin: 0px !important;
-}
 app-login.ion-page {
-    background-color: var(--CR001);
+  background-color: var(--CR001);
 }
 
-.sparator{
-
-    height: 1px;
-    display: block;
-    margin: 5px 0px;
-    
-    &.black{
-
-        background: var(--CR008);
-
-        &.half{
-            margin: auto;
-            width: 50% !important;
-        }
-    }
-
-    &.blue{
-        background: var(--CR001);
-    }
-    
-    &.gray{
-        background: var(--CR011);
-
-        &.quarter{
-            
-            margin: auto;
-            width: 90% !important;
-        }
-    }
+.sparator {
+  height: 1px;
+  display: block;
+  margin: 5px 0px;
+}
+.sparator.black {
+  background: var(--CR008);
+}
+.sparator.black.half {
+  margin: auto;
+  width: 50% !important;
+}
+.sparator.blue {
+  background: var(--CR001);
+}
+.sparator.gray {
+  background: var(--CR011);
+}
+.sparator.gray.quarter {
+  margin: auto;
+  width: 90% !important;
 }
 
 app-tabmenus {
-    background: var(--CR001);
-    
-    & ion-footer{
-
-        & div {
-            background: var(--CR001);
-            display: grid;
-            position: inherit;
-            float: left;
-            width: 20%;
-            text-align: center;
-            margin: auto;
-
-            & img {
-                margin: auto;
-                width: 42px;
-                padding: 8px 8px 0px 8px;
-            }
-
-            &.enty {
-                display: unset;
-            }
-            
-            &.enty img {
-                padding: 0px;
-                margin: auto;
-                display: block;
-                transform: translateY(0.4em);
-            }
-        }
-    }
+  background: var(--CR001);
+}
+app-tabmenus ion-footer div {
+  background: var(--CR001);
+  display: grid;
+  position: inherit;
+  float: left;
+  width: 20%;
+  text-align: center;
+  margin: auto;
+}
+app-tabmenus ion-footer div img {
+  margin: auto;
+  width: 42px;
+  padding: 8px 8px 0px 8px;
+}
+app-tabmenus ion-footer div.enty {
+  display: unset;
+}
+app-tabmenus ion-footer div.enty img {
+  padding-top: 3px;
+  margin: auto;
+  display: block;
+  width: 47px;
 }
 
 ion-content {
-    overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
-    -ms-overflow-style: none;  // IE 10+
-    scrollbar-width: none;  // Firefox
-    scroll-behavior: smooth;
-    &::-webkit-scrollbar {
-      display: none; // Safari and Chrome
-    }
-    & .inner-scroll.scroll-y.overscroll {
-      display: none !important;
-      --overflow: hidden;
-    }
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+ion-content::-webkit-scrollbar {
+  display: none;
+}
+ion-content .inner-scroll.scroll-y.overscroll {
+  display: none !important;
+  --overflow: hidden;
 }
 
-app-list-menu{
-    .menu-icon{
-            
-        border-top: 1px solid var(--CR004);
-        border-bottom: 1px solid var(--CR004);
-        margin: 1em 0px;
-        padding: 0px;
-        text-align: center;
-
-        & ion-col{
-            margin-bottom: 0px !important;
-            padding-bottom: 0px !important;
-
-            & span{
-                &.avatar{
-                    width: 80%!important;
-                    display: block;
-                    margin: auto;
-
-                    & ion-avatar{
-                        width: 3em;
-                        height: 3em;
-                        padding: 3px;
-                        margin: auto;
-                        background-color: var(--CR005);
-                    }
-                }
-                
-
-                &.desc{
-                    margin: 5px 0px;
-                    display: block;
-                }
-            }
-
-        }
-    
-
-    }
+app-list-menu .menu-icon {
+  border-top: 1px solid var(--CR004);
+  border-bottom: 1px solid var(--CR004);
+  margin: 1em 0px;
+  padding: 0px;
+  text-align: center;
+}
+app-list-menu .menu-icon ion-col {
+  margin-bottom: 0px !important;
+  padding-bottom: 0px !important;
+}
+app-list-menu .menu-icon ion-col span.avatar {
+  width: 80% !important;
+  display: block;
+  margin: auto;
+}
+app-list-menu .menu-icon ion-col span.avatar ion-avatar {
+  width: 3em;
+  height: 3em;
+  padding: 3px;
+  margin: auto;
+  background-color: var(--CR005);
+}
+app-list-menu .menu-icon ion-col span.desc {
+  margin: 5px 0px;
+  display: block;
 }
 
-app-slider{
-    & .slider{
-
-        & ion-slides{
-            max-height: 30vmax;
-
-            & .swiper-wrapper{   
-                
-            }
-            & .swiper-pagination{
-                    
-                    
-                &.swiper-pagination-bullets{
-                
-                    border-top: 1px solid var(--CR001) !important;
-                    border-bottom: 1px solid var(--CR001);
-                    background: var(--CR001)!important;
-                    
-                    & .swiper-pagination-bullet{
-                        
-                        background: var(--CR000)!important;
-                    }
-                }
-            }
-
-
-            & .box{
-
-                & img{
-                    
-                    object-fit: cover !important;
-                    height: 25vmax !important;
-                    margin: auto;
-                    width: 100%;
-                    border: 1px solid var(--CR005);
-                    border-radius: 2px;
-                }
-
-                & .content-text{
-                    transform: translateY(-5vmax) !important;
-                    border-radius: 2px;
-                    border: 1px solid var(--CR002);
-                    display: block;
-                    color: var(--CR008);
-                    // z-index: 1000;
-                    text-align: center;
-                    margin: 0px 10px;
-                    opacity: 0.85;
-                    background: var(--CR004);
-                }
-            }
-
-        }
-    }
+app-slider .slider ion-slides {
+  max-height: 30vmax;
 }
-app-list-perjanalan-dinas, app-list-izin-cuti{
-
-    & ion-card{
-        padding: 0.5em !important;
-        margin: 1em 0px !important;
-
-        & ion-row{
-           
-            & span{ 
-                &:first-child{
-
-                    margin-top: 1em;
-                    margin-bottom: 5px;
-                }
-                &:last-child{
-
-                    margin-bottom: 1em;
-                    margin-top: 5px;
-                }
-                
-                display: block;
-                width: 100%;
-                text-align: center;
-            }
-        }
-    }
+app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets {
+  border-top: 1px solid var(--CR001) !important;
+  border-bottom: 1px solid var(--CR001);
+  background: var(--CR001) !important;
+}
+app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
+  background: var(--CR000) !important;
+}
+app-slider .slider ion-slides .box img {
+  object-fit: cover !important;
+  height: 25vmax !important;
+  margin: auto;
+  width: 100%;
+  border: 1px solid var(--CR005);
+  border-radius: 2px;
+}
+app-slider .slider ion-slides .box .content-text {
+  transform: translateY(-5vmax) !important;
+  border-radius: 2px;
+  border: 1px solid var(--CR002);
+  display: block;
+  color: var(--CR008);
+  text-align: center;
+  margin: 0px 10px;
+  opacity: 0.85;
+  background: var(--CR004);
 }
 
-app-list-profile{
-    & span.logout {
-        text-align: center;
-        margin: 1em auto;
-        padding: 0.4em 0.5em;
-        border: 1px solid var(--CR016);
-        border-radius: 3em;
-        display: block;
-        width: 9em;
-    }
+app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card {
+  padding: 0.5em !important;
+  margin: 1em 0px !important;
 }
-.approved{
-    background: var(--CR005) !important;
-    color: var(--CR000) !important;
-    padding: 0.2em 0.5em;
+app-list-perjanalan-dinas ion-card ion-row span, app-list-izin-cuti ion-card ion-row span {
+  display: block;
+  width: 100%;
+  text-align: center;
 }
-.rejected{
-    background: var(--CR010) !important;
-    color: var(--CR000) !important;
-    padding: 0.2em 0.5em;
+app-list-perjanalan-dinas ion-card ion-row span:first-child, app-list-izin-cuti ion-card ion-row span:first-child {
+  margin-top: 1em;
+  margin-bottom: 5px;
+}
+app-list-perjanalan-dinas ion-card ion-row span:last-child, app-list-izin-cuti ion-card ion-row span:last-child {
+  margin-bottom: 1em;
+  margin-top: 5px;
+}
+
+app-list-profile span.logout {
+  text-align: center;
+  margin: 1em auto;
+  padding: 0.4em 0.5em;
+  border: 1px solid var(--CR016);
+  border-radius: 3em;
+  display: block;
+  width: 9em;
+}
+
+.approved {
+  background: var(--CR005) !important;
+  color: var(--CR000) !important;
+  padding: 0.2em 0.5em;
+}
+
+.rejected {
+  background: var(--CR010) !important;
+  color: var(--CR000) !important;
+  padding: 0.2em 0.5em;
 }

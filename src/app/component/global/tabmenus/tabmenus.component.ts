@@ -22,7 +22,7 @@ export class TabmenusComponent implements OnInit {
     },
     {
       img: "assets/img/plus.png",
-      label: "",
+      label: "entry",
       class: "enty",
       route: "entri-data"
     },
