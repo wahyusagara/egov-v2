@@ -1,10 +1,20 @@
 <ion-row>
   <ion-col size="12">
-    <ion-calendar
+    <!-- <ion-calendar
       [(ngModel)]="dateMulti"
       [options]="optionsMulti"
       [type]="type"
       [format]="'YYYY-MM-DD'">
-    </ion-calendar>
+    </ion-calendar> -->
+    <mwl-calendar-month-view
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+    >
+    </mwl-calendar-month-view>
   </ion-col>
 </ion-row>

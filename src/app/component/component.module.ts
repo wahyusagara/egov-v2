@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormDummyComponent } from "./form-dummy/form-dummy.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import { IonicModule } from '@ionic/angular';
-import { CalendarModule } from 'ion2-calendar';
+// import { CalendarModule } from 'ion2-calendar';
 
 // Component List
 
@@ -13,6 +13,8 @@ import { TabmenusComponent } from "./global/tabmenus/tabmenus.component";
 
 /* Thirdparty */
 import { CalendarComponent } from "./thirdpaty/calendar/calendar.component";
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 
 /* List */
 import { ListMenuComponent } from "./list/list-menu/list-menu.component";
@@ -45,7 +47,10 @@ import { ListProfileComponent } from "./list/list-profile/list-profile.component
     CommonModule,
     IonicModule,
     IonicSelectableModule,
-    CalendarModule
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   exports: [
     FormDummyComponent,
