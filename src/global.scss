@@ -166,6 +166,7 @@ app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets {
   border-top: 1px solid var(--CR001) !important;
   border-bottom: 1px solid var(--CR001);
   background: var(--CR001) !important;
+  bottom: 0px !important;
 }
 app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
   background: var(--CR000) !important;
@@ -191,7 +192,7 @@ app-slider .slider ion-slides .content-text {
   opacity: 0.85;
   background: var(--CR004);
   position: absolute;
-  bottom: 5vh;
+  bottom: 4vh;
 }
 
 app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card {
