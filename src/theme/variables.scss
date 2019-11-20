@@ -126,6 +126,8 @@
   --CR015:#f56d3d;
   --CR016:#5c626d;
   --CR017:#000000;
+  --CR018:#145180;
+  
   
 }
 
@@ -440,6 +442,10 @@
 .CR017{
   --color:var(--CR017) !important;
   color:var(--CR017) !important;
+}
+.CR018{
+  --color:var(--CR018) !important;
+  color:var(--CR018) !important;
 }
 
 /*BTN*/

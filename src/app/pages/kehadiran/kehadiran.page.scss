@@ -29,17 +29,20 @@ ion-content{
 
             & ion-col{
                 margin:0px !important;
-                padding: 0px !important;
+                padding: 1em 0.5em !important;
             }
             &.header{
                 color: var(--CR000);
-                background: var(--CR003);
+                background: var(--CR018);
                 padding: 0.2em 0px;
 
             }
             &.content{
-                background: var(--CR004);
-                border-bottom: 1px solid var(--CR003);
+                border-bottom: 1px solid var(--CR017);
+
+                & ion-col{
+                    padding: 0.5em 0px !important;
+                }
 
                 & span{
                     display: block;

@@ -35,7 +35,16 @@ ion-app ion-tabs ion-tab-bar.footer-nav--container {
 ion-app ion-tabs ion-tab-bar.footer-nav--container img {
   height: 30px;
 }
+ion-toolbar {
+  --background:var(--CR003);
 
+  & ion-title {
+    font-family: "Futura - Regular" !important;
+    color: var(--CR000);
+    padding: 0 0.3em !important;
+    margin: 0px !important;
+  }
+}
 @media (max-width: 600px) {
   .hide-mobile {
     display: none;
@@ -51,12 +60,7 @@ app-dashboard.ion-page {
   margin: 0px;
 }
 
-ion-title {
-  font-family: "Futura - Regular" !important;
-  color: var(--CR001);
-  padding: 0 0.3em !important;
-  margin: 0px !important;
-}
+
 
 app-login.ion-page {
   background-color: var(--CR001);
@@ -229,6 +233,10 @@ app-list-profile span.logout {
   background: var(--CR010) !important;
   color: var(--CR000) !important;
   padding: 0.2em 0.5em;
+}
+span.button-inner.sc-ion-back-button-ios {
+  color: var(--CR000);
+  margin-left: 3px;
 }
 span.button-text.sc-ion-back-button-ios {
   display: none;
