@@ -7,13 +7,13 @@ ion-grid.header.ios.grid-fixed.hydrated {
     /* margin: auto; */
     text-align: center;
     vertical-align: middle;
+    display: grid;
   }
   
   ion-grid.header.ios.grid-fixed.hydrated div {
     vertical-align: middle;
     height: auto;
     margin: auto;
-    transform: translateY(1.7em);
   }
   
    
