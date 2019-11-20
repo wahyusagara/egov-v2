@@ -193,6 +193,8 @@ app-slider .slider ion-slides .content-text {
   background: var(--CR004);
   position: absolute;
   bottom: 4vh;
+  width: 95%;
+  padding: 0px 3px;
 }
 
 app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card {
