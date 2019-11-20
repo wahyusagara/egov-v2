@@ -166,7 +166,7 @@ app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets {
 app-slider .slider ion-slides .swiper-pagination.swiper-pagination-bullets .swiper-pagination-bullet {
   background: var(--CR000) !important;
 }
-app-slider .slider ion-slides .box img {
+app-slider .slider ion-slides .box {
   object-fit: cover !important;
   height: 25vmax !important;
   margin: auto;
@@ -174,16 +174,20 @@ app-slider .slider ion-slides .box img {
   border: 1px solid var(--CR005);
   border-radius: 2px;
 }
-app-slider .slider ion-slides .box .content-text {
-  transform: translateY(-5vmax) !important;
+app-slider .slider ion-slides .box img {
+  object-fit: cover !important;
+  width: 100% !important;
+}
+app-slider .slider ion-slides .content-text {
   border-radius: 2px;
   border: 1px solid var(--CR002);
-  display: block;
   color: var(--CR008);
   text-align: center;
-  margin: 0px 10px;
+  margin: auto;
   opacity: 0.85;
   background: var(--CR004);
+  position: absolute;
+  bottom: 5vh;
 }
 
 app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card {
@@ -214,6 +218,7 @@ app-list-profile span.logout {
   width: 9em;
 }
 
+
 .approved {
   background: var(--CR005) !important;
   color: var(--CR000) !important;
@@ -224,4 +229,7 @@ app-list-profile span.logout {
   background: var(--CR010) !important;
   color: var(--CR000) !important;
   padding: 0.2em 0.5em;
+}
+span.button-text.sc-ion-back-button-ios {
+  display: none;
 }

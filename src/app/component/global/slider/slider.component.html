@@ -10,8 +10,10 @@
     (ionSlidesDidLoad)="ionSlidesDidLoad()">
     <ion-slide *ngFor="let img of contentList" (click)="openBerita(img.id)">
       <div class="box">
-        <img [src]="img?.file" alt="">
-        <p class="content-text backgroundku">{{img.title}}</p>
+        <img [src]="img?.file" alt="">     
+      </div>
+      <div class="content-text">
+        {{img.title}}
       </div>
     </ion-slide>
   </ion-slides>

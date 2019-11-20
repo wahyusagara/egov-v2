@@ -2,7 +2,7 @@ ion-content.profile{
     
     & ion-grid{
 
-        & span{
+        & > span{
             display: block;
             text-align: center;
             color: var(--CR000);
@@ -17,11 +17,56 @@ ion-content.profile{
                     display: contents;
                 }
             }
+            &.action{
+                display: block;
+                padding: 0.5em 0.5em;
+    
+                & .back-button{
+    
+                    background: var(--CR011);
+                    opacity: 0.4;
+                    margin: auto;
+                    text-align: center;
+                    border-radius: 0.5vh;
+                    padding: 0px 7px 0px 5px;
+                    width: 35px;
+                    float: left;
+                    margin-left: 1vh;
+                    & ion-buttons{
+    
+                        filter: grayscale(1);
+                        color: red;
+                    }
+    
+                    & .back-button-has-icon-only.sc-ion-back-button-md-h{
+                        height: 0px !important;
+                        width: 0px !important;
+                    }
+                }
+    
+                & .more{
+                    width: 25px;
+                    float: right;
+                    
+                    margin-right: 1vh;
+                    & img{
+                        fill: var(CR000);
+                    }
+                }
+    
+                & ion-buttons .button-text{
+                    display: none !important;
+                }
+            }
+    
         }
+        
 
         &.header{
             height: 35vh;
             background: var(--CR003);
+
+           
         }
         &.account-info{
             margin-top: -1.3em;

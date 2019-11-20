@@ -1,0 +1,23 @@
+ion-grid.header.ios.grid-fixed.hydrated {
+    min-height: 5em;
+    background: var(--CR003);
+    color: var(--CR000);
+    font-size: 24px;
+    /* display: block; */
+    /* margin: auto; */
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  ion-grid.header.ios.grid-fixed.hydrated div {
+    vertical-align: middle;
+    height: auto;
+    margin: auto;
+    transform: translateY(1.7em);
+  }
+  
+   
+  ion-grid.content {
+    margin: 0.5em 1em;  
+  }
+  
