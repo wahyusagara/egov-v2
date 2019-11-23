@@ -26,6 +26,7 @@ import { ListLogBookComponent } from "./list/list-log-book/list-log-book.compone
 import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.component";
 import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.component";
 import { ListProfileComponent } from "./list/list-profile/list-profile.component";
+import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { ListProfileComponent } from "./list/list-profile/list-profile.component
     ListLogBookComponent,
     ListMenuLainComponent,
     ListEntriDataComponent,
-    ListProfileComponent
+    ListProfileComponent,
+    ChartjsComponent
   ],
   imports: [
     CommonModule,
