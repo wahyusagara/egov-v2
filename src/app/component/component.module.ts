@@ -67,7 +67,8 @@ import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
     ListLogBookComponent,
     ListMenuLainComponent,
     ListEntriDataComponent,
-    ListProfileComponent
+    ListProfileComponent,
+    ChartjsComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [
