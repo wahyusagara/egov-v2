@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { GlobalFuncService } from '../../services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,14 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class LoginPage implements OnInit {
   username = '';
   password = '';
+  device_id = '';
 
   constructor(
     private menu: MenuController,
     private navCtrl: NavController,
     private global: GlobalFuncService,
-    private api: ApiService
+    private api: ApiService,
+    private fcm: FCM
   ) { }
 
   ngOnInit() {
@@ -35,29 +38,51 @@ export class LoginPage implements OnInit {
     // }, 2000)
   }
   login() {
-    return this.api.login(this.username, this.password).then((result) => {
+    return this.api.login(this.username, this.password).then(async (result) => {
       console.log(result);
       let a;
       a = result;
       if (a.length > 0) {
       // if (a.success) {
+        // await this.getDeviceId().then((r) => {
+        //   console.log(r);
+        //   this.device_id = r;
+        // }).catch((e) => {
+        //   console.log(e);
+        //   this.device_id = 'web';
+        // })
+        // await this.api.uploadId(this.username, this.device_id);
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
       // console.log(a.text);
-    }).catch((err) => {
+    }).catch(async (err) => {
       console.log(err.error.text);
       let x = '';
       x = err.error.text;
       if (x.includes('true')) {
+        // await this.getDeviceId().then((r) => {
+        //   console.log(r);
+        //   this.device_id = r;
+        // }).catch((e) => {
+        //   console.log(e);
+        //   this.device_id = 'web';
+        // })
+        // await this.api.uploadId(this.username, this.device_id);
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
     });
+  }
+  async getDeviceId() {
+    console.log('get Device Id');
+    this.device_id = await this.fcm.getToken();
+    console.log(this.device_id);
+    return this.device_id;
   }
 
 }

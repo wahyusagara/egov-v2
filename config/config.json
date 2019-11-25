@@ -5,7 +5,10 @@
       "database": "dfe1td3vbnudfi",
       "host": "ec2-184-72-223-163.compute-1.amazonaws.com",
       "port":5432,
-      "dialect": "postgres"
+      "dialect": "postgres",
+      "dialectOptions": {
+        "ssl":true
+      }
     },
     "test": {
       "username": "root",
