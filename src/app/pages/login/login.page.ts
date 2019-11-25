@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
-import { GlobalFuncService } from "../../services/global-func.service";
+import { GlobalFuncService } from '../../services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  username = "";
-  password = "";
+  username = '';
+  password = '';
 
   constructor(
     private menu: MenuController,
@@ -37,12 +37,12 @@ export class LoginPage implements OnInit {
   login() {
     return this.api.login(this.username, this.password).then((result) => {
       console.log(result);
-      var a;
+      let a;
       a = result;
       console.log(a.text);
     }).catch((err) => {
       console.log(err.error.text);
-      var x = "";
+      let x = '';
       x = err.error.text;
       if (x.includes('true')) {
         this.global.showToast('Login successfully', 'success');

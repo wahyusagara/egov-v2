@@ -4,6 +4,8 @@ var morgan = require('morgan');
 var bodyParser = require('body-parser');    
 var cors = require('cors');
 var compression = require('compression');
+const request = require('request');
+const btoa = require('btoa');
  
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
@@ -16,6 +18,40 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers,X-Access-Token,XKey,Authorization');
   next();
 });
+
+app.post('/api/login', (req, res) => {
+  const headers = req.headers;
+  let url1 = 'https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid';
+  console.log(req.body);
+  const username = req.body.username ? req.body.username : '';
+  const password = req.body.password ? req.body.password : '';
+  const token = username + ':' + password;
+  const hash = btoa(token);
+  request.post({
+    url: url1,
+    headers: {
+      // 'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Authorization': 'Basic ' + hash
+    },
+    "rejectUnauthorized": false, 
+    body: JSON.stringify(req.body)}, function optionalCallback(err, httpResponse, body2) {
+      if (err) {
+        return console.error('upload failed:', err);
+      }
+      // console.log('Upload successful!');//  Server responded with:', JSON.stringify(body));
+      // console.log(httpResponse);
+      console.log(body2);
+      console.log(headers);
+      let hasil;
+      if (body2.includes('"success":true')){
+        hasil = '{"success": true}'
+      } else {
+        hasil = '{"success": false}'
+      }
+      res.send(hasil);
+  })
+})
  
 app.use(express.static('www'));
 app.use(compression());

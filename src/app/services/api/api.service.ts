@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ export class ApiService {
 
   constructor(
     private httpClt: HttpClient
-  ) { 
+  ) {
     // this.headers = this.headers.set('Content-Type', 'application/json');
     // this.headers = this.headers.set('Accept', 'application/json');
   }
@@ -24,10 +24,20 @@ export class ApiService {
       // body.set('username', user);
       // body.set('password', pass);
       // const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid?namaornip=199111252019031002";
-      const url = "https://solman-timesheet.herokuapp.com/egov/login"
+      const url = 'https://https://egov-big.herokuapp.com/api/login';
+      const bodi = {
+        username: user,
+        password: pass
+      };
       // const body = "username=" + user + "&password=" + pass;
       // console.log(body);
-      this.httpClt.post(url, {headers: new Headers()}).subscribe(
+      this.httpClt.post(
+        url,
+        {
+          headers: new Headers(),
+          body: bodi
+        }
+      ).subscribe(
         res => { resolve(res); },
         err => { reject(err); }
       );
@@ -37,8 +47,8 @@ export class ApiService {
   getData(url) {
     return new Promise((resolve, reject) => {
       this.httpClt.get(url, {headers: this.headers}).subscribe(
-        res => { resolve(res) },
-        err => { reject(err) }
+        res => { resolve(res); },
+        err => { reject(err); }
       );
     });
   }
