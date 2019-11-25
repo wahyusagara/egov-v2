@@ -6,6 +6,7 @@ var cors = require('cors');
 var compression = require('compression');
 const request = require('request');
 const btoa = require('btoa');
+var db = require('./models');
  
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
