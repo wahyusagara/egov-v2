@@ -15,6 +15,11 @@ export class ApiService {
   }
 
   login(user, pass) {
+    // FOR EASY DEVELOPMENT
+    // if (user === '' && pass === '') {
+    //   user = 'dat4aks3s';
+    //   pass = 'c1b1n0ng';
+    // }
     return new Promise((resolve, reject) => {
       // this.headers = this.headers.set('Content-Type', 'multipart/form-data');
       // this.headers = this.headers.set('Authorization', 'Basic ZGF0NGFrczNzOmMxYjFuMG5n');
@@ -25,17 +30,14 @@ export class ApiService {
       // body.set('password', pass);
       // const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid?namaornip=199111252019031002";
       const url = 'https://egov-big.herokuapp.com/api/login';
-      const bodi = {
-        username: user,
-        password: pass
-      };
       // const body = "username=" + user + "&password=" + pass;
       // console.log(body);
       this.httpClt.post(
         url,
         {
           headers: new Headers(),
-          body: bodi
+          username: user,
+          password: pass
         }
       ).subscribe(
         res => { resolve(res); },

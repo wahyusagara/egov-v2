@@ -41,6 +41,7 @@ export class LoginPage implements OnInit {
       a = result;
       if (a.success) {
         this.global.showToast('Login successfully', 'success');
+        this.navCtrl.navigateRoot('home');
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
@@ -55,7 +56,7 @@ export class LoginPage implements OnInit {
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
-    })
+    });
   }
 
 }
