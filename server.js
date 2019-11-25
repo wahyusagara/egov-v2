@@ -19,9 +19,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+
+
 app.post('/api/login', (req, res) => {
   const headers = req.headers;
-  let url1 = 'https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid';
+  // let url1 = 'https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid';
   console.log(req.body);
   const username = req.body.username ? req.body.username : '';
   const password = req.body.password ? req.body.password : '';
@@ -47,6 +49,34 @@ app.post('/api/login', (req, res) => {
       console.log(headers);
       let hasil;
       if (body2.includes('"success":true')){
+        hasil = '{"success": true}'
+      } else {
+        hasil = '{"success": false}'
+      }
+      res.send(hasil);
+  })
+})
+
+app.post('/api/login2', (req, res) => {
+  const headers = req.headers;
+  // let url1 = 'https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid';
+  console.log(req.body);
+  const username = req.body.username ? req.body.username : '';
+  const password = req.body.password ? req.body.password : '';
+  const url1 = `https://sdm.big.go.id/siap/service/index.php/pegawai?NIPBARU=${username}`;
+  const token = username + ':' + password;
+  console.log(token);
+  const hash = btoa(token);
+  console.log(hash);
+  request.get(url1, function optionalCallback(err, httpResponse, body2) {
+      if (err) {
+        return console.error('login failed:', err);
+      }
+      console.log(body2);
+      console.log(headers);
+      let hasil;
+      const body3 = JSON.parse(body2);
+      if (body3.length >= 1){
         hasil = '{"success": true}'
       } else {
         hasil = '{"success": false}'
