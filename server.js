@@ -38,7 +38,7 @@ app.post('/api/login', (req, res) => {
       'Accept': 'application/json',
       'Authorization': 'Basic ' + hash
     },
-    "rejectUnauthorized": false, 
+    "rejectUnauthorized": false,
     body: JSON.stringify(req.body)}, function optionalCallback(err, httpResponse, body2) {
       if (err) {
         return console.error('upload failed:', err);
@@ -68,7 +68,7 @@ app.post('/api/login2', (req, res) => {
   console.log(token);
   const hash = btoa(token);
   console.log(hash);
-  request.get(url1, function optionalCallback(err, httpResponse, body2) {
+  request.get({ url:url1, "rejectUnauthorized": false},function optionalCallback(err, httpResponse, body2) {
       if (err) {
         return console.error('login failed:', err);
       }
@@ -77,7 +77,7 @@ app.post('/api/login2', (req, res) => {
       let hasil;
       const body3 = JSON.parse(body2);
       if (body3.length >= 1){
-        hasil = '{"success": true}'
+        hasil = `{"success": true, "data":${body2}}`
       } else {
         hasil = '{"success": false}'
       }
