@@ -24,7 +24,7 @@ export class ApiService {
       // body.set('username', user);
       // body.set('password', pass);
       // const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid?namaornip=199111252019031002";
-      const url = 'https://https://egov-big.herokuapp.com/api/login';
+      const url = 'https://egov-big.herokuapp.com/api/login';
       const bodi = {
         username: user,
         password: pass

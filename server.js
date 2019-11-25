@@ -27,6 +27,7 @@ app.post('/api/login', (req, res) => {
   const password = req.body.password ? req.body.password : '';
   const token = username + ':' + password;
   const hash = btoa(token);
+  console.log(hash);
   request.post({
     url: url1,
     headers: {
