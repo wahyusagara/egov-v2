@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import { MenuController, NavController, Platform } from '@ionic/angular';
 import { GlobalFuncService } from '../../services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { FCM } from '@ionic-native/fcm/ngx';
@@ -19,7 +19,8 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private global: GlobalFuncService,
     private api: ApiService,
-    private fcm: FCM
+    private fcm: FCM,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
@@ -43,15 +44,13 @@ export class LoginPage implements OnInit {
       let a;
       a = result;
       if (a.length > 0) {
+        if (this.platform.is('cordova')) {
+          await this.getDeviceId()
+          if (this.device_id !== undefined && this.device_id !== 'web') {
+            await this.api.uploadId(this.username, this.device_id);
+          }
+        }
       // if (a.success) {
-        // await this.getDeviceId().then((r) => {
-        //   console.log(r);
-        //   this.device_id = r;
-        // }).catch((e) => {
-        //   console.log(e);
-        //   this.device_id = 'web';
-        // })
-        // await this.api.uploadId(this.username, this.device_id);
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
@@ -63,14 +62,12 @@ export class LoginPage implements OnInit {
       let x = '';
       x = err.error.text;
       if (x.includes('true')) {
-        // await this.getDeviceId().then((r) => {
-        //   console.log(r);
-        //   this.device_id = r;
-        // }).catch((e) => {
-        //   console.log(e);
-        //   this.device_id = 'web';
-        // })
-        // await this.api.uploadId(this.username, this.device_id);
+        if (this.platform.is('cordova')) {
+          await this.getDeviceId()
+          if (this.device_id !== undefined && this.device_id !== 'web') {
+            await this.api.uploadId(this.username, this.device_id);
+          }
+        }
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
@@ -80,8 +77,11 @@ export class LoginPage implements OnInit {
   }
   async getDeviceId() {
     console.log('get Device Id');
-    this.device_id = await this.fcm.getToken();
-    console.log(this.device_id);
+    this.fcm.getToken().then((r) => {
+      this.device_id = r;
+    }).catch((e) => {
+      this.device_id = 'web';
+    });
     return this.device_id;
   }
 
