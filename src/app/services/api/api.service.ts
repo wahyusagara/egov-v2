@@ -29,16 +29,17 @@ export class ApiService {
       // body.set('username', user);
       // body.set('password', pass);
       // const url = "https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid?namaornip=199111252019031002";
-      const url = 'https://egov-big.herokuapp.com/api/login2';
+      // const url = 'https://egov-big.herokuapp.com/api/login2';
+      const url = `https://sdm.big.go.id/siap/service/index.php/pegawai?NIPBARU=${user}`;
       // const body = "username=" + user + "&password=" + pass;
       // console.log(body);
-      this.httpClt.post(
-        url,
-        {
-          headers: new Headers(),
-          username: user,
-          password: pass
-        }
+      this.httpClt.get(
+        url
+        // {
+        //   headers: new Headers(),
+        //   username: user,
+        //   password: pass
+        // }
       ).subscribe(
         res => { resolve(res); },
         err => { reject(err); }

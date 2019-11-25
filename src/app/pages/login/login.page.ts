@@ -39,13 +39,14 @@ export class LoginPage implements OnInit {
       console.log(result);
       let a;
       a = result;
-      if (a.success) {
+      if (a.length > 0) {
+      // if (a.success) {
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
-      console.log(a.text);
+      // console.log(a.text);
     }).catch((err) => {
       console.log(err.error.text);
       let x = '';
