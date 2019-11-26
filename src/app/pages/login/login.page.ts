@@ -35,11 +35,12 @@ export class LoginPage implements OnInit {
     // }, 2000)
   }
   login() {
+    if (this.username === '') { this.global.showToast('Login Failed', 'danger'); }
     return this.api.login(this.username, this.password).then((result) => {
       console.log(result);
       let a;
       a = result;
-      if (a.length > 0) {
+      if (a.length === 1) {
       // if (a.success) {
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
