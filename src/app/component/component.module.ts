@@ -27,6 +27,7 @@ import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.comp
 import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.component";
 import { ListProfileComponent } from "./list/list-profile/list-profile.component";
 import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
+import { TestingComponent } from "./global/testing/testing.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
     ListMenuLainComponent,
     ListEntriDataComponent,
     ListProfileComponent,
-    ChartjsComponent
+    ChartjsComponent,
+    TestingComponent
   ],
   imports: [
     CommonModule,
@@ -68,7 +70,8 @@ import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
     ListMenuLainComponent,
     ListEntriDataComponent,
     ListProfileComponent,
-    ChartjsComponent
+    ChartjsComponent,
+    TestingComponent
   ],
   // entryComponents: [TabmenusComponent],
   schemas: [

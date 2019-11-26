@@ -1,0 +1,50 @@
+<ion-list>
+  <ion-item>
+    <ion-label>Profile</ion-label>
+    <ion-toggle (click)="isClicked(data.myToggle)" [(ngModel)]="data.myToggle" color="primary">
+    </ion-toggle>
+  </ion-item>
+</ion-list>
+
+<div *ngIf="data.myToggle; then student else lecture"></div>
+
+<ng-template #student>
+  <ion-card>
+    <ion-card-header>
+      Student Profile
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item>
+        Name : xyz
+      </button>
+
+      <button ion-item>
+        Course : Bachelor of Computer
+      </button>
+      <button ion-item>
+        Year : 2nd Year
+      </button>
+    </ion-list>
+  </ion-card>
+</ng-template>
+
+<ng-template #lecture>
+  <ion-card>
+    <ion-card-header>
+      Lecture Profile
+    </ion-card-header>
+
+    <ion-list>
+      <button ion-item>
+        Name : ABC
+      </button>
+      <button ion-item>
+        Department : Computer
+      </button>
+      <button ion-item>
+        Salary : $ 1000
+      </button>
+    </ion-list>
+  </ion-card>
+</ng-template>

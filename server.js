@@ -7,6 +7,7 @@ var compression = require('compression');
 const request = require('request');
 const btoa = require('btoa');
 var db = require('./models');
+var admin = require('firebase-admin');
  
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
@@ -20,7 +21,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-
+const credential = require('./egov-big-firebase-adminsdk-7b29q-c8133a42cc.json');
+admin.initializeApp({
+  credential: admin.credential.cert(credential),
+  projectId: "egov-big",
+  databaseURL: "https://egov-big.firebaseio.com",
+  storageBucket: "egov-big.appspot.com"
+});
 
 app.post('/api/login', (req, res) => {
   const headers = req.headers;
@@ -100,13 +107,67 @@ app.post('/api/login2', (req, res) => {
       res.send(hasil);
   })
 })
+
+app.post('/api/send-notif' , (req, res) => {
+  const body = req.body;
+  db.sequelize.query(`SELECT device_id from device_list where nip = '${body.nip}' and status = 1`
+  ,{type: db.sequelize.QueryTypes.SELECT}).then(async (result) => {
+    var listId = [];
+    await result.map((val, index) => {
+      if (val.device_id) {
+        listId.push(val.device_id);
+      }
+    })
+    if (listId.length > 0) {
+      const data = {
+        msg: 'You have request',
+        url: '/perjalanan-dinas'
+      };
+      admin.messaging().sendMulticast({
+        tokens: listId,
+        data: data,
+        notification: {
+          title: "GO Green",
+          body: "You have request"
+        }
+      }).then((success) => {
+        console.log(success);
+        res.send({
+          sukes: true,
+          msg: "Send notification successfully"
+        })
+      }).catch((err) => {
+        console.log(err);
+        res.send({
+          sukes: false,
+          msg: "Failed send notification"
+        });
+      })
+    } else {
+      res.send({
+        sukes: true,
+        msg: "No user login"
+      });
+    }
+    console.log(listId);
+    // res.send({
+    //   sukses: true
+    // });
+  }).catch((err) => {
+    console.log(err);
+    res.send({
+      sukses: false,
+      msg: "Failed send notification"
+    });
+  })
+})
  
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-app.get('/*', (req, res) => {
-  res.sendFile(__dirname + '/www/index.html');
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(__dirname + '/www/index.html');
+// })
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
