@@ -29,7 +29,8 @@ export class ListProfileComponent implements OnInit {
     this.navCtrl.navigateRoot('login');
   }
   async getData() {
-    return this.api.getData("https://sdm.big.go.id/siap/service/index.php/pegawai?NIPBARU=197601012005021002")
+    const nip = localStorage.getItem('nipbaru') ? localStorage.getItem('nipbaru') : '';
+    return this.api.getData(`https://sdm.big.go.id/siap/service/index.php/pegawai?NIPBARU=${nip}`)
     .then((result) => {
       const resp = result[0];
       const ttl = new Date(resp.TGLLAHIR);

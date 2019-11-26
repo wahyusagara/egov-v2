@@ -44,6 +44,7 @@ export class LoginPage implements OnInit {
       let a;
       a = result;
       if (a.length > 0) {
+        localStorage.setItem('nipbaru', this.username);
         if (this.platform.is('cordova')) {
           await this.getDeviceId()
           if (this.device_id !== undefined && this.device_id !== 'web') {
@@ -63,8 +64,10 @@ export class LoginPage implements OnInit {
       x = err.error.text;
       if (x.includes('true')) {
         if (this.platform.is('cordova')) {
-          await this.getDeviceId()
+          await this.getDeviceId();
+          console.log(this.device_id);
           if (this.device_id !== undefined && this.device_id !== 'web') {
+            // console.log(this.device_id);
             await this.api.uploadId(this.username, this.device_id);
           }
         }
@@ -77,11 +80,14 @@ export class LoginPage implements OnInit {
   }
   async getDeviceId() {
     console.log('get Device Id');
-    this.fcm.getToken().then((r) => {
-      this.device_id = r;
-    }).catch((e) => {
-      this.device_id = 'web';
-    });
+    this.fcm.getToken().then(
+      r => {
+        // console.log(r);
+        this.device_id = r;
+      },
+      e => {
+        console.log(e);
+      });
     return this.device_id;
   }
 
