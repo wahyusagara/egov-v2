@@ -55,4 +55,20 @@ export class ApiService {
       );
     });
   }
+  uploadId(nip, device_id) {
+    const url = 'https://egov-big.herokuapp.com/api/insert-id';
+    this.headers = this.headers.set('Content-Type', 'application/json');
+    return new Promise((resolve, reject) => {
+      const body = {
+        "nip": nip,
+	      "device_id": device_id
+      }
+      this.httpClt.post(url, body, {
+        headers: this.headers
+      }).subscribe(
+        res => { resolve(res); },
+        err => { reject(err); }
+      )
+    })
+  }
 }

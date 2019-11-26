@@ -6,6 +6,7 @@ var cors = require('cors');
 var compression = require('compression');
 const request = require('request');
 const btoa = require('btoa');
+var db = require('./models');
  
 app.use(morgan('dev'));                                        
 app.use(bodyParser.urlencoded({'extended':'true'}));            
@@ -56,6 +57,21 @@ app.post('/api/login', (req, res) => {
       res.send(hasil);
   })
 })
+app.post('/api/insert-id', (req,res) => {
+  const body = req.body;
+  db.sequelize.query(`INSERT INTO device_list (device_id, nip) VALUES ('${body.device_id}', '${body.nip}');`,
+  {type: db.sequelize.QueryTypes.INSERT}).then((result) => {
+    console.log(result);
+    res.send({
+      sukes: true
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.send({
+      sukses: false
+    });
+  });
+})
 
 app.post('/api/login2', (req, res) => {
   const headers = req.headers;
@@ -87,7 +103,7 @@ app.post('/api/login2', (req, res) => {
  
 app.use(express.static('www'));
 app.use(compression());
-// app.use(express.static('www'));
+app.use(express.static('www'));
 app.get('/*', (req, res) => {
   res.sendFile(__dirname + '/www/index.html');
 })

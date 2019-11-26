@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController, NavController } from '@ionic/angular';
+import { MenuController, NavController, Platform } from '@ionic/angular';
 import { GlobalFuncService } from '../../services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 @Component({
   selector: 'app-login',
@@ -11,12 +12,15 @@ import { ApiService } from 'src/app/services/api/api.service';
 export class LoginPage implements OnInit {
   username = '';
   password = '';
+  device_id = '';
 
   constructor(
     private menu: MenuController,
     private navCtrl: NavController,
     private global: GlobalFuncService,
-    private api: ApiService
+    private api: ApiService,
+    private fcm: FCM,
+    private platform: Platform
   ) { }
 
   ngOnInit() {
@@ -36,11 +40,17 @@ export class LoginPage implements OnInit {
   }
   login() {
     if (this.username === '') { this.global.showToast('Login Failed', 'danger'); }
-    return this.api.login(this.username, this.password).then((result) => {
+    return this.api.login(this.username, this.password).then(async (result) => {
       console.log(result);
       let a;
       a = result;
-      if (a.length === 1) {
+      if (a.length > 0) {
+        if (this.platform.is('cordova')) {
+          await this.getDeviceId()
+          if (this.device_id !== undefined && this.device_id !== 'web') {
+            await this.api.uploadId(this.username, this.device_id);
+          }
+        }
       // if (a.success) {
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
@@ -48,17 +58,32 @@ export class LoginPage implements OnInit {
         this.global.showToast('Login Failed', 'danger');
       }
       // console.log(a.text);
-    }).catch((err) => {
+    }).catch(async (err) => {
       console.log(err.error.text);
       let x = '';
       x = err.error.text;
       if (x.includes('true')) {
+        if (this.platform.is('cordova')) {
+          await this.getDeviceId()
+          if (this.device_id !== undefined && this.device_id !== 'web') {
+            await this.api.uploadId(this.username, this.device_id);
+          }
+        }
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');
       } else {
         this.global.showToast('Login Failed', 'danger');
       }
     });
+  }
+  async getDeviceId() {
+    console.log('get Device Id');
+    this.fcm.getToken().then((r) => {
+      this.device_id = r;
+    }).catch((e) => {
+      this.device_id = 'web';
+    });
+    return this.device_id;
   }
 
 }
