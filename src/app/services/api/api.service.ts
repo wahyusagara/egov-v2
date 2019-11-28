@@ -61,7 +61,7 @@ export class ApiService {
     return new Promise((resolve, reject) => {
       const body = {
         "nip": nip,
-	      "device_id": device_id
+        "device_id": device_id
       }
       this.httpClt.post(url, body, {
         headers: this.headers

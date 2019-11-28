@@ -15,6 +15,7 @@ import { TabmenusComponent } from "./global/tabmenus/tabmenus.component";
 import { CalendarComponent } from "./thirdpaty/calendar/calendar.component";
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
 
 /* List */
 import { ListMenuComponent } from "./list/list-menu/list-menu.component";
@@ -26,7 +27,6 @@ import { ListLogBookComponent } from "./list/list-log-book/list-log-book.compone
 import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.component";
 import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.component";
 import { ListProfileComponent } from "./list/list-profile/list-profile.component";
-import { ChartjsComponent } from "./thirdpaty/chartjs/chartjs.component";
 import { TestingComponent } from "./global/testing/testing.component";
 
 @NgModule({
@@ -73,10 +73,8 @@ import { TestingComponent } from "./global/testing/testing.component";
     ChartjsComponent,
     TestingComponent
   ],
-  // entryComponents: [TabmenusComponent],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
-    // NO_ERRORS_SCHEMA
   ]
 })
 export class ComponentModule { }

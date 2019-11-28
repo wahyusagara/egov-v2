@@ -13,6 +13,7 @@ export class LoginPage implements OnInit {
   username = '';
   password = '';
   device_id = '';
+  listPrime = [];
 
   constructor(
     private menu: MenuController,
@@ -46,9 +47,11 @@ export class LoginPage implements OnInit {
       a = result;
       if (a.length > 0) {
         localStorage.setItem('nipbaru', this.username);
+        localStorage.setItem('datakaryawan', JSON.stringify(a[0]));
         if (this.platform.is('cordova')) {
-          await this.getDeviceId()
+          await this.getDeviceId();
           if (this.device_id !== undefined && this.device_id !== 'web') {
+            // const eselon = JSON.parse(JSON.stringify(a[0]))
             await this.api.uploadId(this.username, this.device_id);
           }
         }
@@ -60,7 +63,6 @@ export class LoginPage implements OnInit {
       }
       // console.log(a.text);
     }).catch(async (err) => {
-      console.log(err.error.text);
       let x = '';
       x = err.error.text;
       if (x.includes('true')) {
@@ -70,7 +72,6 @@ export class LoginPage implements OnInit {
               await this.api.uploadId(this.username, this.device_id);
             }
           });
-          console.log('abcdefghijklmopqrstuvwxyz ', this.device_id);
         }
         this.global.showToast('Login successfully', 'success');
         this.navCtrl.navigateRoot('home');

@@ -110,7 +110,7 @@ app.post('/api/login2', (req, res) => {
 
 app.post('/api/send-notif' , (req, res) => {
   const body = req.body;
-  db.sequelize.query(`SELECT device_id from device_list where nip = '${body.nip}' and status = 1`
+  db.sequelize.query(`SELECT device_id from device_list where nip IN (${body.nip}) and status = 1`
   ,{type: db.sequelize.QueryTypes.SELECT}).then(async (result) => {
     var listId = [];
     await result.map((val, index) => {
@@ -165,9 +165,9 @@ app.post('/api/send-notif' , (req, res) => {
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-// app.get('/*', (req, res) => {
-//   res.sendFile(__dirname + '/www/index.html');
-// })
+app.get('/*', (req, res) => {
+  res.sendFile(__dirname + '/www/index.html');
+})
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
