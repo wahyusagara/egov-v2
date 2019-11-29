@@ -46,9 +46,22 @@ export class ApiService {
       );
     });
   }
+  getData(url) {
+    return new Promise((resolve, reject) => {
+      this.httpClt.get(
+        url,
+        {
+          headers: new HttpHeaders(),
+        }
+      ).subscribe(
+        res => { resolve(res); },
+        err => { reject(err); }
+      );
+    });
+  }
   insertData(data) {
     return new Promise((resolve, reject) => {
-      this.httpClt.post("http://localhost:5000/api/upload-atasan", data).subscribe(
+      this.httpClt.post("https://egov-big.herokuapp.com/api/upload-atasan", data).subscribe(
         res => { resolve(res); },
         err => { reject(err) }
       )
@@ -69,7 +82,7 @@ export class ApiService {
     });
   }
   pushNotif(data) {
-    const url = "http://localhost:5000/api/send-notif"
+    const url = "https://egov-big.herokuapp.com/api/send-notif"
     return new Promise((resolve, reject) => {
       this.httpClt.post(url, data).subscribe(
         res => { resolve(res) },
@@ -94,6 +107,6 @@ export class ApiService {
     })
   }
   hello_worlds() {
-    this.httpClt.get('localhost:5000/api/testget')
+    this.httpClt.get('https://egov-big.herokuapp.com/api/testget')
   }
 }

@@ -49,7 +49,7 @@ export class ListPerjanalanDinasComponent implements OnInit {
 
   ngOnInit() {}
   async getDataAtasan() {
-    return this.api.getAtasan("http://localhost:5000/api/get-atasan", "").then((result) => {
+    return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", "").then((result) => {
       console.log(result);
     })
   }
