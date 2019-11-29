@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 
@@ -7,8 +7,10 @@ import { ApiService } from 'src/app/services/api/api.service';
   templateUrl: './atasan.page.html',
   styleUrls: ['./atasan.page.scss'],
 })
-export class AtasanPage implements OnInit, AfterViewInit {
-  listAtasan = []
+export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
+  listAtasan = [];
+  listSelected = [];
+  search:string;
 
   constructor(
     private popOverCtrl: PopoverController,
@@ -18,17 +20,27 @@ export class AtasanPage implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit() {
-    this.getDataAtasan()
+    
+  }
+  ngAfterContentInit() {
+    this.getDataAtasan();
+  }
+  async onSearchChange(event) {
+    console.log(event);
+    this.search = await event.target.value;
+    await this.getDataAtasan();
   }
   getDataAtasan() {
-    this.api.getData('https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk').then((result) => {
+    return this.api.getAtasan("http://localhost:5000/api/get-atasan", this.search ? this.search : "").then((result) => {
       console.log(result);
-      let a;
-      a = result
-      this.listAtasan = a;
-    }).catch((err) => {
-      console.log(err);
+      this.listAtasan = JSON.parse(JSON.stringify(result)).data;
     })
+  }
+  async submit() {
+    await this.popOverCtrl.dismiss(this.listAtasan.filter(x => x.isChecked === true));
+  }
+  async cancel() {
+    await this.popOverCtrl.dismiss();
   }
   async onSelect(event) {
     await this.popOverCtrl.dismiss(event.detail.value);

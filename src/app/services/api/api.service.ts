@@ -14,7 +14,7 @@ export class ApiService {
     // this.headers = this.headers.set('Accept', 'application/json');
   }
 
-  login(user, pass) {
+  login(user, pass?) {
     // FOR EASY DEVELOPMENT
     // if (user === '' && pass === '') {
     //   user = 'dat4aks3s';
@@ -46,13 +46,35 @@ export class ApiService {
       );
     });
   }
-
-  getData(url) {
+  insertData(data) {
     return new Promise((resolve, reject) => {
-      this.httpClt.get(url, {headers: this.headers}).subscribe(
+      this.httpClt.post("http://localhost:5000/api/upload-atasan", data).subscribe(
+        res => { resolve(res); },
+        err => { reject(err) }
+      )
+    })
+  }
+  getAtasan(url, search?) {
+    return new Promise((resolve, reject) => {
+      search ? this.headers = this.headers.set('search', search) : this.headers = this.headers.set('search', "");
+      this.httpClt.get(
+        url,
+        {
+          headers: this.headers,
+        }
+      ).subscribe(
         res => { resolve(res); },
         err => { reject(err); }
       );
+    });
+  }
+  pushNotif(data) {
+    const url = "http://localhost:5000/api/send-notif"
+    return new Promise((resolve, reject) => {
+      this.httpClt.post(url, data).subscribe(
+        res => { resolve(res) },
+        err => { reject(err) }
+      )
     });
   }
   uploadId(nip:string, device_id:string) {
@@ -70,5 +92,8 @@ export class ApiService {
         err => { reject(err); }
       )
     })
+  }
+  hello_worlds() {
+    this.httpClt.get('localhost:5000/api/testget')
   }
 }

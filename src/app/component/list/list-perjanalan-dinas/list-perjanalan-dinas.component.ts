@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { AtasanPage } from "../../../popover/atasan/atasan.page";
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-list-perjanalan-dinas',
@@ -39,13 +40,21 @@ export class ListPerjanalanDinasComponent implements OnInit {
       name: "Atasan 3",
     }
   ]
+  listAtasan = [];
 
   constructor(
-    private popOver: PopoverController
+    private popOver: PopoverController,
+    private api: ApiService
   ) { }
 
   ngOnInit() {}
+  async getDataAtasan() {
+    return this.api.getAtasan("http://localhost:5000/api/get-atasan", "").then((result) => {
+      console.log(result);
+    })
+  }
   async showPopOver(data) {
+    // await this.getDataAtasan();
     const p = await this.popOver.create({
       animated: true,
       backdropDismiss: true,
@@ -58,17 +67,28 @@ export class ListPerjanalanDinasComponent implements OnInit {
       translucent: true
     });
     p.onDidDismiss().then((res) => {
-      if (res.data !== undefined) {
-        console.log('dapat res data');
+      if (res.data !== undefined && res.data.length > 0) {
+        console.log(res.data);
         this.listDinas[this.listDinas.indexOf(data)].approved = data.approved === 2 ? 3 : data.approved;
+        this.sendNotif(res.data);
       }
-      // console.log(this.listDinas[1]);
-      
-      // this.listDinas.find(x => x.id === id)
-      console.log(res); 
     })
     
     return data.approved !== 2 ? {} : await p.present();
+  }
+
+  async sendNotif(data) {
+    var body = {
+      nip: []
+    };
+    await data.forEach(element => {
+      body.nip.push(`'${element.nip}'`)
+    });
+    await this.api.pushNotif(body).then((result) => {
+      console.log(result);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
 }

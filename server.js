@@ -108,6 +108,43 @@ app.post('/api/login2', (req, res) => {
   })
 })
 
+app.post('/api/upload-atasan', (req, res) => {
+  const body = req.body;
+  db.atasan.bulkCreate(body, 
+    {
+      fields: ['id', 'nama', 'nip', 'panggol', 'eselon', 'satker', 'jnsjabatan', 'statt', 'ket', 'tgl'],
+      individualHooks: false
+    }
+  ).then((result) => {
+      res.json({
+        sukses: true,
+        msg: "OK"
+      });
+  }).catch((err) => {
+    res.json({
+      sukses: false,
+      msg: "ERROR GAN"
+    });
+  });
+})
+
+app.get('/api/get-atasan', (req,res) => {
+  const body = req.body;
+  const head = req.headers;
+  db.sequelize.query(`SELECT * from atasan WHERE nama ILIKE '%${head.search ? head.search : ''}%' ORDER BY nama ASC`, 
+  {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
+    res.json({
+      sukses: true,
+      data: result
+    });
+  }).catch((err) => {
+    res.json({
+      sukses: false,
+      msg: JSON.stringify(err)
+    });
+  })
+})
+
 app.post('/api/send-notif' , (req, res) => {
   const body = req.body;
   db.sequelize.query(`SELECT device_id from device_list where nip IN (${body.nip}) and status = 1`
@@ -165,9 +202,9 @@ app.post('/api/send-notif' , (req, res) => {
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-app.get('/*', (req, res) => {
-  res.sendFile(__dirname + '/www/index.html');
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(__dirname + '/www/index.html');
+// })
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));

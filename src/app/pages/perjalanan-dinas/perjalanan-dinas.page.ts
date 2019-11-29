@@ -48,6 +48,22 @@ export class PerjalananDinasPage implements OnInit {
 
   ngOnInit() {
   }
+  async ionViewDidEnter() {
+    const x = new Date().toISOString();
+    console.log(new Date(x).getTime());
+    // await this.getData();
+  }
+  async getData() {
+    fetch("https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk", {
+      referrer: "https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk",
+      keepalive: true
+    }).then((result) => {
+      console.log(result);
+      return result.json();
+    }).then((hasil) => {
+      console.log(hasil);
+    })
+  }
 
   createDinas() {
     this.navCtrl.navigateForward('perjalanan-dinas-create');
