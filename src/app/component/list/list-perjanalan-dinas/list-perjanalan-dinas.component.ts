@@ -9,6 +9,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   styleUrls: ['./list-perjanalan-dinas.component.scss'],
 })
 export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
+  resp;
   listDinas = [
     {
       id: 1,
@@ -60,6 +61,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
   async getDataSurtug() {
     const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
     return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, null, nip).then((result) => {
+      this.resp = result;
       this.listSurtug = JSON.parse(JSON.stringify(result)).data;
       console.log(this.listSurtug);
     }).catch((err) => {
@@ -80,14 +82,26 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       translucent: true
     });
     p.onDidDismiss().then((res) => {
-      if (res.data !== undefined && res.data.length > 0) {
-        console.log(res.data);
-        this.listDinas[this.listDinas.indexOf(data)].approved = data.approved === 2 ? 3 : data.approved;
-        this.sendNotif(res.data);
+      if (res.data !== undefined) {
+        this.updateStatus(res.data.id, res.data.data[0].nip);
+        this.sendNotif(res.data.data);
       }
-    })
+    });
     
     return data.status_approval !== 1 ? {} : await p.present();
+  }
+
+  async updateStatus(id, nip) {
+    const body = {
+      status: 2,
+      id: id,
+      atasan_nip: nip
+    }
+    this.api.postData("https://egov-big.herokuapp.com/api/approval-perjadin", body).then((result) => {
+      console.log(result);
+    }).catch((err) => {
+      console.log(err);
+    })
   }
 
   async sendNotif(data) {

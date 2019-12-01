@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, AfterContentInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, NavParams } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
@@ -11,13 +11,17 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
   listAtasan = [];
   listSelected = [];
   search:string;
+  id;
 
   constructor(
     private popOverCtrl: PopoverController,
-    private api: ApiService
+    private api: ApiService,
+    private navParams: NavParams
   ) { }
 
   ngOnInit() {
+    console.log(this.navParams.data.data);
+    this.id = this.navParams.data.data.id;
   }
   ngAfterViewInit() {
     
@@ -37,7 +41,13 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
     })
   }
   async submit() {
-    await this.popOverCtrl.dismiss(this.listAtasan.filter(x => x.isChecked === true));
+    let selected = [];
+    selected = this.listAtasan.filter(x => x.isChecked === true);
+    const data = {
+      id: this.id,
+      data: selected
+    }
+    await this.popOverCtrl.dismiss(data);
   }
   async cancel() {
     await this.popOverCtrl.dismiss();

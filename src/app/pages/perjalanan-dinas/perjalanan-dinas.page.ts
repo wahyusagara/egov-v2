@@ -39,7 +39,11 @@ export class PerjalananDinasPage implements OnInit {
       id: 3,
       name: "Atasan 3",
     }
-  ]
+  ];
+  data = {
+    isApproval: false
+  }
+  isApproval = true;
 
   constructor(
     private navCtrl: NavController,
@@ -53,6 +57,11 @@ export class PerjalananDinasPage implements OnInit {
     const x = new Date().toISOString();
     console.log(new Date(x).getTime());
     // await this.getData();
+  }
+  isClicked() {
+    // this.isApproval = !this.isApproval;
+    this.data.isApproval = !this.data.isApproval
+    console.log(this.data.isApproval);
   }
   async getData() {
     fetch("https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk", {

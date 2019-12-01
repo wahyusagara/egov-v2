@@ -216,6 +216,22 @@ app.post('/api/create-surtug', (req, res) => {
   })
 })
 
+app.post('/api/approval-perjadin', (req, res) => {
+  const body = req.body;
+  db.sequelize.query(`UPDATE surtug SET status_approval = ${body.status}, atasan_nip = '${body.atasan_nip}' WHERE id = ${body.id}`, 
+  {type: db.sequelize.QueryTypes.UPDATE}).then((result) => {
+    res.json({
+      sukses: true,
+      msg: "Update surtug successfully"
+    });
+  }).catch((err) => {
+    res.json({
+      sukses: false,
+      msg: "Update surtug failed"
+    });
+  })
+})
+
 app.get('/api/get-surtug', (req, res) => {
   const body = req.body;
   const head = req.headers;
@@ -239,9 +255,9 @@ app.get('/api/get-surtug', (req, res) => {
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-// app.get('/*', (req, res) => {
-//   res.sendFile(__dirname + '/www/index.html');
-// })
+app.get('/*', (req, res) => {
+  res.sendFile(__dirname + '/www/index.html');
+})
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));

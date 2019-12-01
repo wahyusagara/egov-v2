@@ -1,3 +1,31 @@
-<p>
-  list-perjalanan-dinas-approval works!
-</p>
+<ion-text *ngIf="resp && listSurtug.length === 0" color="primary">
+  <h1>Tidak ada data</h1>
+</ion-text>
+<ion-card *ngFor="let list of listSurtug" class="FFR03 CR008"  (click)="showPopOver(list)">
+  <ion-row>
+    <ion-col size="8">
+      <ion-label
+      [class]="list.status_approval === 1 ? 'rejected' : list.status_approval === 2 ? '' : list.status_approval === 3 ? 'approved' : list.status_approval === 4 ? 'rejected' : ''"
+      color="dark">
+      {{list.status_approval === 1 ? "Belum Minta Persetujuan" :
+      list.status_approval === 2 ? "Menunggu Persetujuan" :
+      list.status_approval === 3 ? "Telah Disetujui" :
+      list.status_approval === 4 ? "Telah Ditolak" : "x"}}
+    </ion-label>
+    </ion-col>
+    <ion-col size="4">
+      <ion-row class="ion-justify-content-end">
+        <ion-icon name="time"></ion-icon> {{list.tglb | date: "dd MMM yyyy"}}  
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row class="FFR05 CR008">
+    <span class="ion-justify-content-center">
+      {{list.namapeg}} - {{list.maksud}}
+    </span>
+    <span class="sparator black half"></span>
+    <span class="ion-justify-content-center">
+      {{list.lokasi}}
+    </span>
+  </ion-row>
+</ion-card>

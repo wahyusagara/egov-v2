@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AtasanPageModule } from './popover/atasan/atasan.module';
 import { AgendaPageModule } from "./popover/agenda/agenda.module";
+import { ApprovalPerjadinPageModule } from "./popover/approval-perjadin/approval-perjadin.module";
 import { HTTP } from '@ionic-native/http/ngx';
 import { FCM } from "@ionic-native/fcm/ngx";
 import { HttpClientModule } from "@angular/common/http";
@@ -25,6 +26,7 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     AtasanPageModule,
     AgendaPageModule,
+    ApprovalPerjadinPageModule,
     HttpClientModule,
     BrowserAnimationsModule
   ],
