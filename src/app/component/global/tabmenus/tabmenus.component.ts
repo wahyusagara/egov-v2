@@ -21,10 +21,10 @@ export class TabmenusComponent implements OnInit {
       route: "kehadiran"
     },
     {
-      img: "assets/img/plus.png",
-      label: "entry",
+      img: "assets/img/home-white.png",
+      label: "",
       class: "enty",
-      route: "entri-data"
+      route: "home"
     },
     {
       img: "assets/img/startup.png",

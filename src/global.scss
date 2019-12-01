@@ -36,7 +36,7 @@ ion-app ion-tabs ion-tab-bar.footer-nav--container img {
   height: 30px;
 }
 ion-toolbar {
-  --background:var(--CR003);
+  --background:var(--CR019);
 
   & ion-title {
     font-family: "Futura - Regular" !important;
@@ -63,7 +63,7 @@ app-dashboard.ion-page {
 
 
 app-login.ion-page {
-  background-color: var(--CR001);
+  background-color: var(--CR019);
 }
 
 .sparator {
@@ -90,10 +90,10 @@ app-login.ion-page {
 }
 
 app-tabmenus {
-  background: var(--CR001);
+  background: var(--CR019);
 }
 app-tabmenus ion-footer div {
-  background: var(--CR001);
+  background: var(--CR019);
   display: grid;
   position: inherit;
   float: left;
@@ -113,7 +113,7 @@ app-tabmenus ion-footer div.enty img {
   padding-top: 3px;
   margin: auto;
   display: block;
-  width: 47px;
+  width: 57px;
 }
 
 ion-content {
