@@ -221,7 +221,7 @@ app.get('/api/get-surtug', (req, res) => {
   const head = req.headers;
   const queryWithAtasan = `SELECT * from surtug WHERE atasan_nip = '${head.atasan_nip}' AND status = 1`;
   const queryById = `SELECT * from surtug WHERE id = ${head.id} AND status = 1`;
-  const queryAll = `SELECT * from surtug WHERE nip = ${head.nip} AND status = 1`;
+  const queryAll = `SELECT * from surtug WHERE nip = '${head.nip}' AND status = 1`;
   db.sequelize.query(head.id ? queryById : head.atasan_nip ? queryWithAtasan : queryAll, 
   {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
     res.json({
