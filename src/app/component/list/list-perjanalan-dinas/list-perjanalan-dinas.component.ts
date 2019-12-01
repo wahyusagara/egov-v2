@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,  AfterViewInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { AtasanPage } from "../../../popover/atasan/atasan.page";
 import { ApiService } from 'src/app/services/api/api.service';
@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/services/api/api.service';
   templateUrl: './list-perjanalan-dinas.component.html',
   styleUrls: ['./list-perjanalan-dinas.component.scss'],
 })
-export class ListPerjanalanDinasComponent implements OnInit {
+export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
   listDinas = [
     {
       id: 1,
@@ -41,6 +41,7 @@ export class ListPerjanalanDinasComponent implements OnInit {
     }
   ]
   listAtasan = [];
+  listSurtug = [];
 
   constructor(
     private popOver: PopoverController,
@@ -48,10 +49,22 @@ export class ListPerjanalanDinasComponent implements OnInit {
   ) { }
 
   ngOnInit() {}
+  async ngAfterViewInit() {
+    await this.getDataSurtug();
+  }
   async getDataAtasan() {
     return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", "").then((result) => {
       console.log(result);
     })
+  }
+  async getDataSurtug() {
+    const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
+    return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, null, nip).then((result) => {
+      this.listSurtug = JSON.parse(JSON.stringify(result)).data;
+      console.log(this.listSurtug);
+    }).catch((err) => {
+      console.log(err);
+    });
   }
   async showPopOver(data) {
     // await this.getDataAtasan();
@@ -59,9 +72,9 @@ export class ListPerjanalanDinasComponent implements OnInit {
       animated: true,
       backdropDismiss: true,
       component: AtasanPage,
-      // componentProps: {
-        
-      // },
+      componentProps: {
+        data: data
+      },
       keyboardClose: true,
       showBackdrop: true,
       translucent: true
@@ -74,7 +87,7 @@ export class ListPerjanalanDinasComponent implements OnInit {
       }
     })
     
-    return data.approved !== 2 ? {} : await p.present();
+    return data.status_approval !== 1 ? {} : await p.present();
   }
 
   async sendNotif(data) {

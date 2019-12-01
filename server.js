@@ -70,7 +70,7 @@ app.post('/api/insert-id', (req,res) => {
   {type: db.sequelize.QueryTypes.INSERT}).then((result) => {
     console.log(result);
     res.send({
-      sukes: true
+      sukses: true
     });
   }).catch((err) => {
     console.log(err);
@@ -131,7 +131,7 @@ app.post('/api/upload-atasan', (req, res) => {
 app.get('/api/get-atasan', (req,res) => {
   const body = req.body;
   const head = req.headers;
-  db.sequelize.query(`SELECT * from atasan WHERE nama ILIKE '%${head.search ? head.search : ''}%' ORDER BY nama ASC`, 
+  db.sequelize.query(`SELECT * from atasan WHERE nama ILIKE '%${head.search ? head.search : ''}%' AND status = 1 ORDER BY nama ASC`,
   {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
     res.json({
       sukses: true,
@@ -170,19 +170,19 @@ app.post('/api/send-notif' , (req, res) => {
       }).then((success) => {
         console.log(success);
         res.send({
-          sukes: true,
+          sukses: true,
           msg: "Send notification successfully"
         })
       }).catch((err) => {
         console.log(err);
         res.send({
-          sukes: false,
+          sukses: false,
           msg: "Failed send notification"
         });
       })
     } else {
       res.send({
-        sukes: true,
+        sukses: true,
         msg: "No user login"
       });
     }
@@ -197,6 +197,43 @@ app.post('/api/send-notif' , (req, res) => {
       msg: "Failed send notification"
     });
   })
+})
+
+app.post('/api/create-surtug', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  db.sequelize.query(`INSERT INTO surtug (nip, namapeg, tglb, tglk, maksud, lokasi) VALUES ('${body.nip}', '${body.namapeg}', '${body.tglb}', '${body.tglk}', '${body.maksud}', '${body.lokasi}')`,
+  {type: db.sequelize.QueryTypes.INSERT}).then((result) => {
+    res.json({
+      sukses: true,
+      msg: 'Create surtug successfully'
+    });
+  }).catch((err) => {
+    res.json({
+      sukses: false,
+      msg: 'Created surtug failed'
+    });
+  })
+})
+
+app.get('/api/get-surtug', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  const queryWithAtasan = `SELECT * from surtug WHERE atasan_nip = '${head.atasan_nip}' AND status = 1`;
+  const queryById = `SELECT * from surtug WHERE id = ${head.id} AND status = 1`;
+  const queryAll = `SELECT * from surtug WHERE nip = ${head.nip} AND status = 1`;
+  db.sequelize.query(head.id ? queryById : head.atasan_nip ? queryWithAtasan : queryAll, 
+  {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
+    res.json({
+      sukses: true,
+      data: result
+    });
+  }).catch((err) => {
+    res.json({
+      sukses: false,
+      msg: 'Failed get data Surtug'
+    });
+  });
 })
  
 app.use(express.static('www'));

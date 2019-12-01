@@ -11,17 +11,21 @@
   <form (ngSubmit)="submit()">
     <ion-item>
       <ion-label position="floating">Nama Kunjungan <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required  type="text" name="title" [(ngModel)]="title"></ion-input>
+      <ion-input required  type="text" name="title" [(ngModel)]="dataInsert.maksud"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Tanggal</ion-label>
-      <ion-input type="date" name="date" [(ngModel)]="date"></ion-input>
+      <ion-label position="stacked">Tanggal Berangkat</ion-label>
+      <ion-input type="date" name="date" [(ngModel)]="dataInsert.tglb"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Tanggal Kembali</ion-label>
+      <ion-input type="date" name="date" [(ngModel)]="dataInsert.tglk"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label position="stacked">Lokasi</ion-label>
-      <ion-input type="text" name="location" [(ngModel)]="location"></ion-input>
+      <ion-input type="text" name="dataInsert.lokasi" [(ngModel)]="location"></ion-input>
     </ion-item>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label position="stacked">Surat Izin</ion-label>
       <ion-input type="file" (change)="changeFile($event)" accept="image/*" multiple="multiple"></ion-input>
     </ion-item>
@@ -29,8 +33,8 @@
       <ion-avatar *ngFor="let file of files">
         <img [src]="file?.file_base"/>
       </ion-avatar>
-    </ion-item>
-    <ion-button block color="primary" type="submit" [disabled]="!title || !location || !date">
+    </ion-item> -->
+    <ion-button block color="primary" type="submit" [disabled]="!dataInsert.maksud || !dataInsert.tglb || !dataInsert.tglk">
       Submit
     </ion-button>
   </form>

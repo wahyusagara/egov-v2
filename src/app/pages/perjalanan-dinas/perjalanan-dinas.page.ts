@@ -49,6 +49,7 @@ export class PerjalananDinasPage implements OnInit {
   ngOnInit() {
   }
   async ionViewDidEnter() {
+    console.log(JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU);
     const x = new Date().toISOString();
     console.log(new Date(x).getTime());
     // await this.getData();

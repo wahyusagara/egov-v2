@@ -46,12 +46,15 @@ export class ApiService {
       );
     });
   }
-  getData(url) {
+  getData(url, id?, atasan_nip?, nip?) {
     return new Promise((resolve, reject) => {
+      id ? this.headers = this.headers.set('id', id) : this.headers = this.headers.set('id', '');
+      atasan_nip ? this.headers = this.headers.set('atasan_nip', atasan_nip) : this.headers = this.headers.set('atasan_nip', '');
+      nip ? this.headers = this.headers.set('nip', nip) : this.headers = this.headers.set('nip', '');
       this.httpClt.get(
         url,
         {
-          headers: new HttpHeaders(),
+          headers: this.headers,
         }
       ).subscribe(
         res => { resolve(res); },
@@ -105,6 +108,16 @@ export class ApiService {
         err => { reject(err); }
       )
     })
+  }
+  postData(url, data) {
+    return new Promise((resolve, reject) => {
+      this.httpClt.post(url, data, {
+        headers: new HttpHeaders()
+      }).subscribe(
+        res => { resolve(res) },
+        err => { reject(err) }
+      );
+    });
   }
   hello_worlds() {
     this.httpClt.get('https://egov-big.herokuapp.com/api/testget')
