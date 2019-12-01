@@ -27,6 +27,7 @@ import { ListLogBookComponent } from "./list/list-log-book/list-log-book.compone
 import { ListMenuLainComponent } from "./list/list-menu-lain/list-menu-lain.component";
 import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.component";
 import { ListProfileComponent } from "./list/list-profile/list-profile.component";
+import { ListPerjalananDinasApprovalComponent } from "./list/list-perjalanan-dinas-approval/list-perjalanan-dinas-approval.component";
 import { TestingComponent } from "./global/testing/testing.component";
 
 @NgModule({
@@ -45,7 +46,8 @@ import { TestingComponent } from "./global/testing/testing.component";
     ListEntriDataComponent,
     ListProfileComponent,
     ChartjsComponent,
-    TestingComponent
+    TestingComponent,
+    ListPerjalananDinasApprovalComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +73,8 @@ import { TestingComponent } from "./global/testing/testing.component";
     ListEntriDataComponent,
     ListProfileComponent,
     ChartjsComponent,
-    TestingComponent
+    TestingComponent,
+    ListPerjalananDinasApprovalComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
