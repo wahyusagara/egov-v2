@@ -2,5 +2,7 @@
 <network-security-config>
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">sdm.big.go.id</domain>
+        <domain includeSubdomains="true">egov-big.herokuapp.com</domain>
     </domain-config>
 </network-security-config>

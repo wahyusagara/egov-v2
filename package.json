@@ -45,7 +45,7 @@
     "chart.js": "^2.9.3",
     "codelyzer": "^5.0.0",
     "compression": "^1.7.4",
-    "cordova-android": "8.1.0",
+    "cordova-android": "^8.1.0",
     "cordova-browser": "^6.0.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-advanced-http": "^2.2.0",
@@ -130,8 +130,8 @@
       "cordova-plugin-advanced-http": {}
     },
     "platforms": [
-      "android",
-      "ios"
+      "ios",
+      "android"
     ]
   }
 }

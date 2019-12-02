@@ -48,14 +48,21 @@ export class ApiService {
   }
   getData(url, id?, atasan_nip?, nip?) {
     return new Promise((resolve, reject) => {
-      id ? this.headers = this.headers.set('id', id) : this.headers = this.headers.set('id', '');
-      atasan_nip ? this.headers = this.headers.set('atasan_nip', atasan_nip) : this.headers = this.headers.set('atasan_nip', '');
-      nip ? this.headers = this.headers.set('nip', nip) : this.headers = this.headers.set('nip', '');
-      this.httpClt.get(
-        url,
-        {
-          headers: this.headers,
+      var option = {}
+      if (id || atasan_nip || nip) {
+        id ? this.headers = this.headers.set('id', id) : this.headers = this.headers.set('id', '');
+        atasan_nip ? this.headers = this.headers.set('atasan_nip', atasan_nip) : this.headers = this.headers.set('atasan_nip', '');
+        nip ? this.headers = this.headers.set('nip', nip) : this.headers = this.headers.set('nip', '');
+        option = {
+          headers: this.headers
         }
+      }
+      
+      this.httpClt.get(
+        url, option
+        // {
+        //   headers: this.headers,
+        // }
       ).subscribe(
         res => { resolve(res); },
         err => { reject(err); }
