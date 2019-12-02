@@ -249,3 +249,24 @@ span.button-inner.sc-ion-back-button-ios {
 span.button-text.sc-ion-back-button-ios {
   display: none;
 }
+
+.popover-content.sc-ion-popover-ios {
+  width: 80%;
+  display: list-item;
+  position: absolute;
+  margin: auto;
+  padding: 0px;
+  left: 0px !important;
+  text-align: center;
+  height: 80vh;
+  transform: translate3d(5vmax, 0px, 0px);
+}
+
+ion-searchbar.sc-ion-searchbar-ios-h.sc-ion-searchbar-ios-s.ios.searchbar-left-aligned.hydrated {
+  position: inherit;
+}
+
+ion-list.ios.list-ios.hydrated {
+  margin: auto !important;
+  height: 62vh;
+}

@@ -1,0 +1,40 @@
+{
+    "project_info": {
+      "project_number": "403014683203",
+      "firebase_url": "https://egov-big.firebaseio.com",
+      "project_id": "egov-big",
+      "storage_bucket": "egov-big.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:403014683203:android:ab53b4fc18d2258dae22f6",
+          "android_client_info": {
+            "package_name": "id.go.egov"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "403014683203-o81l74ufmavu3ddn6lf53uav62k3chd9.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBY0xTn-IGg9FqYcJYbYBBZxIkekG8RUv0"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "403014683203-o81l74ufmavu3ddn6lf53uav62k3chd9.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
