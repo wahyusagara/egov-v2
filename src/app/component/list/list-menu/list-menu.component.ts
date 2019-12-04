@@ -21,12 +21,12 @@ export class ListMenuComponent implements OnInit {
     {
       img: "assets/img/performance.png",
       label: "Kinerja",
-      route: "home"
+      route: "maintenance"
     },
     {
       img: "assets/img/flight.png",
       label: "Kendaraan",
-      route: "/kendaraan"
+      route: "maintenance"
     },
     {
       img: "assets/img/partners.png",
@@ -36,12 +36,12 @@ export class ListMenuComponent implements OnInit {
     {
       img: "assets/img/email.png",
       label: "Persuratan",
-      route: "home"
+      route: "maintenance"
     },
     {
       img: "assets/img/performances.png",
       label: "Helpdesk Kepegawaian",
-      route: "/helpdesk-kepegawaian"
+      route: "maintenance"
     },
     {
       img: "assets/img/menu.png",

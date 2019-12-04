@@ -81,10 +81,12 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       showBackdrop: true,
       translucent: true
     });
-    p.onDidDismiss().then((res) => {
+    p.onDidDismiss().then(async (res) => {
       if (res.data !== undefined) {
-        this.updateStatus(res.data.id, res.data.data[0].nip);
-        this.sendNotif(res.data.data);
+        // await this.updateStatus(res.data.id, res.data.data[0].nip);
+        await this.insertAtasanSurtug(res.data.atasan);
+        await this.sendNotif(res.data.data);
+        this.getDataSurtug();
       }
     });
     
@@ -98,6 +100,14 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       atasan_nip: nip
     }
     this.api.postData("https://egov-big.herokuapp.com/api/approval-perjadin", body).then((result) => {
+      console.log(result);
+    }).catch((err) => {
+      console.log(err);
+    })
+  }
+
+  async insertAtasanSurtug(data) {
+    return this.api.postData("http://localhost:5000/api/insert-atasan-surtug", data).then((result) => {
       console.log(result);
     }).catch((err) => {
       console.log(err);

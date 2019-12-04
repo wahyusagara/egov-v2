@@ -29,6 +29,7 @@ import { ListEntriDataComponent } from "./list/list-entri-data/list-entri-data.c
 import { ListProfileComponent } from "./list/list-profile/list-profile.component";
 import { ListPerjalananDinasApprovalComponent } from "./list/list-perjalanan-dinas-approval/list-perjalanan-dinas-approval.component";
 import { TestingComponent } from "./global/testing/testing.component";
+import { CreatePerjalananDinasComponent } from './form/create-perjalanan-dinas/create-perjalanan-dinas.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { TestingComponent } from "./global/testing/testing.component";
     ListProfileComponent,
     ChartjsComponent,
     TestingComponent,
-    ListPerjalananDinasApprovalComponent
+    ListPerjalananDinasApprovalComponent,
+    CreatePerjalananDinasComponent
   ],
   imports: [
     CommonModule,
@@ -74,7 +76,8 @@ import { TestingComponent } from "./global/testing/testing.component";
     ListProfileComponent,
     ChartjsComponent,
     TestingComponent,
-    ListPerjalananDinasApprovalComponent
+    ListPerjalananDinasApprovalComponent,
+    CreatePerjalananDinasComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

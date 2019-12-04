@@ -28,6 +28,7 @@ export class LoginPage implements OnInit {
   }
   ionViewWillEnter() {
     this.menu.enable(false);
+    if (localStorage.getItem('nipbaru')) { this.navCtrl.navigateRoot('home') };
   }
   async submit() {
     await this.global.showToast('Proses login', 'primary');

@@ -28,7 +28,8 @@ const routes: Routes = [
   { path: 'kehadiran', loadChildren: './pages/kehadiran/kehadiran.module#KehadiranPageModule' },
   { path: 'entri-data', loadChildren: './pages/entri-data/entri-data.module#EntriDataPageModule' },
   { path: 'berita', loadChildren: './pages/berita/berita.module#BeritaPageModule' },
-  { path: 'statistik', loadChildren: './pages/statistik/statistik.module#StatistikPageModule' }
+  { path: 'statistik', loadChildren: './pages/statistik/statistik.module#StatistikPageModule' },  { path: 'maintenance', loadChildren: './pages/maintenance/maintenance.module#MaintenancePageModule' }
+
 
 ];
 

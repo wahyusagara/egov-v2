@@ -35,17 +35,26 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
     await this.getDataAtasan();
   }
   getDataAtasan() {
-    return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", this.search ? this.search : "").then((result) => {
+    return this.api.getAtasan("http://localhost:5000/api/get-atasan", this.search ? this.search : "").then((result) => {
       console.log(result);
       this.listAtasan = JSON.parse(JSON.stringify(result)).data;
     })
   }
   async submit() {
-    let selected = [];
+    let selected = [], retur = [];
     selected = this.listAtasan.filter(x => x.isChecked === true);
+    selected.map((val, idx) => {
+      retur.push({
+        id_surtug: this.id,
+        nip: val.nip,
+        eselon: val.eselon_int,
+        has_approval: 0
+      });
+    });
     const data = {
       id: this.id,
-      data: selected
+      data: selected,
+      atasan: retur
     }
     await this.popOverCtrl.dismiss(data);
   }

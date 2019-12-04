@@ -131,7 +131,7 @@ app.post('/api/upload-atasan', (req, res) => {
 app.get('/api/get-atasan', (req,res) => {
   const body = req.body;
   const head = req.headers;
-  db.sequelize.query(`SELECT * from atasan WHERE nama ILIKE '%${head.search ? head.search : ''}%' AND status = 1 ORDER BY nama ASC`,
+  db.sequelize.query(`SELECT nip, nama, eselon_int, eselon from atasan WHERE nama ILIKE '%${head.search ? head.search : ''}%' AND status = 1 GROUP BY nip, nama, eselon_int, eselon ORDER BY eselon_int DESC`,
   {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
     res.json({
       sukses: true,
@@ -143,6 +143,49 @@ app.get('/api/get-atasan', (req,res) => {
       msg: JSON.stringify(err)
     });
   })
+})
+
+const sendNotif = (listId) => {
+  const data = {
+    msg: 'You have request',
+    url: '/perjalanan-dinas'
+  };
+  return admin.messaging().sendMulticast({
+    tokens: listId,
+    data: data,
+    notification: {
+      title: "Perjalanan Dinas Butuh Approval",
+      body: "Anda mempunyai permintaan approval perjalanan dinas",
+    },
+    android: {
+      priority: "high",
+      notification: {
+        title: "Perjalanan Dinas Butuh Approval",
+        body: "Anda mempunyai permintaan approval perjalanan dinas",
+        priority: "high",
+        clickAction: "FCM_PLUGIN_ACTIVITY",
+        defaultSound: true,
+        visibility: "public"
+      },
+      data: {
+        url: "/perjalanan-dinas"
+      },
+    }
+  })
+}
+
+app.get('/api/test-open-notif', async (req, res) => {
+  var x = ['ffJVYenPZXk:APA91bG34t6wMSGlU45pKNYGhT8Y16imKIEpWUpAmRCzQljoVliRfQz3XT5Mo31X8bVcVoc6l4D0VAqOAymRltkg5uTZmJi0bZV1OXepxwXz7LQvE6ZxEWYiv3AQJzn1nfpl5OpqPLtt']
+  sendNotif(x).then((result) => {
+    res.json({
+      sukses: true,
+      msg: result
+    })
+  }).catch((err) => {
+    res.json({
+      sukses: false
+    })
+  });
 })
 
 app.post('/api/send-notif' , (req, res) => {
@@ -164,8 +207,8 @@ app.post('/api/send-notif' , (req, res) => {
         tokens: listId,
         data: data,
         notification: {
-          title: "GO Green",
-          body: "You have request"
+          title: "Perjalanan Dinas Butuh Approval",
+          body: "Anda mempunyai permintaan approval perjalanan dinas"
         }
       }).then((success) => {
         console.log(success);
