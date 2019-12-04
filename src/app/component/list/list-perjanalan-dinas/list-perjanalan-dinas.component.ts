@@ -107,7 +107,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
   }
 
   async insertAtasanSurtug(data) {
-    return this.api.postData("http://localhost:5000/api/insert-atasan-surtug", data).then((result) => {
+    return this.api.postData("https://egov-big.herokuapp.com/api/insert-atasan-surtug", data).then((result) => {
       console.log(result);
     }).catch((err) => {
       console.log(err);

@@ -35,7 +35,7 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
     await this.getDataAtasan();
   }
   getDataAtasan() {
-    return this.api.getAtasan("http://localhost:5000/api/get-atasan", this.search ? this.search : "").then((result) => {
+    return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", this.search ? this.search : "").then((result) => {
       console.log(result);
       this.listAtasan = JSON.parse(JSON.stringify(result)).data;
     })
