@@ -31,9 +31,12 @@ export class LoginPage implements OnInit {
     if (localStorage.getItem('nipbaru')) { this.navCtrl.navigateRoot('home') };
   }
   async submit() {
-    await this.global.showToast('Proses login', 'primary');
-    await this.login();
-
+    if (this.username === '' || this.password === '') {
+      this.global.showToast('Silahkan masukkan username dan password', 'danger');
+    } else {
+      await this.global.showToast('Proses login', 'primary');
+      await this.login();
+    }
     // await this.global.showToast('Proses login', 'primary');
     // setTimeout(() => {
     //   this.global.showToast('Login successfully', 'success');
