@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-
+import { CountdownModule } from 'ngx-countdown';
 import { MaintenancePage } from './maintenance.page';
 
 const routes: Routes = [
@@ -19,8 +19,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    CountdownModule
   ],
-  declarations: [MaintenancePage]
+  declarations: [MaintenancePage ]
 })
+
 export class MaintenancePageModule {}

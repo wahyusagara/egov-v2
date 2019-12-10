@@ -1,0 +1,54 @@
+.create-perjalanan-dinas{
+
+    & ion-grid{
+        border: 1px solid var(--CR004);
+        
+        & .input-group {
+            & span {
+                display: inline-block;
+                border-bottom: 1px solid var(--CR004);
+                min-height: 3em;
+                margin-bottom: 1em;
+                
+                &:nth-child(1){
+                    width: 30%;
+                }
+                &:nth-child(2){
+                    width: 70%;
+                }
+
+                & ion-input{
+                    border: 1px solid #ddd;
+                    padding: 2px !important;
+                    height: 1.7em;
+
+                }
+            }
+        }
+
+        & ion-row{
+            & .img{
+                    max-height: 150px;
+                & img{
+                    height: 100%;
+                    margin: auto;
+                }
+            }
+        }
+        & ion-select{
+            border: 1px solid #ddd;
+            padding: 2px !important;
+            height: 1.7em;
+        }
+        & ion-input{
+            border: 1px solid #ddd;
+            padding: 2px !important;
+            height: 1.7em;
+
+        }
+        & ion-textarea{
+            border: 1px solid #ddd !important;
+            min-height: 120px;
+        }
+    }
+}
