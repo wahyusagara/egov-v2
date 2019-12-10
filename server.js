@@ -29,6 +29,57 @@ admin.initializeApp({
   storageBucket: "egov-big.appspot.com"
 });
 
+const sendNotif = (listId, title, body) => {
+  const data = {
+    msg: msg,
+    url: '/perjalanan-dinas'
+  };
+  return admin.messaging().send({
+    token: listId,
+    data: data,
+    notification: {
+      title: title,
+      body: body
+    },
+    android: {
+      priority: "high",
+      data: data,
+      notification: {
+        title: title,
+        body: body,
+        priority: "high",
+        clickAction: "FCM_PLUGIN_ACTIVITY",
+        defaultSound: true,
+        defaultLightSettings: true,
+        defaultVibrateTimings: true,
+        visibility: "public"
+      }
+    }
+  })
+  // return admin.messaging().sendMulticast({
+  //   tokens: listId,
+  //   data: data,
+  //   notification: {
+  //     title: title,
+  //     body: body,
+  //   },
+  //   android: {
+  //     priority: "high",
+  //     notification: {
+  //       title: title,
+  //       body: body,
+  //       priority: "high",
+  //       clickAction: "FCM_PLUGIN_ACTIVITY",
+  //       defaultSound: true,
+  //       visibility: "public"
+  //     },
+  //     data: {
+  //       url: "/perjalanan-dinas"
+  //     },
+  //   }
+  // })
+}
+
 app.post('/api/login', (req, res) => {
   const headers = req.headers;
   // let url1 = 'https://sdm.big.go.id/siap/siap.php/rest/biodatapegawai/get_pegawai_byid';
@@ -145,38 +196,9 @@ app.get('/api/get-atasan', (req,res) => {
   })
 })
 
-const sendNotif = (listId) => {
-  const data = {
-    msg: 'You have request',
-    url: '/perjalanan-dinas'
-  };
-  return admin.messaging().sendMulticast({
-    tokens: listId,
-    data: data,
-    notification: {
-      title: "Perjalanan Dinas Butuh Approval",
-      body: "Anda mempunyai permintaan approval perjalanan dinas",
-    },
-    android: {
-      priority: "high",
-      notification: {
-        title: "Perjalanan Dinas Butuh Approval",
-        body: "Anda mempunyai permintaan approval perjalanan dinas",
-        priority: "high",
-        clickAction: "FCM_PLUGIN_ACTIVITY",
-        defaultSound: true,
-        visibility: "public"
-      },
-      data: {
-        url: "/perjalanan-dinas"
-      },
-    }
-  })
-}
-
 app.get('/api/test-open-notif', async (req, res) => {
-  var x = ['ffJVYenPZXk:APA91bG34t6wMSGlU45pKNYGhT8Y16imKIEpWUpAmRCzQljoVliRfQz3XT5Mo31X8bVcVoc6l4D0VAqOAymRltkg5uTZmJi0bZV1OXepxwXz7LQvE6ZxEWYiv3AQJzn1nfpl5OpqPLtt']
-  sendNotif(x).then((result) => {
+  var x = 'ffJVYenPZXk:APA91bG34t6wMSGlU45pKNYGhT8Y16imKIEpWUpAmRCzQljoVliRfQz3XT5Mo31X8bVcVoc6l4D0VAqOAymRltkg5uTZmJi0bZV1OXepxwXz7LQvE6ZxEWYiv3AQJzn1nfpl5OpqPLtt';
+  sendNotif(x, 'Request approval perjadin', 'Ada permintaan approval perjadin baru').then((result) => {
     res.json({
       sukses: true,
       msg: result
@@ -240,6 +262,188 @@ app.post('/api/send-notif' , (req, res) => {
       msg: "Failed send notification"
     });
   })
+})
+
+app.post('/api/create-perjadin', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  var insert = JSON.parse(JSON.stringify(body));
+  delete insert.nipatasan;
+  db.surke.create(insert).then(async (result) => {
+    console.log(result.id);
+    await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
+    await db.persetujuan.create({
+      "iddata": result.iddata,
+      "instansi": result.instansi,
+      "stat": result.stat,
+      "tgl": result.tgl,
+      "tglu": "0000-00-00 00:00:00",
+      "a": "",
+      "b": "",
+      "c": ""
+    });
+    await db.persetujuan_detil.create({
+      "iddata": result.iddata,
+      "instansi": result.instansi,
+      "stat": result.stat,
+      "tgl": result.tgl,
+      "a": "",
+      "b": "",
+      "c": ""
+    });
+    res.json({
+      sukses: true,
+      id: result.id
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.json({
+      sukses: false
+    });
+  });
+});
+
+app.post('/api/req-approval-perjadin', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  if (body.stat === 1) {
+    db.persetujuan_detil.update({
+      stat: body.stat,
+      nama: body.nama_atasan,
+      nip: body.nip_atasan,
+      instansi: body.instansi_atasan,
+      a: "DISETUJUI OLEH " + body.nama_atasan,
+      b: "YA",
+      c: "OK"
+    }, {where: {id: body.id}}).then(() => {
+      db.persetujuan.update({
+        stat: body.stat,
+        tglu: body.tgl,
+        nama: body.nama_atasan,
+        nip: body.nip_atasan,
+        instansi: body.instansi_atasan,
+        a: "DISETUJUI OLEH " + body.nama_atasan,
+        b: "YA",
+        c: "OK"
+      }, {where: {id: body.id}}).then(() => {
+        sendNotif(body.nip, "Perjadin di setujui", "Anda memiliki perjalanan dinas disetujui")
+        .then(() => {
+          res.json({
+            sukses: true,
+            msg: "Update perjadin berhasil"
+          });
+        }).catch((err) => {
+          console.log(err);
+          res.json({
+            sukses: false,
+            msg: "Failed send notif approval perjadin"
+          });
+        })
+      }).catch((err) => {
+        console.log(err);
+        res.json({
+          sukses: false,
+          msg: "Failed update persetujuan perjadin"
+        });
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.json({
+        sukses:false,
+        msg: "Failed update persetujuan detail perjadin"
+      });
+    });
+  } else if (body.stat === 3) {
+    db.persetujuan_detil.update({
+      stat: body.stat,
+      nama: body.nama_atasan,
+      nip: body.nip_atasan,
+      instansi: body.instansi_atasan,
+      a: "DIBATALKAN OLEH " + body.nama_atasan
+    }, {where: {id: body.id}}).then(() => {
+      db.persetujuan.update({
+        stat: body.stat,
+        tglu: body.tgl,
+        nama: body.nama_atasan,
+        nip: body.nip_atasan,
+        instansi: body.instansi_atasan,
+        a: "DIBATALKAN OLEH " + body.nama_atasan
+      }, {where: {id: body.id}}).then(() => {
+        sendNotif(body.nip, "Perjadin ditolak", "Anda memiliki perjalanan dinas ditolak")
+        .then(() => {
+          res.json({
+            sukses: true,
+            msg: "Update perjadin berhasil"
+          });
+        }).catch((err) => {
+          console.log(err);
+          res.json({
+            sukses: false,
+            msg: "Failed send notif approval perjadin"
+          });
+        })
+      }).catch((err) => {
+        console.log(err);
+        res.json({
+          sukses: false,
+          msg: "Failed update persetujuan perjadin"
+        });
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.json({
+        sukses:false,
+        msg: "Failed update persetujuan detail perjadin"
+      });
+    });
+  } else if (body.stat === 4) {
+    db.persetujuan_detil.update({
+      stat: body.stat,
+      nama: body.nama_atasan,
+      nip: body.nip_atasan,
+      instansi: body.instansi_atasan,
+      a: "DIHAPUS OLEH " + body.nama_atasan
+    }, {where: {id: body.id}}).then(() => {
+      db.persetujuan.update({
+        stat: body.stat,
+        tglu: body.tgl,
+        nama: body.nama_atasan,
+        nip: body.nip_atasan,
+        instansi: body.instansi_atasan,
+        a: "DIHAPUS OLEH " + body.nama_atasan
+      }, {where: {id: body.id}}).then(() => {
+        sendNotif(body.nip, "Perjadin dihapus", "Perjalanan dinas anda telah dihapus")
+        .then(() => {
+          res.json({
+            sukses: true,
+            msg: "Update perjadin berhasil"
+          });
+        }).catch((err) => {
+          console.log(err);
+          res.json({
+            sukses: false,
+            msg: "Failed send notif approval perjadin"
+          });
+        })
+      }).catch((err) => {
+        console.log(err);
+        res.json({
+          sukses: false,
+          msg: "Failed update persetujuan perjadin"
+        });
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.json({
+        sukses:false,
+        msg: "Failed update persetujuan detail perjadin"
+      });
+    });
+  } else if (body.stat === 2) {
+    res.json({
+      s: "s"
+    });
+  }
 })
 
 app.post('/api/create-surtug', (req, res) => {

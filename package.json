@@ -1,8 +1,8 @@
 {
   "name": "egov-big",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Egov Big",
+  "homepage": "https://egov-big.herokuapp.com",
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
