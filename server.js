@@ -549,9 +549,9 @@ app.get('/api/get-surtug', (req, res) => {
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-// app.get('/*', (req, res) => {
-//   res.sendFile(__dirname + '/www/index.html');
-// })
+app.get('/*', (req, res) => {
+  res.sendFile(__dirname + '/www/index.html');
+})
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));
