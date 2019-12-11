@@ -30,7 +30,7 @@ export class TabmenusComponent implements OnInit {
       img: "assets/img/startup.png",
       label: "Statistic",
       class: "",
-      route: "/ruang-rapat"
+      route: "maintenance"
     },
     {
       img: "assets/img/user.png",
