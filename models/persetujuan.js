@@ -7,35 +7,35 @@ module.exports = (sequelize, DataTypes) => {
     },
     iddata: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     instansi: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     stat: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     tgl: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     tglu: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     a: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     b: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     c: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     }
   },
   {

@@ -30,6 +30,7 @@ import { ListProfileComponent } from "./list/list-profile/list-profile.component
 import { ListPerjalananDinasApprovalComponent } from "./list/list-perjalanan-dinas-approval/list-perjalanan-dinas-approval.component";
 import { TestingComponent } from "./global/testing/testing.component";
 import { CreatePerjalananDinasComponent } from './form/create-perjalanan-dinas/create-perjalanan-dinas.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CreatePerjalananDinasComponent } from './form/create-perjalanan-dinas/c
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
+    }),
+    FormsModule
   ],
   exports: [
     FormDummyComponent,

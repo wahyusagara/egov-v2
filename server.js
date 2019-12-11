@@ -29,55 +29,70 @@ admin.initializeApp({
   storageBucket: "egov-big.appspot.com"
 });
 
-const sendNotif = (listId, title, body) => {
-  const data = {
-    msg: msg,
-    url: '/perjalanan-dinas'
-  };
-  return admin.messaging().send({
-    token: listId,
-    data: data,
-    notification: {
-      title: title,
-      body: body
-    },
-    android: {
-      priority: "high",
-      data: data,
-      notification: {
-        title: title,
-        body: body,
-        priority: "high",
-        clickAction: "FCM_PLUGIN_ACTIVITY",
-        defaultSound: true,
-        defaultLightSettings: true,
-        defaultVibrateTimings: true,
-        visibility: "public"
+const sendNotif = (nip, title, body) => {
+  let listId = [];
+  return db.sequelize.query(`SELECT device_id from device_list where nip = '${nip}' and status = 1`
+  ,{type: db.sequelize.QueryTypes.SELECT}).then(async (result) => {
+    await result.map((val, index) => {
+      if (val.device_id) {
+        listId.push(val.device_id);
       }
+    })
+    if (listId.length > 0) {
+      console.log('ada usernya');
+      const data = {
+        msg: title,
+        url: '/perjalanan-dinas'
+      };
+      // return admin.messaging().send({
+      //   token: listId,
+      //   data: data,
+      //   notification: {
+      //     title: title,
+      //     body: body
+      //   },
+      //   android: {
+      //     priority: "high",
+      //     data: data,
+      //     notification: {
+      //       title: title,
+      //       body: body,
+      //       priority: "high",
+      //       clickAction: "FCM_PLUGIN_ACTIVITY",
+      //       defaultSound: true,
+      //       defaultLightSettings: true,
+      //       defaultVibrateTimings: true,
+      //       visibility: "public"
+      //     }
+      //   }
+      // })
+      return admin.messaging().sendMulticast({
+        tokens: listId,
+        data: data,
+        notification: {
+          title: title,
+          body: body,
+        },
+        android: {
+          priority: "high",
+          notification: {
+            title: title,
+            body: body,
+            priority: "high",
+            clickAction: "FCM_PLUGIN_ACTIVITY",
+            defaultSound: true,
+            visibility: "public"
+          },
+          data: {
+            url: "/perjalanan-dinas"
+          },
+        }
+      })
+    } else {
+      console.log('tidak ada user nya');
+      return true;
     }
   })
-  // return admin.messaging().sendMulticast({
-  //   tokens: listId,
-  //   data: data,
-  //   notification: {
-  //     title: title,
-  //     body: body,
-  //   },
-  //   android: {
-  //     priority: "high",
-  //     notification: {
-  //       title: title,
-  //       body: body,
-  //       priority: "high",
-  //       clickAction: "FCM_PLUGIN_ACTIVITY",
-  //       defaultSound: true,
-  //       visibility: "public"
-  //     },
-  //     data: {
-  //       url: "/perjalanan-dinas"
-  //     },
-  //   }
-  // })
 }
 
 app.post('/api/login', (req, res) => {
@@ -268,7 +283,10 @@ app.post('/api/create-perjadin', (req, res) => {
   const body = req.body;
   const head = req.headers;
   var insert = JSON.parse(JSON.stringify(body));
+  const nipatasan = JSON.parse(JSON.stringify(body)).nipatasan;
+  const namaatasan =JSON.parse(JSON.stringify(body)).namaatasan;
   delete insert.nipatasan;
+  delete insert.namaatasan;
   db.surke.create(insert).then(async (result) => {
     console.log(result.id);
     await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
@@ -276,17 +294,19 @@ app.post('/api/create-perjadin', (req, res) => {
       "iddata": result.iddata,
       "instansi": result.instansi,
       "stat": result.stat,
-      "tgl": result.tgl,
-      "tglu": "0000-00-00 00:00:00",
+      "tgl": body.tgl,
+      "tglu": body.tgl,
       "a": "",
       "b": "",
       "c": ""
     });
     await db.persetujuan_detil.create({
+      "nama": body.namaatasan,
+      "nip": body.nipatasan,
       "iddata": result.iddata,
       "instansi": result.instansi,
       "stat": result.stat,
-      "tgl": result.tgl,
+      "tgl": body.tgl,
       "a": "",
       "b": "",
       "c": ""
@@ -306,6 +326,7 @@ app.post('/api/create-perjadin', (req, res) => {
 app.post('/api/req-approval-perjadin', (req, res) => {
   const body = req.body;
   const head = req.headers;
+  console.log(body.stat);
   if (body.stat === 1) {
     db.persetujuan_detil.update({
       stat: body.stat,
@@ -319,26 +340,16 @@ app.post('/api/req-approval-perjadin', (req, res) => {
       db.persetujuan.update({
         stat: body.stat,
         tglu: body.tgl,
-        nama: body.nama_atasan,
-        nip: body.nip_atasan,
         instansi: body.instansi_atasan,
         a: "DISETUJUI OLEH " + body.nama_atasan,
         b: "YA",
         c: "OK"
-      }, {where: {id: body.id}}).then(() => {
-        sendNotif(body.nip, "Perjadin di setujui", "Anda memiliki perjalanan dinas disetujui")
-        .then(() => {
-          res.json({
-            sukses: true,
-            msg: "Update perjadin berhasil"
-          });
-        }).catch((err) => {
-          console.log(err);
-          res.json({
-            sukses: false,
-            msg: "Failed send notif approval perjadin"
-          });
-        })
+      }, {where: {id: body.id}}).then(async () => {
+        await sendNotif(body.nip, "Perjadin di setujui", "Anda memiliki perjalanan dinas disetujui")
+        res.json({
+          sukses: true,
+          msg: "Update perjadin berhasil"
+        });
       }).catch((err) => {
         console.log(err);
         res.json({
@@ -368,20 +379,12 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         nip: body.nip_atasan,
         instansi: body.instansi_atasan,
         a: "DIBATALKAN OLEH " + body.nama_atasan
-      }, {where: {id: body.id}}).then(() => {
-        sendNotif(body.nip, "Perjadin ditolak", "Anda memiliki perjalanan dinas ditolak")
-        .then(() => {
-          res.json({
-            sukses: true,
-            msg: "Update perjadin berhasil"
-          });
-        }).catch((err) => {
-          console.log(err);
-          res.json({
-            sukses: false,
-            msg: "Failed send notif approval perjadin"
-          });
-        })
+      }, {where: {id: body.id}}).then(async () => {
+        await sendNotif(body.nip, "Perjadin ditolak", "Anda memiliki perjalanan dinas ditolak")
+        res.json({
+          sukses: true,
+          msg: "Update perjadin berhasil"
+        });
       }).catch((err) => {
         console.log(err);
         res.json({
@@ -411,20 +414,12 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         nip: body.nip_atasan,
         instansi: body.instansi_atasan,
         a: "DIHAPUS OLEH " + body.nama_atasan
-      }, {where: {id: body.id}}).then(() => {
-        sendNotif(body.nip, "Perjadin dihapus", "Perjalanan dinas anda telah dihapus")
-        .then(() => {
-          res.json({
-            sukses: true,
-            msg: "Update perjadin berhasil"
-          });
-        }).catch((err) => {
-          console.log(err);
-          res.json({
-            sukses: false,
-            msg: "Failed send notif approval perjadin"
-          });
-        })
+      }, {where: {id: body.id}}).then(async () => {
+        await sendNotif(body.nip, "Perjadin dihapus", "Perjalanan dinas anda telah dihapus")
+        res.json({
+          sukses: true,
+          msg: "Update perjadin berhasil"
+        });
       }).catch((err) => {
         console.log(err);
         res.json({
@@ -440,8 +435,60 @@ app.post('/api/req-approval-perjadin', (req, res) => {
       });
     });
   } else if (body.stat === 2) {
-    res.json({
-      s: "s"
+    db.persetujuan_detil.update({
+      stat: body.stat,
+      nama: body.nama_atasan,
+      nip: body.nip_atasan,
+      instansi: body.instansi_atasan,
+      a: "DISPOSISI OLEH " + body.nama_atasan + "KE " + body.nama_atasan2
+    }, {where: {id: body.id}}).then(() => {
+      db.persetujuan.update({
+        stat: body.stat,
+        tglu: body.tgl,
+        nama: body.nama_atasan,
+        nip: body.nip_atasan,
+        instansi: body.instansi_atasan,
+        a: "DISPOSISI OLEH " + body.nama_atasan + " KE " + body.nama_atasan2
+      }, {where: {id: body.id}}).then(async () => {
+        await db.persetujuan.create({
+          "iddata": body.iddata,
+          "instansi": body.instansi,
+          "stat": body.stat,
+          "tgl": body.tgl,
+          "tglu": body.tgl,
+          "a": "",
+          "b": "",
+          "c": ""
+        });
+        await db.persetujuan_detil.create({
+          "nama": body.nama_atasan2,
+          "nip": body.nipatasan,
+          "iddata": body.iddata,
+          "instansi": body.instansi,
+          "stat": body.stat,
+          "tgl": body.tgl,
+          "a": "",
+          "b": "",
+          "c": ""
+        });
+        await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
+        res.json({
+          sukses: true,
+          msg: "Update perjadin berhasil"
+        });
+      }).catch((err) => {
+        console.log(err);
+        res.json({
+          sukses: false,
+          msg: "Failed update persetujuan perjadin"
+        });
+      });
+    }).catch((err) => {
+      console.log(err);
+      res.json({
+        sukses:false,
+        msg: "Failed update persetujuan detail perjadin"
+      });
     });
   }
 })
@@ -482,9 +529,9 @@ app.post('/api/approval-perjadin', (req, res) => {
 app.get('/api/get-surtug', (req, res) => {
   const body = req.body;
   const head = req.headers;
-  const queryWithAtasan = `SELECT * from surtug WHERE atasan_nip = '${head.atasan_nip}' AND status = 1`;
-  const queryById = `SELECT * from surtug WHERE id = ${head.id} AND status = 1`;
-  const queryAll = `SELECT * from surtug WHERE nip = '${head.nip}' AND status = 1`;
+  const queryWithAtasan = `SELECT * from v_surtug WHERE atasan_nip = '${head.atasan_nip}'`;
+  const queryById = `SELECT * from v_surtug WHERE id = ${head.id}`;
+  const queryAll = `SELECT * from v_surtug WHERE nip = '${head.nip}'`;
   db.sequelize.query(head.id ? queryById : head.atasan_nip ? queryWithAtasan : queryAll, 
   {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
     res.json({
@@ -502,9 +549,9 @@ app.get('/api/get-surtug', (req, res) => {
 app.use(express.static('www'));
 app.use(compression());
 app.use(express.static('www'));
-app.get('/*', (req, res) => {
-  res.sendFile(__dirname + '/www/index.html');
-})
+// app.get('/*', (req, res) => {
+//   res.sendFile(__dirname + '/www/index.html');
+// })
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), function () {
   console.log('Express server listening on port ' + app.get('port'));

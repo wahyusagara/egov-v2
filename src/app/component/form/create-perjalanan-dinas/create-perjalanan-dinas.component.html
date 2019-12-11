@@ -1,6 +1,3 @@
-
-  
-  
   <form class="create-perjalanan-dinas">
     <ion-grid class="header">
       <ion-row>
@@ -22,15 +19,15 @@
           <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-right">
               <ion-row class="input-group" size="12">
                 <span>Lembar ke :</span>
-                <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="lembar" [(ngModel)]="dataInsert.lembar" type="text"  required="false" class="input"></ion-input></span>
               </ion-row>
               <ion-row class="input-group">
                   <span>Kode No :</span>
-                  <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                  <span><ion-input [ngModelOptions]="{standalone: true}" name="kode" [(ngModel)]="dataInsert.kode" type="text"  required="false" class="input"></ion-input></span>
               </ion-row>
               <ion-row class="input-group">
                   <span>Nomor SPD :</span>
-                  <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                  <span><ion-input [ngModelOptions]="{standalone: true}" name="nomor" [(ngModel)]="dataInsert.noagen" type="text"  required="false" class="input"></ion-input></span>
               </ion-row>
           </ion-col>
       </ion-row>
@@ -46,13 +43,15 @@
                 <span>Nama Pegawai Yang Diperintahkan :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span>Linggar Wahyusagara ST</span>
+                <!-- <span>Linggar Wahyusagara ST</span> -->
+                <span>{{dataKaryawan?.nama}}</span>
             </ion-col>
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>NIP :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span>199111252019031002</span>
+                <!-- <span>199111252019031002</span> -->
+                <span>{{dataKaryawan?.nip}}</span>
             </ion-col>
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>Pangkat dan Golongan</span>
@@ -80,7 +79,7 @@
                 <span>Tingkat Biaya Perjalanan Dinas :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="tingkat" [(ngModel)]="dataInsert.tingkat" placeholder="--Pilih--">
                   <ion-select-option value="dalam negeri">A-Dalam Negeri - Eselon 1</ion-select-option>
                   <ion-select-option value="luar negeri">A-Dalam Negeri - Eselon 2</ion-select-option>
                 </ion-select>
@@ -91,7 +90,7 @@
                 <span>Tujuan Perjalanan Dinas :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="x" placeholder="--Pilih--">
                   <ion-select-option value="dalam negeri">Dalam Negeri</ion-select-option>
                   <ion-select-option value="luar negeri">Luar Negeri</ion-select-option>
                 </ion-select>
@@ -102,7 +101,7 @@
                 <span>Maksud Perjalanan Dinas</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-textarea type="text" name="" required class="input"></ion-textarea></span>
+                <span><ion-textarea name="maksud" [(ngModel)]="dataInsert.maksud" type="text"  required="false" class="input"></ion-textarea></span>
             </ion-col>
 
             
@@ -110,9 +109,9 @@
                 <span>Jenis Transportasi</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
-                    <ion-select-option value="dalam negeri">Darat</ion-select-option>
-                    <ion-select-option value="luar negeri">Udara</ion-select-option>
+                <ion-select name="x" placeholder="--Pilih--">
+                    <ion-select-option value="darat">Darat</ion-select-option>
+                    <ion-select-option value="udara">Udara</ion-select-option>
                   </ion-select>
             </ion-col>
             
@@ -120,9 +119,9 @@
                 <span>Alat Angkut Yang Digunakan</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
-                    <ion-select-option value="dalam negeri">Darat</ion-select-option>
-                    <ion-select-option value="luar negeri">Udara</ion-select-option>
+                <ion-select name="alat" [(ngModel)]="dataInsert.alat" placeholder="--Pilih--">
+                    <ion-select-option value="bus">Bus</ion-select-option>
+                    <ion-select-option value="pesawat">Pesawat</ion-select-option>
                   </ion-select>
             </ion-col>
 
@@ -130,9 +129,9 @@
                 <span>Tempat Tujuan (Nama Provinsi)</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
-                    <ion-select-option value="dalam negeri">Tangerang</ion-select-option>
-                    <ion-select-option value="luar negeri">Jakarta</ion-select-option>
+                <ion-select name="tj" [(ngModel)]="dataInsert.tj" placeholder="--Pilih--">
+                    <ion-select-option value="tangerang">Tangerang</ion-select-option>
+                    <ion-select-option value="jakarta">Jakarta</ion-select-option>
                   </ion-select>
             </ion-col>
 
@@ -141,9 +140,9 @@
                 <span>Asal Berangkat (Nama Provinsi)</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
-                    <ion-select-option value="dalam negeri">Tangerang</ion-select-option>
-                    <ion-select-option value="luar negeri">Jakarta</ion-select-option>
+                <ion-select name="tb" [(ngModel)]="dataInsert.tb" placeholder="--Pilih--">
+                    <ion-select-option value="tangerang">Tangerang</ion-select-option>
+                    <ion-select-option value="jakarta">Jakarta</ion-select-option>
                   </ion-select>
             </ion-col>
             
@@ -151,7 +150,7 @@
                 <span>Pilihan Hari</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="x" placeholder="--Pilih--">
                     <ion-select-option value="dalam negeri">Hari Kerja</ion-select-option>
                     <ion-select-option value="luar negeri">Hari LIbur</ion-select-option>
                   </ion-select>
@@ -161,35 +160,35 @@
                 <span>Lamanya Perjalanan Dinas (Isikan Angka)</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="lama" [(ngModel)]="dataInsert.lama" type="number"  required="false" class="input"></ion-input></span>
             </ion-col>
             
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>Tanggal Berangkat</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="date" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="tglb" [(ngModel)]="dataInsert.tglb" type="date"  required="false" class="input"></ion-input></span>
             </ion-col>
             
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>Tanggal Harus Kembali/Tiba Di Tempat baru</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="date" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="tglk" [(ngModel)]="dataInsert.tglk" type="date"  required="false" class="input"></ion-input></span>
             </ion-col>
             
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>Pengikut</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="x" type="text"  required="false" class="input"></ion-input></span>
             </ion-col>
             
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
                 <span>Unit Kerja :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="x" placeholder="--Pilih--">
                     <ion-select-option value="dalam negeri">-</ion-select-option>
                   </ion-select>
             </ion-col>
@@ -198,7 +197,7 @@
                 <span>Akun :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="x" placeholder="--Pilih--">
                     <ion-select-option value="dalam negeri">-</ion-select-option>
                   </ion-select>
             </ion-col>
@@ -207,7 +206,7 @@
                 <span>Dikeluarkan di :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select placeholder="--Pilih--">
+                <ion-select name="x" placeholder="--Pilih--">
                     <ion-select-option value="dalam negeri">-</ion-select-option>
                   </ion-select>
             </ion-col>
@@ -216,7 +215,7 @@
                 <span>Tanggal :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="date" name="" required class="input"></ion-input></span>
+                <span><ion-input [ngModelOptions]="{standalone: true}" name="tgl" [(ngModel)]="dataInsert.tgl" type="date"  required="false" class="input"></ion-input></span>
             </ion-col>
 
             
@@ -224,12 +223,19 @@
                 <span>Pejabat Pembuat Komitmen :</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <span><ion-input type="text" name="" required class="input"></ion-input></span>
+                <ion-select [(ngModel)]="dataInsert.nipatasan" name="nipatasan" placeholder="--Pilih--">
+                    <ion-select-option *ngFor="let a of atasan" [value]="a.nip">{{a.nama}}</ion-select-option>
+                <!-- <ion-select-option value="dalam negeri">Abdurasyid S.Kom, M.Sc.</ion-select-option> -->
+                </ion-select>
+                <!-- <span>
+                    <ion-input [ngModelOptions]="{standalone: true}" type="text"  required="false" class="input"></ion-input>
+                </span> -->
             </ion-col>
         </ion-row>
+        <ion-input [ngModelOptions]="{standalone: true}" name="test" [(ngModel)]="test" type="text" placeholder="Awesome Input"></ion-input>
         <ion-row>
             <ion-col no-padding no-margin size=2 float-right>
-              <ion-button class="BTN002 CR000" tappable type="submit" expand="block">
+              <ion-button class="BTN002 CR000" tappable expand="block" (click)="submit()">
                 Simpan
               </ion-button>
             </ion-col>

@@ -15,7 +15,7 @@ export class ListMenuComponent implements OnInit {
     },
     {
       img: "assets/img/business-trip.png",
-      label: "Perjanalan Dinas",
+      label: "Perjalanan Dinas",
       route: "perjalanan-dinas"
     },
     {
@@ -31,7 +31,7 @@ export class ListMenuComponent implements OnInit {
     {
       img: "assets/img/partners.png",
       label: "Ruang Rapat",
-      route: "/ruang-rapat"
+      route: "maintenance"
     },
     {
       img: "assets/img/email.png",

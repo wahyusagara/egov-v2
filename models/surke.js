@@ -7,151 +7,151 @@ module.exports = (sequelize, DataTypes) => {
     },
     lembar: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     kode: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     noagen: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     namapegg: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     nip: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     panggol: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     jab: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tingkat: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     maksud: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     alat: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tb: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tj: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     lama: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     tglb: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     tglk: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     instansi: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     akun: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     keluar: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     ppk: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     nipppk: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     tgl: {
       type: DataTypes.DATE,
-      allowNull: false,
+      allowNull: true,
     },
     iddata: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     stat: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     ket1: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket2: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket3: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket4: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket5: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket6: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket7: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket8: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ket9: {
       type: DataTypes.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     ortala: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     niportala: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     nost: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     golongan: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     uspd: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     }
   },
   {
