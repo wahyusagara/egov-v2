@@ -152,7 +152,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       id: id,
       atasan_nip: localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : ''
     }
-    return this.api.postData("http://localhost:5000/api/req-approval-perjadin", x).then((result) => {
+    return this.api.postData("https://egov-big.herokuapp.com/api/req-approval-perjadin", x).then((result) => {
       return result;
     }).catch((err) => {
       
