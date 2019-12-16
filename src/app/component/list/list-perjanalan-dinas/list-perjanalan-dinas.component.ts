@@ -92,7 +92,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       }
     });
     
-    return data.status_approval !== 1 ? {} : await p.present();
+    // return data.status_approval !== 1 ? {} : await p.present();
   }
 
   // async updateStatus(id, nip) {
