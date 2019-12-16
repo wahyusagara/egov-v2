@@ -2,6 +2,7 @@ import { Component, OnInit,  AfterViewInit } from '@angular/core';
 import { PopoverController } from '@ionic/angular';
 import { AtasanPage } from "../../../popover/atasan/atasan.page";
 import { ApiService } from 'src/app/services/api/api.service';
+import { GlobalFuncService } from 'src/app/services/global-func.service';
 
 @Component({
   selector: 'app-list-perjanalan-dinas',
@@ -46,7 +47,8 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
 
   constructor(
     private popOver: PopoverController,
-    private api: ApiService
+    private api: ApiService,
+    private global: GlobalFuncService
   ) { }
 
   ngOnInit() {}
@@ -93,18 +95,18 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
     return data.status_approval !== 1 ? {} : await p.present();
   }
 
-  async updateStatus(id, nip) {
-    const body = {
-      status: 2,
-      id: id,
-      atasan_nip: nip
-    }
-    this.api.postData("https://egov-big.herokuapp.com/api/approval-perjadin", body).then((result) => {
-      console.log(result);
-    }).catch((err) => {
-      console.log(err);
-    })
-  }
+  // async updateStatus(id, nip) {
+  //   const body = {
+  //     status: 2,
+  //     id: id,
+  //     atasan_nip: nip
+  //   }
+  //   this.api.postData("https://egov-big.herokuapp.com/api/approval-perjadin", body).then((result) => {
+  //     console.log(result);
+  //   }).catch((err) => {
+  //     console.log(err);
+  //   })
+  // }
 
   async insertAtasanSurtug(data) {
     return this.api.postData("https://egov-big.herokuapp.com/api/insert-atasan-surtug", data).then((result) => {
@@ -125,6 +127,44 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       console.log(result);
     }).catch((err) => {
       console.log(err);
+    })
+  }
+
+  async cetak() {
+    this.global.showToast('Fitur ini sedang dalam pengembangan', 'primary');
+  }
+
+  async updateStatus(id, status, nama2, nipatasan, instansi, iddata) {
+    const x = await {
+      nama_atasan: JSON.parse(localStorage.getItem('datakaryawan')).NAMA,
+      nip: JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU,
+      stat: status,
+      tgl: new Date().toISOString(),
+      instansi_atasan: JSON.parse(localStorage.getItem('datakaryawan')).INSTANSIASAL,
+      id: id,
+      nama_atasan2: nama2,
+      nipatasan: nipatasan,
+      instansi: instansi,
+      iddata: iddata
+    }
+    const body = {
+      status: status,
+      id: id,
+      atasan_nip: localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : ''
+    }
+    return this.api.postData("http://localhost:5000/api/req-approval-perjadin", x).then((result) => {
+      return result;
+    }).catch((err) => {
+      
+    })
+  }
+
+  async cancel(id, nama, nip, instansi, iddata) {
+    this.updateStatus(id, 3, nama, nip, instansi, iddata).then((res) => {
+      console.log(res);
+      this.getDataSurtug();
+    }).catch((err) => {
+      this.global.showToast('Failed update data', 'danger');
     })
   }
 

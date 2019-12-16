@@ -129,10 +129,20 @@
                 <span>Tempat Tujuan (Nama Provinsi)</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select name="tj" [(ngModel)]="dataInsert.tj" placeholder="--Pilih--">
+                <ionic-selectable
+                    placeholder="--Pilih--"
+                    name="tj"
+                    [items]="tb"
+                    itemValueField="val"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="tj_change($event)"
+                    class="border">
+                </ionic-selectable>
+                <!-- <ion-select name="tj" [(ngModel)]="dataInsert.tj" placeholder="--Pilih--">
                     <ion-select-option value="tangerang">Tangerang</ion-select-option>
                     <ion-select-option value="jakarta">Jakarta</ion-select-option>
-                  </ion-select>
+                </ion-select> -->
             </ion-col>
 
             
@@ -140,10 +150,21 @@
                 <span>Asal Berangkat (Nama Provinsi)</span>
             </ion-col>
             <ion-col size-lg="4" size-md="4" size-sm="12" size="12" class="grid-left">
-                <ion-select name="tb" [(ngModel)]="dataInsert.tb" placeholder="--Pilih--">
+                <ionic-selectable
+                    placeholder="--Pilih--"
+                    name="tb"
+                    [(ngModel)]="tb_selected"
+                    [items]="tb"
+                    itemValueField="val"
+                    itemTextField="name"
+                    [canSearch]="true"
+                    (onChange)="tb_change($event)"
+                    class="border">
+                </ionic-selectable>
+                <!-- <ion-select name="tb" [(ngModel)]="dataInsert.tb" placeholder="--Pilih--">
                     <ion-select-option value="tangerang">Tangerang</ion-select-option>
                     <ion-select-option value="jakarta">Jakarta</ion-select-option>
-                  </ion-select>
+                </ion-select> -->
             </ion-col>
             
             <ion-col size-lg="8" size-md="8" size-sm="12" size="12" class="grid-left">
@@ -232,10 +253,9 @@
                 </span> -->
             </ion-col>
         </ion-row>
-        <ion-input [ngModelOptions]="{standalone: true}" name="test" [(ngModel)]="test" type="text" placeholder="Awesome Input"></ion-input>
         <ion-row>
-            <ion-col no-padding no-margin size=2 float-right>
-              <ion-button class="BTN002 CR000" tappable expand="block" (click)="submit()">
+            <ion-col no-padding no-margin sizeXs="5" float-right>
+              <ion-button class="BTN002 CR000 btn" tappable expand="block" (click)="submit()">
                 Simpan
               </ion-button>
             </ion-col>

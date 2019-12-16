@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ApprovalPerjadinPage } from 'src/app/popover/approval-perjadin/approval-perjadin.page';
 import { PopoverController } from '@ionic/angular';
+import { GlobalFuncService } from 'src/app/services/global-func.service';
 
 @Component({
   selector: 'app-list-perjalanan-dinas-approval',
@@ -14,7 +15,8 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private popOver: PopoverController
+    private popOver: PopoverController,
+    private global: GlobalFuncService
   ) { }
 
   ngOnInit() {}
@@ -82,6 +84,19 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
       console.log(result);
     }).catch((err) => {
       console.log(err);
+    })
+  }
+
+  async cetak() {
+    this.global.showToast('Fitur ini sedang dalam pengembangan', 'primary');
+  }
+
+  async cancel(id, nama, nip, instansi, iddata) {
+    this.updateStatus(id, 3, nama, nip, instansi, iddata).then((res) => {
+      console.log(res);
+      this.getDataSurtug();
+    }).catch((err) => {
+      this.global.showToast('Failed update data', 'danger');
     })
   }
 

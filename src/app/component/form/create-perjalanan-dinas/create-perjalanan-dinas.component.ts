@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { ApiService } from 'src/app/services/api/api.service';
 import { GlobalFuncService } from 'src/app/services/global-func.service';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
   selector: 'app-create-perjalanan-dinas',
@@ -56,18 +57,30 @@ export class CreatePerjalananDinasComponent implements OnInit {
     "namaatasan": ""
   }
 
+  tb = [
+    {
+      name: "Jakarta",
+      val: "Jakarta"
+    },
+    {
+      name: "Tangerang",
+      val: "Tangerang"
+    }
+  ];
+  tb_selected:any;
+
   atasan = [
     {
-      nama: "Abdurasyid S.Kom, M.Sc.",
-      nip: "197903092005021002"
+      nama: "Dr. Ir Wiwin Ambarwulan M.Sc",
+      nip: "196006291988012001"
     },
     {
-      nama: "Roswidyatmoko Dwihatmojo S.Si",
-      nip: "198411012009121002"
+      nama: "Ir Ali Nor Hidayat",
+      nip: "196512201993031002"
     },
     {
-      nama: "Dr. Ir Mulyanto Darmawan M.Sc",
-      nip: "196408121991031006"
+      nama: "Ir Ida Herliningsih M.Si",
+      nip: "195912021990022001"
     }
   ]
 
@@ -85,6 +98,20 @@ export class CreatePerjalananDinasComponent implements OnInit {
       (JSON.parse(localStorage.getItem('datakaryawan')).GELARBELAKANG ? JSON.parse(localStorage.getItem('datakaryawan')).GELARBELAKANG : "") : "",
       nip: localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : "",
     }
+  }
+
+  tb_change(event: {
+    component: IonicSelectableComponent,
+    value: {name: "", val: ""}
+  }) {
+    this.dataInsert.tb = event.value.val;
+  }
+  tj_change(event: {
+    component: IonicSelectableComponent,
+    value: {name: "", val: ""}
+  }) {
+    console.log(event.value.val);
+    this.dataInsert.tj = event.value.val
   }
 
   submit() {

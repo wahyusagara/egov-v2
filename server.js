@@ -29,6 +29,43 @@ admin.initializeApp({
   storageBucket: "egov-big.appspot.com"
 });
 
+app.post('/api/testing-notif', async (req, res) => {
+  const body = req.body;
+  const header = req.headers;
+
+  const token = body.token;
+  const data = {
+    msg: "This is testing notification",
+    url: '/perjalanan-dinas'
+  };
+  await admin.messaging().send({
+    token: token,
+    data: data,
+    notification: {
+      title: "This is testing notification",
+      body: "This is testing notification"
+    },
+    android: {
+      priority: "high",
+      data: data,
+      notification: {
+        title: "This is testing notification",
+        body: "This is testing notification",
+        priority: "high",
+        clickAction: "FCM_PLUGIN_ACTIVITY",
+        defaultSound: true,
+        defaultLightSettings: true,
+        defaultVibrateTimings: true,
+        visibility: "public"
+      }
+    }
+  });
+
+  res.json({
+    sukses: true
+  })
+})
+
 const sendNotif = (nip, title, body) => {
   let listId = [];
   return db.sequelize.query(`SELECT device_id from device_list where nip = '${nip}' and status = 1`
@@ -348,7 +385,7 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         await sendNotif(body.nip, "Perjadin di setujui", "Anda memiliki perjalanan dinas disetujui")
         res.json({
           sukses: true,
-          msg: "Update perjadin berhasil"
+          msg: "Update setujui perjadin berhasil"
         });
       }).catch((err) => {
         console.log(err);
@@ -383,7 +420,7 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         await sendNotif(body.nip, "Perjadin ditolak", "Anda memiliki perjalanan dinas ditolak")
         res.json({
           sukses: true,
-          msg: "Update perjadin berhasil"
+          msg: "Update batal perjadin berhasil"
         });
       }).catch((err) => {
         console.log(err);
@@ -418,7 +455,7 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         await sendNotif(body.nip, "Perjadin dihapus", "Perjalanan dinas anda telah dihapus")
         res.json({
           sukses: true,
-          msg: "Update perjadin berhasil"
+          msg: "Update hapus perjadin berhasil"
         });
       }).catch((err) => {
         console.log(err);
@@ -474,7 +511,7 @@ app.post('/api/req-approval-perjadin', (req, res) => {
         await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
         res.json({
           sukses: true,
-          msg: "Update perjadin berhasil"
+          msg: "Update disposisi perjadin berhasil"
         });
       }).catch((err) => {
         console.log(err);

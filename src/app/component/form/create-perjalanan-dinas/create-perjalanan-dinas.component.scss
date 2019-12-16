@@ -34,6 +34,9 @@
                     margin: auto;
                 }
             }
+            & .border {
+                border: 1px solid #ddd;
+            }
         }
         & ion-select{
             border: 1px solid #ddd;
@@ -51,4 +54,9 @@
             min-height: 120px;
         }
     }
+}
+.btn {
+    width: fit-content;
+    // max-width: 25px;
+    // min-width: 15px;
 }
