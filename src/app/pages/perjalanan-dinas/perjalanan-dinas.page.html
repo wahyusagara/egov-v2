@@ -15,16 +15,6 @@
   <div *ngIf="isApproval; then list else approval"></div>
   <ng-template #list>
     <ion-grid>
-      <ion-row>
-        <ion-col size="6">
-          Sisa Cuti : {{10 - listDinas.length}} Hari
-        </ion-col>
-        <ion-col size="6">
-          <span class="BTN002" float-right (click)="createDinas()">
-            Tambah
-          </span>
-        </ion-col>
-      </ion-row>
       <app-list-perjanalan-dinas></app-list-perjanalan-dinas>
     </ion-grid>
   </ng-template>
