@@ -582,6 +582,25 @@ app.get('/api/get-surtug', (req, res) => {
     });
   });
 })
+
+// Numpang API bentar ya, Nanti di hapus lagi...
+app.post('/api/test_gps', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  db.sequelize.query(`INSERT INTO test_gps (lat, lng) VALUES (${body.lat}, ${body.lng})`, {
+    type: db.sequelize.QueryTypes.INSERT
+  }).then((result) => {
+    console.log(result);
+    res.json({
+      sukses: true
+    });
+  }).catch((err) => {
+    console.log(err);
+    res.json({
+      sukses: false
+    })
+  })
+})
  
 app.use(express.static('www'));
 app.use(compression());
