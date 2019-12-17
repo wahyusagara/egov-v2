@@ -566,9 +566,9 @@ app.post('/api/approval-perjadin', (req, res) => {
 app.get('/api/get-surtug', (req, res) => {
   const body = req.body;
   const head = req.headers;
-  const queryWithAtasan = `SELECT * from v_surtug WHERE atasan_nip = '${head.atasan_nip}' ORDER BY tgl DESC`;
-  const queryById = `SELECT * from v_surtug WHERE id = ${head.id}  ORDER BY tgl DESC`;
-  const queryAll = `SELECT * from v_surtug WHERE nip = '${head.nip}'  ORDER BY tgl DESC`;
+  const queryWithAtasan = `SELECT * from v_surtug WHERE atasan_nip = '${head.atasan_nip}' ORDER BY tglb DESC`;
+  const queryById = `SELECT * from v_surtug WHERE id = ${head.id}  ORDER BY tglb DESC`;
+  const queryAll = `SELECT * from v_surtug WHERE nip = '${head.nip}'  ORDER BY tglb DESC`;
   db.sequelize.query(head.id ? queryById : head.atasan_nip ? queryWithAtasan : queryAll, 
   {type: db.sequelize.QueryTypes.SELECT}).then((result) => {
     res.json({

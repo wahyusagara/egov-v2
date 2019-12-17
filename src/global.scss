@@ -197,20 +197,20 @@ app-slider .slider ion-slides .content-text {
   padding: 0px 3px;
 }
 
-app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card {
+app-list-perjanalan-dinas ion-card, app-list-izin-cuti ion-card, app-list-perjalanan-dinas-approval ion-card {
   padding: 0.5em !important;
   margin: 1em 0px !important;
 }
-app-list-perjanalan-dinas ion-card ion-row span, app-list-izin-cuti ion-card ion-row span {
+app-list-perjanalan-dinas ion-card ion-row span, app-list-izin-cuti ion-card ion-row span, app-list-perjalanan-dinas-approval span {
   display: block;
   width: 100%;
   text-align: center;
 }
-app-list-perjanalan-dinas ion-card ion-row span:first-child, app-list-izin-cuti ion-card ion-row span:first-child {
+app-list-perjanalan-dinas ion-card ion-row span:first-child, app-list-izin-cuti ion-card ion-row span:first-child, app-list-perjalanan-dinas-approval span:first-child {
   margin-top: 1em;
   margin-bottom: 5px;
 }
-app-list-perjanalan-dinas ion-card ion-row span:last-child, app-list-izin-cuti ion-card ion-row span:last-child {
+app-list-perjanalan-dinas ion-card ion-row span:last-child, app-list-izin-cuti ion-card ion-row span:last-child, app-list-perjalanan-dinas-approval span:last-child {
   margin-bottom: 1em;
   margin-top: 5px;
 }

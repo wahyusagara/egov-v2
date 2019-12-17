@@ -9,7 +9,7 @@
 
 <ion-content [scrollEvents]="true">
   <ion-item>
-    <ion-label>{{isApproval ? 'Check List' : 'Check Approval'}}</ion-label>
+    <ion-label>{{isApproval ? 'Surat tugas saya' : 'Butuh persetujuan'}}</ion-label>
     <ion-toggle (click)="isClicked()" [(ngModel)]="isApproval" color="primary"></ion-toggle>
   </ion-item>
   <div *ngIf="isApproval; then list else approval"></div>

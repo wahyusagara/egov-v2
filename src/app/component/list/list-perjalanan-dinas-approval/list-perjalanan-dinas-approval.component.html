@@ -8,7 +8,7 @@
       [class]="list.status_approval === 1 ? 'approved' 
       : list.status_approval === 2 ? 'waiting' 
       : list.status_approval === 3 ? 'rejected' 
-      : list.status_approval === 4 ? 'rejected' : ''"
+      : ''"
       color="dark">
       {{list.status_approval === 1 ? "Berangkat" :
       list.status_approval === 2 ? "Masih Proses" :
@@ -30,7 +30,7 @@
       {{list.tj}}
     </span>
   </ion-row>
-  <ion-row>
+  <!-- <ion-row>
     <ion-col size="6">
       <ion-button (click)="cancel(list.pd_id, list.nama, list.atasan_nip, list.instansi, list.iddata)" color="danger">
         Batal Berangkat
@@ -41,5 +41,5 @@
         Cetak Surat
       </ion-button>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
 </ion-card>

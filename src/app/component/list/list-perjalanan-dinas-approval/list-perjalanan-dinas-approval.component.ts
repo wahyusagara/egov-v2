@@ -40,6 +40,7 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
     });
   }
   async showPopOver(data) {
+    console.log(data);
     const p = await this.popOver.create({
       animated: true,
       backdropDismiss: true,
@@ -58,8 +59,10 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
       }
     });
     var nama = JSON.parse(localStorage.getItem('datakaryawan')).NAMA;
-    console.log(nama);
-    return data.pda.includes(nama) ? {} : await p.present();
+    if (!data.pda.includes(nama) && data.status_approval != 3 && data.status_approval != 1) {
+      await p.present();
+    }
+    // return data.pda.includes(nama) ? {} : await p.present();
   }
 
   async updateStatus(id, status, nama2, nipatasan, instansi, iddata) {
