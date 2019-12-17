@@ -15,6 +15,7 @@ import { ApprovalPerjadinPageModule } from "./popover/approval-perjadin/approval
 import { HTTP } from '@ionic-native/http/ngx';
 import { FCM } from "@ionic-native/fcm/ngx";
 import { HttpClientModule } from "@angular/common/http";
+import { DetailPerjalananDinasPageModule } from './modal/detail-perjalanan-dinas/detail-perjalanan-dinas.module';
 
 // import {ComponentModule} from './component/component.module';
 @NgModule({
@@ -28,7 +29,8 @@ import { HttpClientModule } from "@angular/common/http";
     AgendaPageModule,
     ApprovalPerjadinPageModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    DetailPerjalananDinasPageModule
   ],
   providers: [
     StatusBar,

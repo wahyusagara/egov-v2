@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" (click)="dismiss()">
+      <ion-icon slot="icon-only" name="close"></ion-icon>
+    </ion-buttons>
+    <ion-title>Detail Perjalanan Dinas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="ion-no-padding">
+    <ion-list>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Nama</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.namapegg}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>No surat tugas</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.noagen}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Tanggal berangkat</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.tglb | date: "dd-MMM-yyyy"}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Tanggal pulang</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.tglk | date: "dd-MMM-yyyy"}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Tujuan</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.tj}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Maksud / deskripsi</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <ion-item>
+            <ion-label>{{data?.maksud}}</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="3" class="ion-align-self-center ion-text-center">
+          <ion-label>Status</ion-label>
+        </ion-col>
+        <ion-col size="9">
+          <!-- <ion-item> -->
+              <ion-label
+              [class]="data.status_approval === 1 ? 'approved' 
+              : data.status_approval === 2 ? 'waiting' 
+              : data.status_approval === 3 ? 'rejected' 
+              : ''"
+              color="dark">
+              {{data.status_approval === 1 ? "Berangkat" :
+              data.status_approval === 2 ? "Masih Proses" :
+              data.status_approval === 3 ? "Batal Berangkat" : ""}}
+            </ion-label>
+          <!-- </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
+  <ion-grid fixed *ngIf="data.status_approval === 1">
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="cetak()" color="success">
+          Cetak surtug
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button (click)="cetak()">
+          Cetak lembar 1
+        </ion-button>
+        <ion-button (click)="cetak()">
+          Cetak lembar 2
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="6">
+        <ion-button (click)="cancel(data.pd_id, data.nama, data.atasan_nip, data.instansi, data.iddata)" color="danger">
+          Batal berangkat
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

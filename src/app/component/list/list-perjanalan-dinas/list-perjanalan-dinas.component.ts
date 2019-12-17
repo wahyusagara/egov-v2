@@ -1,8 +1,9 @@
 import { Component, OnInit,  AfterViewInit } from '@angular/core';
-import { PopoverController } from '@ionic/angular';
+import { PopoverController, ModalController } from '@ionic/angular';
 import { AtasanPage } from "../../../popover/atasan/atasan.page";
 import { ApiService } from 'src/app/services/api/api.service';
 import { GlobalFuncService } from 'src/app/services/global-func.service';
+import { DetailPerjalananDinasPage } from 'src/app/modal/detail-perjalanan-dinas/detail-perjalanan-dinas.page';
 
 @Component({
   selector: 'app-list-perjanalan-dinas',
@@ -48,7 +49,8 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
   constructor(
     private popOver: PopoverController,
     private api: ApiService,
-    private global: GlobalFuncService
+    private global: GlobalFuncService,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {}
@@ -70,43 +72,25 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
       console.log(err);
     });
   }
-  async showPopOver(data) {
-    // await this.getDataAtasan();
-    const p = await this.popOver.create({
+
+  async detailPerjadin(data) {
+    const m = await this.modalCtrl.create({
       animated: true,
       backdropDismiss: true,
-      component: AtasanPage,
-      componentProps: {
-        data: data
-      },
+      component: DetailPerjalananDinasPage,
       keyboardClose: true,
       showBackdrop: true,
-      translucent: true
-    });
-    p.onDidDismiss().then(async (res) => {
-      if (res.data !== undefined) {
-        // await this.updateStatus(res.data.id, res.data.data[0].nip);
-        await this.insertAtasanSurtug(res.data.atasan);
-        await this.sendNotif(res.data.data);
-        this.getDataSurtug();
+      componentProps: {
+        data: data
       }
     });
-    
-    // return data.status_approval !== 1 ? {} : await p.present();
-  }
 
-  // async updateStatus(id, nip) {
-  //   const body = {
-  //     status: 2,
-  //     id: id,
-  //     atasan_nip: nip
-  //   }
-  //   this.api.postData("https://egov-big.herokuapp.com/api/approval-perjadin", body).then((result) => {
-  //     console.log(result);
-  //   }).catch((err) => {
-  //     console.log(err);
-  //   })
-  // }
+    m.onDidDismiss().then((data) => {
+      this.getDataSurtug();
+    });
+    
+    return await m.present();
+  }
 
   async insertAtasanSurtug(data) {
     return this.api.postData("https://egov-big.herokuapp.com/api/insert-atasan-surtug", data).then((result) => {
