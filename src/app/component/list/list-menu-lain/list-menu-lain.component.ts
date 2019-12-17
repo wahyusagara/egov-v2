@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-list-menu-lain',
@@ -8,30 +9,27 @@ import { Component, OnInit } from '@angular/core';
 export class ListMenuLainComponent implements OnInit {
   listMenu = [
     {
-      name: "Izin / Cuti",
+      name: "Log Book",
       color: "green",
-      img: "assets/img/avatar.png"
+      img: "assets/img/logbook.png",
+      url: "maintenance"
     },
     {
-      name: "Izin / Cuti",
+      name: "Peralatan",
       color: "red",
-      img: "assets/img/avatar.png"
-    },
-    {
-      name: "Izin / Cuti",
-      color: "blue",
-      img: "assets/img/avatar.png"
-    },
-    {
-      name: "Izin / Cuti",
-      color: "purple",
-      img: "assets/img/avatar.png"
+      img: "assets/img/peralatan.png",
+      url: "maintenance"
     }
   ];
-  listRow = [1,2,3,4,5,6,7,8,9,10];
 
-  constructor() { }
+  constructor(
+    private navCtrl: NavController
+  ) { }
 
   ngOnInit() {}
+
+  navPage(url) {
+    this.navCtrl.navigateForward(url);
+  }
 
 }

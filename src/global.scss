@@ -180,8 +180,12 @@ app-slider .slider ion-slides .box {
   border-radius: 2px;
 }
 app-slider .slider ion-slides .box img {
-  object-fit: cover !important;
-  width: 100% !important;
+  // object-fit: cover !important;
+  object-fit: fill !important;
+  // width: 100%;
+  height: 100%;
+  max-width: 100%;
+  margin : auto !important;
 }
 app-slider .slider ion-slides .content-text {
   border-radius: 2px;

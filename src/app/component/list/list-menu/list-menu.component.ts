@@ -9,42 +9,42 @@ import { NavController } from '@ionic/angular';
 export class ListMenuComponent implements OnInit {
   item1 = [
     {
-      img: "assets/img/notepad.png",
+      img: "assets/img/izin.png",
       label: "Izin / Cuti",
       route: "izin-cuti"
     },
     {
-      img: "assets/img/business-trip.png",
+      img: "assets/img/perjalanan dinas.png",
       label: "Perjalanan Dinas",
       route: "perjalanan-dinas"
     },
     {
-      img: "assets/img/performance.png",
+      img: "assets/img/JDIH.png",
       label: "Kinerja",
       route: "maintenance"
     },
     {
-      img: "assets/img/flight.png",
+      img: "assets/img/kendaraan.png",
       label: "Kendaraan",
       route: "maintenance"
     },
     {
-      img: "assets/img/partners.png",
+      img: "assets/img/ruang rapat.png",
       label: "Ruang Rapat",
       route: "maintenance"
     },
     {
-      img: "assets/img/email.png",
+      img: "assets/img/persuratan.png",
       label: "Persuratan",
       route: "maintenance"
     },
     {
-      img: "assets/img/performances.png",
+      img: "assets/img/helpdesk kepegawaian.png",
       label: "Helpdesk Kepegawaian",
       route: "maintenance"
     },
     {
-      img: "assets/img/menu.png",
+      img: "assets/img/lain nya.png",
       label: "Menu Lain",
       route: "/menu-lain"
     }

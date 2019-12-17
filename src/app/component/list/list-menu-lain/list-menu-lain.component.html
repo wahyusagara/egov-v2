@@ -1,4 +1,4 @@
-<ion-item *ngFor="let list of listRow">
+<!-- <ion-item *ngFor="let list of listRow">
   <ion-row *ngFor="let menu of listMenu">
     <ion-col>
       <ion-avatar class="radius">
@@ -7,4 +7,20 @@
       <ion-label>{{menu?.name}}</ion-label>
     </ion-col>
   </ion-row>
-</ion-item>
+</ion-item> -->
+<ion-row class="menu-icon"> 
+  <ion-col size="3" *ngFor="let items of listMenu" (click)="navPage(items.url)">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12">
+        <span class="ion-justify-content-center">
+          <ion-avatar>
+            <img [src]="items?.img">
+          </ion-avatar>    
+        </span>
+        <span class="ion-justify-content-center FFR03 desc">
+          {{items?.name}}
+        </span>
+      </ion-col>
+    </ion-row>
+  </ion-col>
+</ion-row>

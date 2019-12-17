@@ -22,6 +22,7 @@ export class HomePage implements OnInit {
   }
   ionViewDidEnter() {
     this.isMobile = this.plt.platforms().includes('mobile') ? true : false;
+    !this.isMobile ? this.menu.enable(true) : {};
     // console.log(this.plt.platforms().includes('mobile') ? 'mobile' : 'browser');
   }
   dateSelect(event) {

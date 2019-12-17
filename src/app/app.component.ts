@@ -14,16 +14,31 @@ import { Router } from '@angular/router';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
+      icon: "assets/img/home-white.png",
+      title: "Home",
+      url: "home",
+      navigate: "root"
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    }
+      icon: "assets/img/timetable.png",
+      title: "Kehadiran",
+      url: "kehadiran",
+      navigate: "forward"
+    },
+    {
+      icon: "assets/img/startup.png",
+      title: "Statistic",
+      url: "maintenance",
+      navigate: "forward"
+    },
+    {
+      icon: "assets/img/user.png",
+      title: "Profile",
+      url: "profile",
+      navigate: "forward"
+    },
   ];
+  isMobile:boolean;
 
   constructor(
     private platform: Platform,
@@ -50,7 +65,14 @@ export class AppComponent {
   }
 
   checkLogin() {
-    if (!localStorage.getItem('nipbaru')) { this.router.navigateByUrl('login');} ;
+    if (!localStorage.getItem('nipbaru')) { 
+      this.router.navigateByUrl('login');
+    }
+    if (localStorage.getItem('nipbaru')) {
+      this.isMobile = this.platform.platforms().includes('mobile') ? true : false;
+      console.log(this.platform.platforms());
+      !this.isMobile && this.router.url != '/login' ? this.menu.enable(true) : {};
+    }
   }
 
   subscribeBackbutton() {

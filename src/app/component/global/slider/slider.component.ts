@@ -56,7 +56,7 @@ export class SliderComponent implements OnInit {
           id: berita[index].BERITA_ID
         });
       }
-      console.log(berita);
+      // console.log(berita);
     }).catch((err) => {
       this.global.showToast('Error Getting data', 'danger');
     })
