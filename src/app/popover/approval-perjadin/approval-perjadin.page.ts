@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PopoverController, NavParams } from '@ionic/angular';
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-approval-perjadin',
@@ -21,32 +22,31 @@ export class ApprovalPerjadinPage implements OnInit {
       value: 2
     }
   ];
-  atasan = [
-    {
-      nama: "Abdurasyid S.Kom, M.Sc.",
-      nip: "197903092005021002"
-    },
-    {
-      nama: "Roswidyatmoko Dwihatmojo S.Si",
-      nip: "198411012009121002"
-    },
-    {
-      nama: "Dr. Ir Mulyanto Darmawan M.Sc",
-      nip: "196408121991031006"
-    }
-  ]
+  atasan = [];
   atasan2;
   selected;
   data;
 
   constructor(
     private popOver: PopoverController,
-    private navParams: NavParams
+    private navParams: NavParams,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
     this.data = this.navParams.data.data;
+    this.getAtasan();
     console.log(this.data);
+  }
+
+  getAtasan() {
+    return this.api.getAtasan('https://egov-big.herokuapp.com/api/get-atasan')
+    .then((result) => {
+      this.atasan = JSON.parse(JSON.stringify(result)).data;
+      console.log(this.atasan);
+    }).catch((err) => {
+      console.error(err);
+    })
   }
 
   change() {
@@ -54,12 +54,15 @@ export class ApprovalPerjadinPage implements OnInit {
   }
 
   submit() {
+    console.log(this.atasan2);
+    const local = JSON.parse(localStorage.getItem('datakaryawan'));
+    const nama = local.GELARDEPAN + ' ' + local.NAMA + ' ' + local.GELARBELAKANG;
     const data = {
       iddata: this.data.iddata,
       id: this.data.pd_id,
       status: parseInt(this.selected),
-      nama_atasan2: this.atasan.find(x => x.nip == this.atasan2).nama,
-      nipatasan: this.atasan2,
+      nama_atasan2: this.atasan2 ? this.atasan.find(x => x.nip == this.atasan2).nama : nama,
+      nipatasan: this.atasan2 ? this.atasan2 : local.NIPBARU,
       instansi: this.data.instansi
     }
     this.popOver.dismiss(data);

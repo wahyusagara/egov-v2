@@ -102,10 +102,11 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
       namaatasan: this.listAtasan.find(x => x.nip == this.atasanId).nama
     };
     console.log(this.dataApproval);
-    // return this.api.postData('https://egov-big.herokuapp.com/api/req-approval-awal', this.dataApproval)
-    // .then((result) => {
-    //   console.log(result);
-    // })
+    return this.api.postData('https://egov-big.herokuapp.com/api/req-approval-awal', this.dataApproval)
+    .then((result) => {
+      console.log(result);
+      this.modalCtrl.dismiss();
+    })
   }
 
 }

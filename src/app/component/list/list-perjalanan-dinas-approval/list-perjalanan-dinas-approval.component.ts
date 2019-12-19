@@ -56,6 +56,7 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
       console.log(res);
       if (res.data !== undefined) {
         this.updateStatus(res.data.id, res.data.status, res.data.nama_atasan2, res.data.nipatasan, res.data.instansi, res.data.iddata);
+        this.getDataSurtug();
       }
     });
     var nama = JSON.parse(localStorage.getItem('datakaryawan')).NAMA;
