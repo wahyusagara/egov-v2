@@ -351,7 +351,7 @@ app.post('/api/req-approval-awal', (req, res) => {
     "b": "",
     "c": ""
   }).then((e) => {
-    await db.persetujuan_detil.create({
+    db.persetujuan_detil.create({
       "nama": body.namaatasan,
       "nip": body.nipatasan,
       "iddata": body.iddata,
