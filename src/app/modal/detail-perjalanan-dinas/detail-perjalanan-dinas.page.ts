@@ -18,11 +18,36 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
     private api: ApiService
   ) { }
 
+  listAtasan = [];
+  atasanId;
+  dataApproval = {
+    iddata: null,
+    instansi: "",
+    stat: 2,
+    tgl: "",
+    nipatasan: "",
+    namaatasan: ""
+  }
+
   ngOnInit() {
   }
 
   ngAfterViewInit() {
     console.log(this.data);
+  }
+
+  ionViewDidEnter() {
+    this.getAtasan();
+  }
+
+  getAtasan() {
+    return this.api.getAtasan('https://egov-big.herokuapp.com/api/get-atasan')
+    .then((result) => {
+      this.listAtasan = JSON.parse(JSON.stringify(result)).data;
+      console.log(this.listAtasan);
+    }).catch((err) => {
+      console.error(err);
+    })
   }
 
   async cetak() {
@@ -65,6 +90,22 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
 
   async dismiss() {
     this.modalCtrl.dismiss();
+  }
+
+  requestApproval(data) {
+    this.dataApproval = {
+      iddata: data.iddata,
+      instansi: data.instansi,
+      nipatasan: this.atasanId,
+      stat: 2,
+      tgl: new Date().toISOString(),
+      namaatasan: this.listAtasan.find(x => x.nip == this.atasanId).nama
+    };
+    console.log(this.dataApproval);
+    // return this.api.postData('https://egov-big.herokuapp.com/api/req-approval-awal', this.dataApproval)
+    // .then((result) => {
+    //   console.log(result);
+    // })
   }
 
 }

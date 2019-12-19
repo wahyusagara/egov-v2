@@ -126,8 +126,8 @@ export class CreatePerjalananDinasComponent implements OnInit {
     this.dataInsert.panggol = "(III/a) Penata Muda";
     this.dataInsert.jab = "Pranata Komputer";
     this.dataInsert.instansi = "Biro Perencanaan, Kepegawaian dan Hukum";
-    var atasan = this.atasan.find(x => x.nip == this.dataInsert.nipatasan);
-    this.dataInsert.namaatasan = atasan.nama;
+    var atasan = this.atasan.find(x => x.nip == this.dataInsert.nipppk);
+    this.dataInsert.ppk = atasan.nama;
     this.api.postData("https://egov-big.herokuapp.com/api/create-perjadin", this.dataInsert).then((res) => {
       console.log(res);
       const resp = JSON.parse(JSON.stringify(res));

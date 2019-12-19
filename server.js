@@ -326,28 +326,6 @@ app.post('/api/create-perjadin', (req, res) => {
   delete insert.namaatasan;
   db.surke.create(insert).then(async (result) => {
     console.log(result.id);
-    await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
-    await db.persetujuan.create({
-      "iddata": result.iddata,
-      "instansi": result.instansi,
-      "stat": result.stat,
-      "tgl": body.tgl,
-      "tglu": body.tgl,
-      "a": "",
-      "b": "",
-      "c": ""
-    });
-    await db.persetujuan_detil.create({
-      "nama": body.namaatasan,
-      "nip": body.nipatasan,
-      "iddata": result.iddata,
-      "instansi": result.instansi,
-      "stat": result.stat,
-      "tgl": body.tgl,
-      "a": "",
-      "b": "",
-      "c": ""
-    });
     res.json({
       sukses: true,
       id: result.id
@@ -359,6 +337,51 @@ app.post('/api/create-perjadin', (req, res) => {
     });
   });
 });
+
+app.post('/api/req-approval-awal', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  db.persetujuan.create({
+    "iddata": body.iddata,
+    "instansi": body.instansi,
+    "stat": body.stat,
+    "tgl": body.tgl,
+    "tglu": body.tgl,
+    "a": "",
+    "b": "",
+    "c": ""
+  }).then((e) => {
+    await db.persetujuan_detil.create({
+      "nama": body.namaatasan,
+      "nip": body.nipatasan,
+      "iddata": body.iddata,
+      "instansi": body.instansi,
+      "stat": body.stat,
+      "tgl": body.tgl,
+      "a": "",
+      "b": "",
+      "c": ""
+    }).then(async () => {
+      await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
+      res.json({
+        sukses: true,
+        msg: "Request approval successfully"
+      });
+    }).catch((err) => {
+      console.error(err);
+      res.json({
+        sukses: false,
+        msg: "Request approval failed"
+      })
+    })
+  }).catch((err) => {
+    console.error(err);
+    res.json({
+      sukses: false,
+      msg: "Failed request approval"
+    })
+  })
+})
 
 app.post('/api/req-approval-perjadin', (req, res) => {
   const body = req.body;
