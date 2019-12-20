@@ -57,6 +57,7 @@ export class PerjalananDinasPage implements OnInit {
   ngOnInit() {
   }
   async ionViewWillEnter() {
+    this.resp = undefined;
     await this.getDataSurtug();
   }
   async ionViewDidEnter() {
