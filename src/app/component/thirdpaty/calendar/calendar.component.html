@@ -1,17 +1,16 @@
 
 <div class="FFR03" style="padding-right: 5%; padding-left: 5%; padding-bottom: 10%;">
   <ion-row>
-
     <ion-col size="12">
       <ion-row class="ion-justify-content-center">
         <ion-col class="ion-text-center">
-          <ion-row class="ion-justify-content-center">
+          <ion-row class="ion-justify-content-end">
             <ion-button 
               mwlCalendarPreviousView
               [view]="view"
               [(viewDate)]="viewDate"
               (viewDateChange)="closeOpenMonthViewDay()">
-              Previous
+              <ion-icon name="arrow-dropleft" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-row>
         </ion-col>
@@ -25,20 +24,20 @@
           </ion-row>
         </ion-col>
         <ion-col>
-          <ion-row class="ion-justify-content-center">
+          <ion-row class="ion-justify-content-start">
             <ion-button 
             mwlCalendarNextView
             [view]="view"
             [(viewDate)]="viewDate"
             (viewDateChange)="closeOpenMonthViewDay()">
-              Next
+              <ion-icon name="arrow-dropright" slot="icon-only"></ion-icon>
             </ion-button>
           </ion-row>
         </ion-col>
       </ion-row>
     </ion-col>
   </ion-row>
-  <ion-row>
+  <!-- <ion-row>
     <ion-col size="12">
       <ion-row>
         <ion-col>
@@ -73,7 +72,7 @@
         </ion-col>
       </ion-row>
     </ion-col>
-  </ion-row>
+  </ion-row> -->
   <ion-row>
     <ion-col size="12" text-center>
       <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
