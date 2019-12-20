@@ -1,4 +1,4 @@
-import { Component, OnInit,  AfterViewInit } from '@angular/core';
+import { Component, OnInit,  AfterViewInit, AfterContentInit, Input } from '@angular/core';
 import { PopoverController, ModalController } from '@ionic/angular';
 import { AtasanPage } from "../../../popover/atasan/atasan.page";
 import { ApiService } from 'src/app/services/api/api.service';
@@ -10,7 +10,8 @@ import { DetailPerjalananDinasPage } from 'src/app/modal/detail-perjalanan-dinas
   templateUrl: './list-perjanalan-dinas.component.html',
   styleUrls: ['./list-perjanalan-dinas.component.scss'],
 })
-export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
+export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit, AfterContentInit {
+  @Input() dataSurtug = [];
   resp;
   listDinas = [
     {
@@ -55,11 +56,13 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {}
   async ngAfterViewInit() {
-    await this.getDataSurtug();
+    // await this.getDataSurtug();
+  }
+  async ngAfterContentInit() {
+    this.listSurtug = this.dataSurtug;
   }
   async getDataAtasan() {
     return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", "").then((result) => {
-      console.log(result);
     })
   }
   async getDataSurtug() {
@@ -67,7 +70,6 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit {
     return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, null, nip).then((result) => {
       this.resp = result;
       this.listSurtug = JSON.parse(JSON.stringify(result)).data;
-      console.log(this.listSurtug);
     }).catch((err) => {
       console.log(err);
     });

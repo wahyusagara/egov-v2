@@ -110,16 +110,13 @@ export class CreatePerjalananDinasComponent implements OnInit {
     component: IonicSelectableComponent,
     value: {name: "", val: ""}
   }) {
-    console.log(event.value.val);
     this.dataInsert.tj = event.value.val
   }
 
   submit() {
-    console.log(this.test);
     this.dataInsert.tgl = new Date().toISOString();
     this.dataInsert.namapegg = this.dataKaryawan.nama;
     this.dataInsert.nip = this.dataKaryawan.nip;
-    console.log(this.dataInsert);
     this.dataInsert.tglb = new Date(this.dataInsert.tglb).toISOString();
     this.dataInsert.tglk = new Date(this.dataInsert.tglk).toISOString();
     this.dataInsert.tgl = new Date(this.dataInsert.tgl).toISOString();
@@ -129,10 +126,9 @@ export class CreatePerjalananDinasComponent implements OnInit {
     var atasan = this.atasan.find(x => x.nip == this.dataInsert.nipppk);
     this.dataInsert.ppk = atasan.nama;
     this.api.postData("https://egov-big.herokuapp.com/api/create-perjadin", this.dataInsert).then((res) => {
-      console.log(res);
       const resp = JSON.parse(JSON.stringify(res));
       if (resp.sukses === true) {
-        this.navCtrl.back()
+        this.navCtrl.back();
       } else {
         this.global.showToast("Failed create perjadin", "danger");
       }

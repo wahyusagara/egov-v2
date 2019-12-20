@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
 import { AtasanPage } from "../../popover/atasan/atasan.page";
+import { ApiService } from 'src/app/services/api/api.service';
 
 @Component({
   selector: 'app-perjalanan-dinas',
@@ -44,34 +45,34 @@ export class PerjalananDinasPage implements OnInit {
     isApproval: false
   }
   isApproval = true;
+  resp;
+  listSurtug = [];
 
   constructor(
     private navCtrl: NavController,
-    private popOver: PopoverController
+    private popOver: PopoverController,
+    private api: ApiService
   ) { }
 
   ngOnInit() {
   }
+  async ionViewWillEnter() {
+    await this.getDataSurtug();
+  }
   async ionViewDidEnter() {
-    console.log(JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU);
-    const x = new Date().toISOString();
-    console.log(new Date(x).getTime());
     // await this.getData();
   }
   isClicked() {
     // this.isApproval = !this.isApproval;
     this.data.isApproval = !this.data.isApproval
-    console.log(this.data.isApproval);
   }
   async getData() {
     fetch("https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk", {
       referrer: "https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk",
       keepalive: true
     }).then((result) => {
-      console.log(result);
       return result.json();
     }).then((hasil) => {
-      console.log(hasil);
     })
   }
 
@@ -79,7 +80,6 @@ export class PerjalananDinasPage implements OnInit {
     this.navCtrl.navigateForward('perjalanan-dinas-create');
   }
   atasanChange(event, id) {
-    console.log(event, id);
     this.showSelectable = false;
   }
   showSelect() {
@@ -99,16 +99,21 @@ export class PerjalananDinasPage implements OnInit {
     });
     p.onDidDismiss().then((res) => {
       if (res.data !== undefined) {
-        console.log('dapat res data');
         this.listDinas[this.listDinas.indexOf(data)].approved = data.approved === 2 ? 3 : data.approved;
       }
-      // console.log(this.listDinas[1]);
-      
-      // this.listDinas.find(x => x.id === id)
-      console.log(res); 
     })
     
     return data.approved !== 2 ? {} : await p.present();
+  }
+
+  async getDataSurtug() {
+    const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
+    return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, null, nip).then((result) => {
+      this.resp = result;
+      this.listSurtug = JSON.parse(JSON.stringify(result)).data;
+    }).catch((err) => {
+      console.error(err);
+    });
   }
 
 }
