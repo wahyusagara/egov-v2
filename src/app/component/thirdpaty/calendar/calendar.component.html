@@ -1,6 +1,86 @@
 
 <div class="FFR03" style="padding-right: 5%; padding-left: 5%; padding-bottom: 10%;">
+  <ion-row>
+
+    <ion-col size="12">
+      <ion-row class="ion-justify-content-center">
+        <ion-col class="ion-text-center">
+          <ion-row class="ion-justify-content-center">
+            <ion-button 
+              mwlCalendarPreviousView
+              [view]="view"
+              [(viewDate)]="viewDate"
+              (viewDateChange)="closeOpenMonthViewDay()">
+              Previous
+            </ion-button>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-justify-content-center">
+            <ion-button 
+              mwlCalendarToday
+              [(viewDate)]="viewDate" color="light">
+              Today
+            </ion-button>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-justify-content-center">
+            <ion-button 
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+            (viewDateChange)="closeOpenMonthViewDay()">
+              Next
+            </ion-button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12">
+      <ion-row>
+        <ion-col>
+          <ion-row class="ion-justify-content-center">
+            <ion-button
+              (click)="setView(CalendarView.Week)"
+              [color]="currentView == CalendarView.Week ? 'light' : 'primary'"
+            >
+              Week
+            </ion-button>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-justify-content-center">
+            <ion-button
+              (click)="setView(CalendarView.Month)"
+              [color]="currentView == CalendarView.Month ? 'light' : 'primary'"
+            >
+              Month
+            </ion-button>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-row class="ion-justify-content-center">
+            <ion-button
+              (click)="setView(CalendarView.Day)"
+              [color]="currentView == CalendarView.Day ? 'light' : 'primary'"
+            >
+              Day
+            </ion-button>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="12" text-center>
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
+    </ion-col>
+  </ion-row>
   <mwl-calendar-month-view
+    *ngIf="currentView == CalendarView.Month"
     [viewDate]="viewDate"
     [events]="events"
     [refresh]="refresh"
@@ -9,5 +89,23 @@
     (eventClicked)="handleEvent('Clicked', $event.event)"
     (eventTimesChanged)="eventTimesChanged($event)"
     >
-    </mwl-calendar-month-view>
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngIf="currentView == CalendarView.Week"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngIf="currentView == CalendarView.Day"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)"
+  >
+  </mwl-calendar-day-view>
 </div>

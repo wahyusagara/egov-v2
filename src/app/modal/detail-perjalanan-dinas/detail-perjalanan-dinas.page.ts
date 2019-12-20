@@ -2,6 +2,7 @@ import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { GlobalFuncService } from 'src/app/services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
+import { IonicSelectableComponent } from 'ionic-selectable';
 
 @Component({
   selector: 'app-detail-perjalanan-dinas',
@@ -20,6 +21,7 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
 
   listAtasan = [];
   atasanId;
+  namaAtasan;
   dataApproval = {
     iddata: null,
     instansi: "",
@@ -28,12 +30,12 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
     nipatasan: "",
     namaatasan: ""
   }
+  atasanSelected;
 
   ngOnInit() {
   }
 
   ngAfterViewInit() {
-    console.log(this.data);
   }
 
   ionViewDidEnter() {
@@ -44,7 +46,6 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
     return this.api.getAtasan('https://egov-big.herokuapp.com/api/get-atasan')
     .then((result) => {
       this.listAtasan = JSON.parse(JSON.stringify(result)).data;
-      console.log(this.listAtasan);
     }).catch((err) => {
       console.error(err);
     })
@@ -81,7 +82,6 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
 
   async cancel(id, nama, nip, instansi, iddata) {
     this.updateStatus(id, 3, nama, nip, instansi, iddata).then((res) => {
-      console.log(res);
       this.modalCtrl.dismiss();
     }).catch((err) => {
       this.global.showToast('Failed update data', 'danger');
@@ -99,14 +99,25 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
       nipatasan: this.atasanId,
       stat: 2,
       tgl: new Date().toISOString(),
-      namaatasan: this.listAtasan.find(x => x.nip == this.atasanId).nama
+      namaatasan: this.namaAtasan
     };
-    console.log(this.dataApproval);
     return this.api.postData('https://egov-big.herokuapp.com/api/req-approval-awal', this.dataApproval)
     .then((result) => {
-      console.log(result);
       this.modalCtrl.dismiss();
     })
+  }
+
+  changeAtasan(event: {
+    component: IonicSelectableComponent,
+    value: {
+      nip: "",
+      nama: "",
+      eselon_int: 0,
+      eselon: ""
+    }
+  }) {
+    this.atasanId = event.value.nip;
+    this.namaAtasan = event.value.nama;
   }
 
 }

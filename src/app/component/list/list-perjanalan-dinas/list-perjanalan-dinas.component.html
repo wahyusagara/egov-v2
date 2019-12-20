@@ -8,11 +8,11 @@
       [class]="list.status_approval === 1 ? 'approved' 
       : list.status_approval === 2 ? 'waiting' 
       : list.status_approval === 3 ? 'rejected' 
-      : ''"
+      : 'waiting'"
       color="dark">
       {{list.status_approval === 1 ? "Berangkat" :
-      list.status_approval === 2 ? "Masih Proses" :
-      list.status_approval === 3 ? "Batal Berangkat" : ""}}
+      list.status_approval === 2 ? "Menunggu Persetujuan" :
+      list.status_approval === 3 ? "Batal Berangkat" : "Masih Proses"}}
     </ion-label>
     </ion-col>
     <ion-col size="4">

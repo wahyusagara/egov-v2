@@ -80,11 +80,11 @@
               [class]="data.status_approval === 1 ? 'approved' 
               : data.status_approval === 2 ? 'waiting' 
               : data.status_approval === 3 ? 'rejected' 
-              : ''"
+              : 'waiting'"
               color="dark">
               {{data.status_approval === 1 ? "Berangkat" :
-              data.status_approval === 2 ? "Masih Proses" :
-              data.status_approval === 3 ? "Batal Berangkat" : ""}}
+              data.status_approval === 2 ? "Menunggu Persetujuan" :
+              data.status_approval === 3 ? "Batal Berangkat" : "Masih Proses"}}
             </ion-label>
           <!-- </ion-item> -->
         </ion-col>
@@ -96,9 +96,18 @@
       <ion-col size="12">
         <ion-item>
           <ion-label>Atasan: </ion-label>
-          <ion-select multiple="false" [(ngModel)]="atasanId" placeholder="--Pilih atasan--">
+          <!-- <ion-select multiple="false" [(ngModel)]="atasanId" placeholder="--Pilih atasan--">
             <ion-select-option *ngFor="let atasan of listAtasan" [value]="atasan.nip">{{atasan.nama}}</ion-select-option>
-          </ion-select>
+          </ion-select> -->
+          <ionic-selectable
+            item-content
+            [(ngModel)]="port"
+            [items]="listAtasan"
+            itemValueField="nip"
+            itemTextField="nama"
+            [canSearch]="true"
+            (onChange)="changeAtasan($event)">
+          </ionic-selectable>
         </ion-item>
       </ion-col>
     </ion-row>
