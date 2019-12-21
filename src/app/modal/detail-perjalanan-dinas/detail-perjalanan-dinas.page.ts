@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { GlobalFuncService } from 'src/app/services/global-func.service';
 import { ApiService } from 'src/app/services/api/api.service';
 import { IonicSelectableComponent } from 'ionic-selectable';
@@ -16,7 +16,8 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
   constructor(
     private modalCtrl: ModalController,
     private global: GlobalFuncService,
-    private api: ApiService
+    private api: ApiService,
+    private alertCtrl: AlertController
   ) { }
 
   listAtasan = [];
@@ -36,6 +37,7 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    console.log(this.data);
   }
 
   ionViewDidEnter() {
@@ -118,6 +120,29 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
   }) {
     this.atasanId = event.value.nip;
     this.namaAtasan = event.value.nama;
+  }
+
+
+  async confirmCancel(id, nama, nip, instansi, iddata) {
+    const alert = await this.alertCtrl.create({
+      header: 'Apakah anda yakin?',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+          }
+        }, {
+          text: 'OK!',
+          handler: () => {
+            this.cancel(id, nama, nip, instansi, iddata);
+          }
+        }
+      ]
+    });
+  
+    return await alert.present();
   }
 
 }
