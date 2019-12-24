@@ -7,8 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [scrollEvents]="true">
-  <ion-item>
+<ion-content [scrollEvents]="true" >
+  <ion-item class="FFR04">
     <ion-label>{{isApproval ? 'Surat tugas saya' : 'Butuh persetujuan'}}</ion-label>
     <ion-toggle (click)="isClicked()" [(ngModel)]="isApproval" color="primary"></ion-toggle>
   </ion-item>
@@ -18,7 +18,7 @@
       <ion-row>
         <ion-col size="12">
           <ion-col>
-            <span class="BTN002" float-right (click)="createDinas()">
+            <span class="BTN002 FFR04" float-right (click)="createDinas()">
               Tambah
             </span>
           </ion-col>

@@ -7,99 +7,83 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-grid class="ion-no-padding">
-    <ion-list>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Nama</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.namapegg}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>No surat tugas</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.noagen}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Tanggal berangkat</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.tglb | date: "dd-MMM-yyyy"}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Tanggal pulang</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.tglk | date: "dd-MMM-yyyy"}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Tujuan</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.tj}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Maksud / deskripsi</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.maksud}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Status</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <!-- <ion-item> -->
-            <ion-label
-            [class]="data.status_approval === 1 ? 'approved' 
-            : data.status_approval === 2 ? 'waiting' 
-            : data.status_approval === 3 ? 'rejected' 
-            : 'waiting'"
-            color="dark">
-            {{data.status_approval === 1 ? "Berangkat" :
-            data.status_approval === 2 ? "Menunggu Persetujuan" :
-            data.status_approval === 3 ? "Batal Berangkat" : "Masih Proses"}}
-          </ion-label>
-          <!-- </ion-item> -->
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col size="3" class="ion-align-self-center ion-text-center">
-          <ion-label>Detail</ion-label>
-        </ion-col>
-        <ion-col size="9">
-          <ion-item>
-            <ion-label>{{data?.pda}}</ion-label>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-list>
+<ion-content class="detail-perjalanan-dinas">
+  <ion-grid class="ion-no-padding FFR04">
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>Nama</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.namapegg}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>No surat tugas</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.noagen}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>Tanggal berangkat</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.tglb | date: "dd-MMM-yyyy"}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>Tanggal pulang</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.tglk | date: "dd-MMM-yyyy"}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>Tujuan</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.tj}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <span>Maksud / deskripsi</span>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.maksud}}</span>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+          <span>Status</span>
+      </ion-col>
+      <ion-col size="7">
+        <!-- <ion-item> -->
+          <span
+          [class]="data.status_approval === 1 ? 'approved' 
+          : data.status_approval === 2 ? 'waiting' 
+          : data.status_approval === 3 ? 'rejected' 
+          : 'waiting'"
+          color="dark">
+          {{data.status_approval === 1 ? "Berangkat" :
+          data.status_approval === 2 ? "Menunggu Persetujuan" :
+          data.status_approval === 3 ? "Batal Berangkat" : "Masih Proses"}}
+        </span>
+        <!-- </ion-item> -->
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="5" class="">
+        <ion-label>Detail</ion-label>
+      </ion-col>
+      <ion-col size="7">
+        <span>{{data?.pda}}</span>
+      </ion-col>
+    </ion-row>
   </ion-grid>
   <ion-grid fixed *ngIf="!data.atasan_nip">
     <ion-row>
