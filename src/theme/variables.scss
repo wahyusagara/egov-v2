@@ -162,8 +162,8 @@
 
 @mixin font-size($sizeValue) {
 
-  @media  only screen and (min-width: 360px){
-    font-size: calc(#{$sizeValue+px} - 0.20vw) !important;
+  @media  only screen and (min-width: 320px){
+    font-size: calc(#{$sizeValue+px} - 0.70vw) !important;
   }
 
   @media  only screen and (min-width: 375px){

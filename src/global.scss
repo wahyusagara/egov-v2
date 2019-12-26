@@ -59,7 +59,9 @@ app-dashboard.ion-page {
   padding: 0px;
   margin: 0px;
 }
-
+.split-pane-md.split-pane-visible>.split-pane-side {
+  max-width: 0;
+}
 
 
 app-login.ion-page {
@@ -262,7 +264,7 @@ span.button-text.sc-ion-back-button-ios {
   padding: 0px;
   left: 0px !important;
   text-align: center;
-  height: 80vh;
+  // height: 80vh;
   transform: translate3d(5vmax, 0px, 0px);
 }
 
@@ -277,4 +279,13 @@ ion-list.ios.list-ios.hydrated {
 app-create-perjalanan-dinas {
   border: 1px solid var(--CR004);
   display: block;
+}
+app-detail-perjalanan-dinas{
+
+  & ion-content{
+
+    & ion-grid{
+      padding: 5px;
+    }
+  }
 }
