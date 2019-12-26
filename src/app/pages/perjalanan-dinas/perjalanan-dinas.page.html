@@ -32,7 +32,7 @@
     <ion-grid no-padding>
       <ion-row>
         <ion-col size="12">
-          <app-list-perjalanan-dinas-approval></app-list-perjalanan-dinas-approval>
+          <app-list-perjalanan-dinas-approval [dataSurtug]="listSurtug" *ngIf="resp"></app-list-perjalanan-dinas-approval>
         </ion-col>
       </ion-row>
     </ion-grid>

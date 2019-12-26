@@ -13,8 +13,9 @@
 
 <ion-content class="listBackground">
   <ion-list class="listBackground">
-    <ion-item *ngFor="let list of listMenu" class="listBackground" (click)="openPage(list.url)">
+    <ion-item *ngFor="let list of listMenu" class="listBackground" (click)="updateStatusNotif(list.url)">
       <ion-label class="listBackground strong">{{list.name}}</ion-label>
+      <ion-badge color="primary" mode="ios" *ngIf="list.count > 0">{{list.count}}</ion-badge>
     </ion-item>
   </ion-list>
 </ion-content>

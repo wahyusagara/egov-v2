@@ -66,6 +66,13 @@ export class PerjalananDinasPage implements OnInit {
   isClicked() {
     // this.isApproval = !this.isApproval;
     this.data.isApproval = !this.data.isApproval
+    const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
+    this.resp = null;
+    if (this.isApproval) {
+      this.getDataSurtug(null, nip);
+    } else {
+      this.getDataSurtug(nip, null);
+    }
   }
   async getData() {
     fetch("https://egov.big.go.id/simperjadinbig/xdatax/pejabat/ppk", {
@@ -107,9 +114,9 @@ export class PerjalananDinasPage implements OnInit {
     return data.approved !== 2 ? {} : await p.present();
   }
 
-  async getDataSurtug() {
+  async getDataSurtug(nipatasan?, nipku?) {
     const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
-    return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, null, nip).then((result) => {
+    return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, nipatasan, nipku ? nipku : nip).then((result) => {
       this.resp = result;
       this.listSurtug = JSON.parse(JSON.stringify(result)).data;
     }).catch((err) => {

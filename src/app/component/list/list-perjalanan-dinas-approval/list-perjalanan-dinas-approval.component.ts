@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, AfterContentInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api/api.service';
 import { ApprovalPerjadinPage } from 'src/app/popover/approval-perjadin/approval-perjadin.page';
 import { PopoverController } from '@ionic/angular';
@@ -9,7 +9,9 @@ import { GlobalFuncService } from 'src/app/services/global-func.service';
   templateUrl: './list-perjalanan-dinas-approval.component.html',
   styleUrls: ['./list-perjalanan-dinas-approval.component.scss'],
 })
-export class ListPerjalananDinasApprovalComponent implements OnInit {
+export class ListPerjalananDinasApprovalComponent implements OnInit, AfterContentInit {
+  // [dataSurtug]="listSurtug" *ngIf="resp"
+  @Input() dataSurtug = [];
   listSurtug = [];
   resp;
 
@@ -21,13 +23,16 @@ export class ListPerjalananDinasApprovalComponent implements OnInit {
 
   ngOnInit() {}
   async ngAfterViewInit() {
-    await this.getDataSurtug();
+    // await this.getDataSurtug();
   }
   // async getDataAtasan() {
   //   return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", "").then((result) => {
   //     console.log(result);
   //   })
   // }
+  async ngAfterContentInit() {
+    this.listSurtug = this.dataSurtug;
+  }
   async getDataSurtug() {
     const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
     return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, nip, null).then((result) => {

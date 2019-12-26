@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormDummyComponent } from "./form-dummy/form-dummy.component";
 import { IonicSelectableModule } from "ionic-selectable";
 import { IonicModule } from '@ionic/angular';
+import { FormsModule } from '@angular/forms';
 // import { CalendarModule } from 'ion2-calendar';
 
 // Component List
@@ -30,7 +31,7 @@ import { ListProfileComponent } from "./list/list-profile/list-profile.component
 import { ListPerjalananDinasApprovalComponent } from "./list/list-perjalanan-dinas-approval/list-perjalanan-dinas-approval.component";
 import { TestingComponent } from "./global/testing/testing.component";
 import { CreatePerjalananDinasComponent } from './form/create-perjalanan-dinas/create-perjalanan-dinas.component';
-import { FormsModule } from '@angular/forms';
+import { ListNotifComponent } from "./list/list-notif/list-notif.component";
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { FormsModule } from '@angular/forms';
     ChartjsComponent,
     TestingComponent,
     ListPerjalananDinasApprovalComponent,
-    CreatePerjalananDinasComponent
+    CreatePerjalananDinasComponent,
+    ListNotifComponent
   ],
   imports: [
     CommonModule,
@@ -79,7 +81,8 @@ import { FormsModule } from '@angular/forms';
     ChartjsComponent,
     TestingComponent,
     ListPerjalananDinasApprovalComponent,
-    CreatePerjalananDinasComponent
+    CreatePerjalananDinasComponent,
+    ListNotifComponent
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

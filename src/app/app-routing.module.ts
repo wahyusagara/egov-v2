@@ -29,7 +29,8 @@ const routes: Routes = [
   { path: 'entri-data', loadChildren: './pages/entri-data/entri-data.module#EntriDataPageModule' },
   { path: 'berita', loadChildren: './pages/berita/berita.module#BeritaPageModule' },
   { path: 'statistik', loadChildren: './pages/statistik/statistik.module#StatistikPageModule' },
-  { path: 'maintenance', loadChildren: './pages/maintenance/maintenance.module#MaintenancePageModule' }
+  { path: 'maintenance', loadChildren: './pages/maintenance/maintenance.module#MaintenancePageModule' },  { path: 'notif-list', loadChildren: './pages/notif-list/notif-list.module#NotifListPageModule' }
+
 
 
 ];

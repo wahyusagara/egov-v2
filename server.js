@@ -362,11 +362,20 @@ app.post('/api/req-approval-awal', (req, res) => {
       "b": "",
       "c": ""
     }).then(async () => {
-      await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
-      res.json({
-        sukses: true,
-        msg: "Request approval successfully"
-      });
+      db.sequelize.query(`INSERT INTO notif_list (title, body, type, is_read, nip) VALUES ('Request approval perjalanan dinas', 'Anda memiliki permintaan approval perjalanan dinas baru', 'perjalanan-dinas', 0, '${body.nipatasan}');`, 
+      {type: db.sequelize.QueryTypes.INSERT}).then(async (resultNotif) => {
+        await sendNotif(body.nipatasan, "Request approval perjalanan dinas", "Anda memiliki permintaan approval perjalanan dinas baru");
+        res.json({
+          sukses: true,
+          msg: "Request approval successfully"
+        });
+      }).catch((err) => {
+        console.error(err);
+        res.json({
+          sukses: false,
+          msg: "Request approval failed"
+        })
+      })
     }).catch((err) => {
       console.error(err);
       res.json({
@@ -380,6 +389,42 @@ app.post('/api/req-approval-awal', (req, res) => {
       sukses: false,
       msg: "Failed request approval"
     })
+  })
+})
+
+app.get('/api/list-notif', (req, res) => {
+  const body = req.body;
+  const head = req.headers;
+  db.sequelize.query(`SELECT * from notif_list WHERE status = 1 and nip = '${head.nip}'`,
+  { type: db.sequelize.QueryTypes.INSERT }).then((result) => {
+    res.json({
+      sukses: true,
+      data: result
+    });
+  }).catch((err) => {
+    console.error(err);
+    res.json({
+      sukses: false,
+      msg: "Failed get list notif"
+    });
+  });
+})
+
+app.post('/api/update-status-notif', (req, res) => {
+  const head = req.headers;
+  const body = req.body;
+  db.sequelize.query(`UPDATE notif_list SET is_read = 1 WHERE type = '${body.type}' AND nip = '${body.nip}';`,
+  { type: db.sequelize.QueryTypes.UPDATE }).then((result) => {
+    res.json({
+      sukses:true,
+      msg: "Berhasil update status notif"
+    });
+  }).catch((err) => {
+    console.error(err);
+    res.json({
+      sukses: false,
+      msg: "Failed update status notif"
+    });
   })
 })
 
@@ -604,7 +649,7 @@ app.get('/api/get-surtug', (req, res) => {
       msg: 'Failed get data Surtug'
     });
   });
-})
+});
 
 // Numpang API bentar ya, Nanti di hapus lagi...
 app.post('/api/test_gps', (req, res) => {
