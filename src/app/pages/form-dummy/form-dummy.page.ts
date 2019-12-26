@@ -55,14 +55,14 @@ export class FormDummyPage implements OnInit {
       reader.onerror = (error) => {
         reject(`error: ${error}`);
       };
-      console.log(this.files);
+      // console.log(this.files);
     });
   }
   deleteImg(e) {
     this.files = this.files.filter(file => file.id !== parseInt(e, 10));
   }
   changeType(){
-    console.log(this.type);
+    // console.log(this.type);
   }
 
 }

@@ -96,7 +96,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit, Afte
 
   async insertAtasanSurtug(data) {
     return this.api.postData("https://egov-big.herokuapp.com/api/insert-atasan-surtug", data).then((result) => {
-      console.log(result);
+      // console.log(result);
     }).catch((err) => {
       console.log(err);
     })
@@ -110,7 +110,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit, Afte
       body.nip.push(`'${element.nip}'`)
     });
     await this.api.pushNotif(body).then((result) => {
-      console.log(result);
+      // console.log(result);
     }).catch((err) => {
       console.log(err);
     })
@@ -147,7 +147,7 @@ export class ListPerjanalanDinasComponent implements OnInit, AfterViewInit, Afte
 
   async cancel(id, nama, nip, instansi, iddata) {
     this.updateStatus(id, 3, nama, nip, instansi, iddata).then((res) => {
-      console.log(res);
+      // console.log(res);
       this.getDataSurtug();
     }).catch((err) => {
       this.global.showToast('Failed update data', 'danger');

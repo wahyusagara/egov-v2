@@ -40,7 +40,7 @@ export class PerjalananDinasCreatePage implements OnInit {
     this.dataInsert.namapeg = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NAMA : '';
     this.api.postData("https://egov-big.herokuapp.com/api/create-surtug", this.dataInsert)
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       this.navCtrl.back();
     }).catch((err) => {
       console.log(err);
@@ -97,7 +97,7 @@ export class PerjalananDinasCreatePage implements OnInit {
       reader.onerror = (error) => {
         reject(`error: ${error}`);
       };
-      console.log(this.files);
+      // console.log(this.files);
     });
   }
   deleteImg(e) {

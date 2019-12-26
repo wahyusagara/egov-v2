@@ -51,7 +51,7 @@ export class DaftarPegawaiPage implements OnInit {
   }
 
   searchData() {
-    console.log(this.search);
+    // console.log(this.search);
     this.pegawai = this.list_pegawai;
     if (this.search.length > 0) {
       this.pegawai = this.pegawai.filter(x => x.full_name.toLowerCase().includes(this.search.toLowerCase()));

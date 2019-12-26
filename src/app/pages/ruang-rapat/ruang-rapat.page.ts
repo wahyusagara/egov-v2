@@ -26,7 +26,7 @@ export class RuangRapatPage implements OnInit {
   }
 
   onSearchChange(event) {
-    console.log(event);
+    // console.log(event);
   }
 
 }

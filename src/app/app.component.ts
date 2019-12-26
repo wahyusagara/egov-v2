@@ -70,7 +70,7 @@ export class AppComponent {
     }
     if (localStorage.getItem('nipbaru')) {
       this.isMobile = this.platform.platforms().includes('mobile') ? true : false;
-      console.log(this.platform.platforms());
+      // console.log(this.platform.platforms());
       !this.isMobile && this.router.url != '/login' ? this.menu.enable(true) : {};
     }
   }
@@ -88,11 +88,11 @@ export class AppComponent {
   openPageNotif() {
     this.fcm.onNotification().subscribe(data => {
       if(data.wasTapped){
-        console.log("Received in background");
+        // console.log("Received in background");
         // console.log(JSON.stringify(data))
         this.router.navigateByUrl(data['url'])
       } else {
-        console.log("Received in foreground");
+        // console.log("Received in foreground");
         // console.log(JSON.stringify(data));
         this.router.navigateByUrl(data['url'])
       };

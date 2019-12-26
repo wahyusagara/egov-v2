@@ -117,11 +117,12 @@ export class NotifikasiPage implements OnInit {
   }
 
   async getNotifList() {
-    const nip = await JSON.parse(localStorage.getItem('nipbaru'));
-    this.api.getData('/api/list-notif', null, null, nip).then((result) => {
-      this.resp = JSON.parse(JSON.stringify(result));
-      this.listMenu.forEach((val,idx) => {
-        return val.count === this.resp.filter(x => x.type === val.url && x.is_read === 0).length;
+    const nip = JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU;
+    this.api.getData('http://localhost:5000/api/list-notif', null, null, nip).then((result) => {
+      this.resp = JSON.parse(JSON.stringify(result)).data;
+      this.listMenu.map((val,idx) => {
+        val.count = this.resp.filter(x => x.type === val.url && x.is_read === 0).length;
+        // return val;
       });
     })
   }
@@ -129,10 +130,10 @@ export class NotifikasiPage implements OnInit {
   async updateStatusNotif(url) {
     const data = {
       type: url,
-      nip: JSON.parse(localStorage.getItem('nipbaru'))
+      nip: JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU
     };
     this.api.postData('https://egov-big.herokuapp.com/api/update-status-notif', data).then((result) => {
-      console.log(result);
+      // console.log(result);
       this.openPage(url);
     })
   }

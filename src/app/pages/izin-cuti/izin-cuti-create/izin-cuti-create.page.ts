@@ -22,7 +22,7 @@ export class IzinCutiCreatePage implements OnInit {
   ngOnInit() {
   }
   changeType(){
-    console.log(this.type);
+    // console.log(this.type);
   }
   submit() {
     // this.global.listCuti.push(
@@ -70,7 +70,7 @@ export class IzinCutiCreatePage implements OnInit {
       reader.onerror = (error) => {
         reject(`error: ${error}`);
       };
-      console.log(this.files);
+      // console.log(this.files);
     });
   }
   deleteImg(e) {

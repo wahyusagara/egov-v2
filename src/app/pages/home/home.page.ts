@@ -26,14 +26,14 @@ export class HomePage implements OnInit {
     // console.log(this.plt.platforms().includes('mobile') ? 'mobile' : 'browser');
   }
   dateSelect(event) {
-    console.log(event);
+    // console.log(event);
   }
   showMenu() {
     // this.menu.open()
     this.navCtrl.navigateForward('notifikasi');
   }
   navPage(url) {
-    console.log(url);
+    // console.log(url);
     this.navCtrl.navigateForward(url);
   }
   async todayAgenda() {

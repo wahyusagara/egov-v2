@@ -56,7 +56,7 @@ export class ListMenuComponent implements OnInit {
 
   ngOnInit() {}
   navPage(url) {
-    console.log(url);
+    // console.log(url);
     this.navCtrl.navigateForward(url);
   }
 

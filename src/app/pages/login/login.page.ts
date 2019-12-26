@@ -46,7 +46,7 @@ export class LoginPage implements OnInit {
   login() {
     if (this.username === '') { this.global.showToast('Login Failed', 'danger'); }
     return this.api.login(this.username, this.password).then(async (result) => {
-      console.log(result);
+      // console.log(result);
       let a;
       a = result;
       if (a.length > 0) {

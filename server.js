@@ -395,8 +395,9 @@ app.post('/api/req-approval-awal', (req, res) => {
 app.get('/api/list-notif', (req, res) => {
   const body = req.body;
   const head = req.headers;
-  db.sequelize.query(`SELECT * from notif_list WHERE status = 1 and nip = '${head.nip}'`,
-  { type: db.sequelize.QueryTypes.INSERT }).then((result) => {
+  db.sequelize.query(`SELECT * from notif_list WHERE status = 1 AND nip = '${head.nip}'`,
+  { type: db.sequelize.QueryTypes.SELECT }).then((result) => {
+    console.log(result);
     res.json({
       sukses: true,
       data: result

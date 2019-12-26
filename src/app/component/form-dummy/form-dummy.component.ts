@@ -37,7 +37,7 @@ export class FormDummyComponent implements OnInit {
   }
 
   onChange(event) {
-    console.log(event);
+    // console.log(event);
     const dataReturn = {
       id: this.dataId,
       ...this.data
@@ -45,7 +45,7 @@ export class FormDummyComponent implements OnInit {
     this.data.emit(dataReturn);
   }
   onSearchChange(event) {
-    console.log(event);
+    // console.log(event);
   }
 
 }

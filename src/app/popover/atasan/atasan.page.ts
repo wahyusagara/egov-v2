@@ -20,7 +20,7 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.navParams.data.data);
+    // console.log(this.navParams.data.data);
     this.id = this.navParams.data.data.id;
   }
   ngAfterViewInit() {
@@ -30,13 +30,13 @@ export class AtasanPage implements OnInit, AfterViewInit, AfterContentInit {
     this.getDataAtasan();
   }
   async onSearchChange(event) {
-    console.log(event);
+    // console.log(event);
     this.search = await event.target.value;
     await this.getDataAtasan();
   }
   getDataAtasan() {
     return this.api.getAtasan("https://egov-big.herokuapp.com/api/get-atasan", this.search ? this.search : "").then((result) => {
-      console.log(result);
+      // console.log(result);
       this.listAtasan = JSON.parse(JSON.stringify(result)).data;
     })
   }

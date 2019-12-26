@@ -62,7 +62,7 @@ export class SliderComponent implements OnInit {
     })
   }
   openBerita(id) {
-    console.log(id);
+    // console.log(id);
     this.navCtrl.navigateForward('berita', {
       queryParams: {
         id: id

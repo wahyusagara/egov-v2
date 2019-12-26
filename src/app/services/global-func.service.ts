@@ -54,7 +54,7 @@ export class GlobalFuncService {
 
   getToken() {
     this.fcm.getToken().then((token) => {
-      console.log(token);
+      // console.log(token);
     })
   }
 }

@@ -37,7 +37,7 @@ export class DetailPerjalananDinasPage implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.data);
+    // console.log(this.data);
   }
 
   ionViewDidEnter() {

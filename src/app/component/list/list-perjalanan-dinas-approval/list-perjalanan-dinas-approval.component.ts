@@ -37,16 +37,16 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
   async getDataSurtug() {
     const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
     return this.api.getData('https://egov-big.herokuapp.com/api/get-surtug', null, nip, null).then((result) => {
-      console.log(result);
+      // console.log(result);
       this.resp = result;
       this.listSurtug = JSON.parse(JSON.stringify(result)).data;
-      console.log(this.listSurtug);
+      // console.log(this.listSurtug);
     }).catch((err) => {
-      console.log(err);
+      console.error(err);
     });
   }
   async showPopOver(data) {
-    console.log(data);
+    // console.log(data);
     const p = await this.popOver.create({
       animated: true,
       backdropDismiss: true,
@@ -59,7 +59,7 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
       translucent: true
     });
     p.onDidDismiss().then( async (res) => {
-      console.log(res);
+      // console.log(res);
       if (res.data !== undefined) {
         await this.updateStatus(res.data.id, res.data.status, res.data.nama_atasan2, res.data.nipatasan, res.data.instansi, res.data.iddata);
         this.getDataSurtug();
@@ -91,9 +91,9 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
       atasan_nip: localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : ''
     }
     this.api.postData("https://egov-big.herokuapp.com/api/req-approval-perjadin", x).then((result) => {
-      console.log(result);
+      // console.log(result);
     }).catch((err) => {
-      console.log(err);
+      console.error(err);
     })
   }
 
@@ -103,7 +103,7 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
 
   async cancel(id, nama, nip, instansi, iddata) {
     this.updateStatus(id, 3, nama, nip, instansi, iddata).then((res) => {
-      console.log(res);
+      // console.log(res);
       this.getDataSurtug();
     }).catch((err) => {
       this.global.showToast('Failed update data', 'danger');

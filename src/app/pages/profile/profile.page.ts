@@ -23,7 +23,7 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
   change(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
   }
   logout() {
     this.navCtrl.navigateRoot('login')

@@ -36,25 +36,25 @@ export class ApprovalPerjadinPage implements OnInit {
   ngOnInit() {
     this.data = this.navParams.data.data;
     this.getAtasan();
-    console.log(this.data);
+    // console.log(this.data);
   }
 
   getAtasan() {
     return this.api.getAtasan('https://egov-big.herokuapp.com/api/get-atasan')
     .then((result) => {
       this.atasan = JSON.parse(JSON.stringify(result)).data;
-      console.log(this.atasan);
+      // console.log(this.atasan);
     }).catch((err) => {
       console.error(err);
     })
   }
 
   change() {
-    console.log(this.selected);
+    // console.log(this.selected);
   }
 
   submit() {
-    console.log(this.atasan2);
+    // console.log(this.atasan2);
     const local = JSON.parse(localStorage.getItem('datakaryawan'));
     const nama = local.GELARDEPAN + ' ' + local.NAMA + ' ' + local.GELARBELAKANG;
     const data = {
