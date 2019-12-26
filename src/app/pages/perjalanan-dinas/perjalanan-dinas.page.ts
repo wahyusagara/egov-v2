@@ -69,9 +69,9 @@ export class PerjalananDinasPage implements OnInit {
     const nip = localStorage.getItem('datakaryawan') ? JSON.parse(localStorage.getItem('datakaryawan')).NIPBARU : '';
     this.resp = null;
     if (this.isApproval) {
-      this.getDataSurtug(null, nip);
-    } else {
       this.getDataSurtug(nip, null);
+    } else {
+      this.getDataSurtug(null, nip);
     }
   }
   async getData() {

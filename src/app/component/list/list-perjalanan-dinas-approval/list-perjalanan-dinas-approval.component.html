@@ -8,10 +8,11 @@
       [class]="list.status_approval === 1 ? 'approved' 
       : list.status_approval === 2 ? 'waiting' 
       : list.status_approval === 3 ? 'rejected' 
-      : ''"
+      : 'waiting'"
       color="dark">
       {{list.status_approval === 1 ? "Berangkat" :
-      list.status_approval === 2 ? "Masih Proses" :
+      list.status_approval === 2 && list.pda.includes(namaKaryawan) ? "Masih Proses" :
+      list.status_approval === 2 && !list.pda.includes(namaKaryawan) ? "Menunggu Persetujuan" :
       list.status_approval === 3 ? "Batal Berangkat" : ""}}
     </ion-label>
     </ion-col>

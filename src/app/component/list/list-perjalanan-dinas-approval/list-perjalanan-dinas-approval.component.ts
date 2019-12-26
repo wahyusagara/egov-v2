@@ -14,6 +14,7 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
   @Input() dataSurtug = [];
   listSurtug = [];
   resp;
+  namaKaryawan = JSON.parse(localStorage.getItem('datakaryawan')).NAMA;
 
   constructor(
     private api: ApiService,
@@ -57,10 +58,10 @@ export class ListPerjalananDinasApprovalComponent implements OnInit, AfterConten
       showBackdrop: true,
       translucent: true
     });
-    p.onDidDismiss().then((res) => {
+    p.onDidDismiss().then( async (res) => {
       console.log(res);
       if (res.data !== undefined) {
-        this.updateStatus(res.data.id, res.data.status, res.data.nama_atasan2, res.data.nipatasan, res.data.instansi, res.data.iddata);
+        await this.updateStatus(res.data.id, res.data.status, res.data.nama_atasan2, res.data.nipatasan, res.data.instansi, res.data.iddata);
         this.getDataSurtug();
       }
     });

@@ -545,7 +545,7 @@ app.post('/api/req-approval-perjadin', (req, res) => {
       nama: body.nama_atasan,
       nip: body.nip_atasan,
       instansi: body.instansi_atasan,
-      a: "DISPOSISI OLEH " + body.nama_atasan + "KE " + body.nama_atasan2
+      a: "DISPOSISI OLEH " + body.nama_atasan + " KE " + body.nama_atasan2
     }, {where: {id: body.id}}).then(() => {
       db.persetujuan.update({
         stat: body.stat,
